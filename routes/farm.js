@@ -8,7 +8,6 @@ const {isLoggedIn, isFarmOwner} = require('../middleware.js');
 const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage })
-// const uploads = multer({ storages })
 const { cloudinary } = require('../cloudinary');
 
 
