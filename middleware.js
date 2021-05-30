@@ -1,4 +1,4 @@
-const { farmSchema, reviewSchema } = require('./schema.js');
+// const { farmSchema, reviewSchema } = require('./schema.js');
 const FarmError = require('./Utilities/FarmError');
 const Farm = require('./models/farm');
 const Review = require('./models/review');
