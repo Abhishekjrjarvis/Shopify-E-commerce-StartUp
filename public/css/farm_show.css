@@ -1,0 +1,48 @@
+.product-row .new-products{
+    color: #fff;
+    border-radius: 2px;
+    background-color: rgb(32, 148, 3);
+    border: none;
+}
+
+.product-row .new-products a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.product-row .new-products:hover{
+    color: #fff;
+    border-radius: 2px;
+    background-color:rgb(32, 148, 3); ;
+    border: none;
+}
+
+.product-row .delete-products{
+    color: #fff;
+    border-radius: 2px;
+    background-color: rgb(158, 5, 0);
+    border: none;
+}
+
+.product-row .delete-products a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.product-row .delete-products:hover{
+    color: #fff;
+    background-color: rgb(158, 5, 0);
+    border: none;
+}
+
+button .delete-one-products{
+    color: #fff;
+    background-color: rgb(158, 5, 0);
+    border: none;
+}
+
+button .delete-one-products:hover{
+    color: #fff;
+    background-color: rgb(158, 5, 0);
+    border: none;
+}

@@ -1,0 +1,45 @@
+<% layout('./layouts/boilerplate') %> 
+<link rel="stylesheet" href="/css/productsNew.css">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-6">
+                <div class="card bg-dark mt-5 p-2" style="border-radius: 10px; box-shadow: 0 0 20px 0px rgba(255,255,255,0.8);">
+                        <h2 class="text-center mt-3 text-white">Add Product</h2>
+                        <div class="card-body">
+                            <form action="/farms/<%= id %>/products " method="POST" enctype="multipart/form-data" class="validCredentials-form" novalidate>
+                                <div class="form-group">
+                                    <label for="name" class="text-white">Product Name</label>
+                                    <input type="text" class="form-control bg-dark text-white" name="name" id="name" placeholder="Mac Air 2021" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="text-white">Description</label>
+                                    <textarea  class="form-control bg-dark text-white" name="description" id="description" cols="30" rows="4" placeholder="Detailed about Product" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price" class="text-white">Price</label>
+                                    <input type="Number" class="form-control bg-dark text-white" name="price" id="price" placeholder="$ 19.99 " required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category" class="text-white">Category</label>
+                                    <select class="form-control text-white bg-dark" name="categories" value="Categories" id="category">
+                                        <option class="text-white" value="Electronics">Electronics</option>
+                                        <option class="text-white" value="Fashion">Fashion</option>
+                                        <option class="text-white" value="Grocery">Grocery</option>
+                                        <option class="text-white" value="Appliances">Appliances</option>
+                                        <option class="text-white" value="Mobiles">Mobiles</option>
+                                        <option class="text-white" value="Toys">Toys</option>
+                                    </select>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="image" class="text-white">Upload Image</label>
+                                    <input type="file" class="form-control bg-dark text-white" name="images" id="image" placeholder="product image " required multiple>
+                                </div>
+                                
+                                <button class="btn btn-success btn-sm adds-new">Submit</button>
+                            </form>
+                         </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+    

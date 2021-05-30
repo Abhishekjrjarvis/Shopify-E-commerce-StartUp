@@ -1,0 +1,216 @@
+<% layout('./layouts/boilerplate')%>
+<link rel="stylesheet" href="/css/homes.css">
+<link rel="stylesheet" href="/css/star.css">
+
+<!-- <div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1>Mac Pro is Unique <br>A Good Looking Hardware</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Voluptatem est atque, eum nam sed odio placeat </p>
+                <a class="btn " href="#">Explore Now <i class="fab fa-wpexplorer"></i></a>
+            </div>
+            <div class="col-2">
+                <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile-in.png" alt="">
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="carousel-category detailed-one-product">
+    <div class="row">
+        <div class="col-6">
+            <% if(product.images.length == 5) {%> 
+            <img id="product-img" src="<%= product.images[0].url %> " alt="">
+                <div class="product-img-row">
+                    <div class="product-img-col">
+                        <img class="small-product-img" src="<%= product.images[1].url %>" alt="" width="100%">
+                    </div>
+                    <div class="product-img-col">
+                        <img class="small-product-img" src="<%= product.images[2].url %>" alt="" width="100%">
+                    </div>
+                    <div class="product-img-col">
+                        <img class="small-product-img" src="<%= product.images[3].url %>" alt="" width="100%">
+                    </div>
+                    <div class="product-img-col">
+                        <img class="small-product-img" src="<%= product.images[4].url %>" alt="" width="100%">
+                    </div>
+                </div>
+            <% }else{%>
+                <% for(let p of product.images) {%>
+                    <img id="product-img" src="<%= p.url %> " alt="">
+                    <div class="product-img-row">
+                        <div class="product-img-col">
+                            <img class="small-product-img" src="<%= p.url %>" alt="" width="100%">
+                        </div>
+                        <div class="product-img-col">
+                            <img class="small-product-img" src="<%= p.url %>" alt="" width="100%">
+                        </div>
+                        <div class="product-img-col">
+                            <img class="small-product-img" src="<%= p.url %>" alt="" width="100%">
+                        </div>
+                        <div class="product-img-col">
+                            <img class="small-product-img" src="<%= p.url %>" alt="" width="100%">
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>  
+            
+    </div>
+        <div class="col-6">
+            
+            <h1 class="text-white mt-5"><%= product.name.slice(0,1).toUpperCase() + product.name.slice(1,) %></h1>
+            <h5 class="text-white mt-3">$<%= product.price %>.99</h5>
+            <% if(currentUser) { %>
+            <span class="text-white mt-3" style="float: right;"><a href="/products/<%= product._id %>/review ">Write A Review</a></span>
+            <% } %> 
+            <input type="number" class="mt-3" value="1">
+            <a href="#" class="btn btn-warning btn-block buy mt-5">Buy Now</a>
+            <!-- <span class="text-white ml-5 mt-3 mb-5" style="text-align: center;">Or</span> -->
+            <a href="/cart" class="btn btn-warning btn-block add mt-4 addtocart">Add To Cart</a>
+            <h5 class="text-white" style="letter-spacing: 0.6px;">Desgnied In <%= product.farm.name %> <i class="fas fa-store" style="color: brown;"></i></h5>
+            <h4 class="text-white" style="font-weight: normal;">Description <i class="fas fa-audio-description" style="color: rgb(70, 26, 26);"></i></h4>
+            <p class="text-white"><%= product.description  %> </p>
+        </div>
+    </div>
+</div>
+
+<div class="carousel-category">
+    <div class="row product-row">
+        <h2>Related Products</h2>
+        <p class="text-white">View More</p>
+    </div>
+    <div class="row">
+        <% for(let p of products) {%>
+            <% if(!(p.name === product.name)) {%>   
+                <div class="col-4">
+                    <a href="/products/<%= p._id  %> ">
+                    <% if(p.images.length > 1) {%> 
+                        <img src="<%= p.images[1].url  %> " alt="">
+                    <% }else{ %> 
+                        <% for(let i of p.images){ %> 
+                            <img src="<%= i.url  %> " alt="">
+                        <% } %>
+                    <% } %> 
+                    </a> 
+                    <i class="far fa-heart mt-1 mr-1"></i>    
+                    <h5><%= p.name  %></h5>
+                    <p>$<%= p.price %>.99</p>
+                </div>
+                <% } else{%>
+                    <% } %>  
+            <% } %> 
+        <!-- <div class="col-4">
+            <img src="https://images.pexels.com/photos/129208/pexels-photo-129208.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <h5>Apple Mac Air</h5>
+            <p>$999.99</p>
+        </div>
+        <div class="col-4">
+            <img src="https://images.pexels.com/photos/129208/pexels-photo-129208.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <h5>Apple Mac Air</h5>
+            <p>$999.99</p>
+        </div>
+        <div class="col-4">
+            <img src="https://images.pexels.com/photos/129208/pexels-photo-129208.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <h5>Apple Mac Air</h5>
+            <p>$999.99</p>
+        </div>
+        <div class="col-4">
+            <img src="https://images.pexels.com/photos/129208/pexels-photo-129208.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <h5>Apple Mac Air</h5>
+            <p>$999.99</p>
+        </div> -->
+    </div>
+</div>
+
+<div class="carousel-category">
+    <hr class="divider">
+    <% if(currentUser){ %>
+        <h2>Leave a Review</h2>
+                <form action="/products/<%= product._id%>/review " method="POST" class="mb-3 validCredentials-form" novalidate>
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                            aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <div class="mb-3">
+                        <label class="form-label text-white" for="body">Review Text</label>
+                        <textarea class="form-control bg-dark text-white" name="review[body]" id="body" cols="20" rows="2" required></textarea>
+                        <div class="valid-feedback">
+                            Nice
+                        </div>
+                    </div>
+                    <button class="btn btn-success review-btn">Submit</button>
+                </form>
+
+                <div class="carousel-category">
+                    <div class="row">
+                        <% for(let review of product.reviews) { %>
+                                <div class="card bg-dark mb-3">
+                                    <div class="card-body">
+                                        <img src="https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg" alt=""><small class="ml-2 mt-3 review-star"><b><%=review.rating%><i class="fas fa-star ml-1"></i></b></small><small class="text-muted ml-2 review-date" style="float: right;"><%= moment(review.createdAt).fromNow()%></small>  
+                                        <hr>
+                                        <p class="starability-result review-stars" data-rating="<%=review.rating%>"></p>
+                                        <p class="card-text text-muted"><b><i class="fas fa-quote-left mr-2" style="font-size: 12px; color: rgb(31, 24, 24);"></i><%=review.body %></b><i class="fas fa-quote-right ml-2"style="font-size: 12px; color: rgb(31, 24, 24);"></i></p>
+                                        
+                                        <% if(currentUser && review.author.equals(currentUser._id)) {%> 
+                                                <form action="/products/<%=product._id %>/review/<%=review._id%>?_method=DELETE" method="POST">
+                                                    <button class="btn btn-outline-danger btn-sm delete">Delete</button>
+                                                </form>
+                                                <span class="three-dot" style="float: right;"><i class="fas fa-ellipsis-v"></i></span>
+                                            <% } %> 
+                                        
+                                    </div>
+                                </div>
+                        <% } %>
+                    </div>
+                </div>
+        <% }else {%>
+            <h3 class="text-white">Write Your Own Review</h3>
+            <p class="text-white mt-5 mb-5" style="border: 0.5px dotted #c1cf00; padding: 3px; letter-spacing: 1px;" ><i class="fas fa-exclamation-triangle ml-1" style="color: #f50606"></i> UnAuthorized Users can't give the reviews to get access <a href="/user/login">Sign in</a> or <a href="/user/register">Create account</a></p> 
+            <% } %> 
+        
+
+</div>
+
+<script>
+    const productImg = document.getElementById('product-img');
+    const smallProductImg = document.getElementsByClassName('small-product-img');
+    const dots = document.querySelectorAll('.three-dot');
+    smallProductImg[0].onclick = function(){
+        productImg.src = smallProductImg[0].src;
+    }
+    smallProductImg[1].onclick = function(){
+        productImg.src = smallProductImg[1].src;
+    }
+    smallProductImg[2].onclick = function(){
+        productImg.src = smallProductImg[2].src;
+    }
+    smallProductImg[3].onclick = function(){
+        productImg.src = smallProductImg[3].src;
+    }
+
+</script>
+<a href="/products?categories=<%= product.categories %>">
+    <%= product.categories %>
+</a>
+
+
+    <!--  <if(currentUser && product.author.equals(currentUser._id)) {%> 
+        <form action="/products/<= product._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger btn-sm  delete-one-products "><i class="far fa-trash-alt"></i> Delete</button>
+        </form>
+     <}%>   -->
+
+
+    

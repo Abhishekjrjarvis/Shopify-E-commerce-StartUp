@@ -1,0 +1,109 @@
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/homes.css">
+<link rel="stylesheet" href="/css/cssSliders.css">
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h1><i class="fab fa-shopify" style="text-align: center;"></i><br>
+                        Sell online with Shopify</h1>
+                    <p>Trusted by over 1,700,000 businesses worldwide<br></p>
+                    <a class="btn " href="#">Explore Now <i class="fab fa-wpexplorer"></i></a>
+                </div>
+                <div class="col-2">
+                    <img src="https://cdn.shopify.com/shopifycloud/brochure/assets/landers/short-lander/free-trial/default@tablet-83f017c08356e1b69d531716b99faa0ff7ff6cee61097d7f5169a55032d79e73.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="slider" class="slider mt-5">
+		<div class="slider-content">
+			<div class="slider-content-wrapper">
+				<div class="slider-content__item image-1"></div>
+				<div class="slider-content__item image-2">Toys Store</div>
+				<div class="slider-content__item image-3">Grocery Store</div>
+				<div class="slider-content__item image-4">4</div>
+				<div class="slider-content__item image-5">5</div>
+				<div class="slider-content__item image-6">6</div>
+			</div>
+		</div>
+    </div>
+
+
+    <div class="carousel-category">
+        
+      <div class="row product-row">
+          <h2 class="">Our Store</h2>
+          <select name="" id="">
+              <option value="">
+                 All Category
+              </option>
+              <option value="">
+                  Sort By Category
+              </option>
+              <option value="">
+                  Sort By Price
+              </option>
+              <option value="">
+                  Sort By Name
+              </option>
+              <option value="">
+                  Sort By Rating
+              </option>
+          </select>
+      </div>
+      <div class="row">
+        <% for(let farm of farms){ %>
+              
+              <div class="col-4">
+                  <a href="/farms/<%= farm._id %> ">
+                    <% if(farm.category === 'Electronics') {%> 
+                        <img src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
+                    <% } else if(farm.category === 'Fashion') {%>
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" alt="">
+                    <% } else if(farm.category === 'Grocery') {%>
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt=""> 
+                    <% } else if(farm.category === 'Appliances') {%>
+                        <img src="https://images.unsplash.com/photo-1601760562234-9814eea6663a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXBwbGlhbmNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                    <% } else if(farm.category === 'Mobiles') {%>
+                        <img src= "https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
+                    <% } else if(farm.category === 'Toys') {%>    
+                        <img src= "https://images.unsplash.com/photo-1515281239448-2abe329fe5e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80" alt="">
+                    <% } %> 
+                    </a>
+                  <h5><a href="/farms/<%= farm._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= farm.name %> Store</a></h5>
+                  <div class="star-rating" style="color: rgb(209, 212, 0);">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <small class="text-right mb-2" style="color: rgb(104, 100, 95); float:right;"><b>At <%= farm.city %></b></small>
+                  </div>
+                  <% if(currentUser && farm.author.equals(currentUser._id)) {%> 
+                  <span style="color: rgb(97, 97, 97);">created by</span> <small style="color: rgb(110, 0, 0); font-size: 17px; font-weight: bold;"><%= currentUser.username.slice(0,1).toUpperCase() + currentUser.username.slice(1) %></small>
+                  <% } %> 
+                  
+              </div>
+              <% } %> 
+      </div>
+    </div>
+
+ 
+    <script type="text/javascript" src="/js/cssSlider.js"></script>
+
+
+          
+
+
+      
+
+                
+
+                                  
+
+
+        
+<!-- <a href="/farms/new">Add farms</a> -->
+
+                

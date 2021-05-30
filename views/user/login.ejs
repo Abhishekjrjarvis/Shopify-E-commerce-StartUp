@@ -1,0 +1,67 @@
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/productIndex.css"> 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-3">
+            <div class="card bg-dark mt-3 mb-5" style="box-shadow: 0 0 20px 0px rgba(255,255,255,0.8); border-radius: 5px;" >
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                <h5 class="card-title text-center " style="color: rgb(151, 0, 0); font-weight: bold; font-size: 24px; letter-spacing: 1px;">Login</h5>
+                <div class="modal-login">
+                     <!-- <p><span>Get access to your Orders,<br> 
+                        Wishlist and Recommendations</span></p> -->
+                    <!-- <img src="https://www.limespot.com/hubfs/Shopify%20certified%20app2.png" alt=""> -->
+                    <form action="/user/login" method="POST" class="validCredentials-form" novalidate>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input class="form-control bg-dark text-white" type="text" id="username" name="username" placeholder="Username" autofocus required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>    
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control bg-dark text-white" type="password" id="password" name="password" placeholder="password" required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div> 
+                        </div>
+                        <p><small class="forgot"><a href="/user/forgot">Forgot Password</a></small></p>
+                       <p><small>By continuing, you agree to Shopify's <a href="">Terms of Use</a> and <a href=""> Privacy Policy</a>.</small></p>
+                        <button class="btn btn-primary btn-block checks">
+                            Login
+                       </button>
+                       <span class="text text-muted mt-0 mb-1">Or</span>
+                       <button class="btn btn-outline-secondary btn-block create">
+                        <a href="/user/register" style="text-decoration: none;">Create Account
+                   </button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ <!-- Button trigger modal
+<button type="button" id="check-login" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+    Login
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" id="headerModal">
+          <h5 class="modal-title mt-2" id="exampleModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="close-modal" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,81 @@
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/homes.css">
+<link rel="stylesheet" href="/css/farm_show.css">
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1><i class="fab fa-shopify" style="text-align: center;"></i><br>
+                    Sell online with Shopify</h1>
+                <p>Trusted by over 1,700,000 businesses worldwide<br></p>
+                <a class="btn " href="#">Explore Now <i class="fab fa-wpexplorer"></i></a>
+            </div>
+            <div class="col-2">
+                <img src="https://cdn.shopify.com/shopifycloud/brochure/assets/landers/short-lander/free-trial/default@tablet-83f017c08356e1b69d531716b99faa0ff7ff6cee61097d7f5169a55032d79e73.png" alt="https://i.stack.imgur.com/y9DpT.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="carousel-category">
+    <h2 class="featured-title">Featured Store</h2>
+    <div class="row">
+        <div class="col-4">
+            <img src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="https://i.stack.imgur.com/y9DpT.jpg">
+            <h5 class="mt-1">Electronics Store</h5>
+        </div>
+        <div class="col-4">
+            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" alt="https://i.stack.imgur.com/y9DpT.jpg">
+            <h5 class="mt-1">Fashion Store</h5>
+        </div>
+        <div class="col-4">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt="https://i.stack.imgur.com/y9DpT.jpg">
+            <h5 class="mt-1">Grocery Store</h5>
+        </div> 
+        <div class="col-4">
+            <img src="https://images.unsplash.com/photo-1601760562234-9814eea6663a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXBwbGlhbmNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="https://i.stack.imgur.com/y9DpT.jpg">
+            <h5 class="mt-1">Appliances Store</h5>
+        </div>
+    </div>
+    <div class="row product-row">
+        <h2>Latest Store products</h2>
+        <button class="btn btn-outline-success btn-md new-products"><a href="/farms/<%= farm._id %>/products/new "><i class="fas fa-plus-circle"></i> Add Products</a></button>
+    </div>
+    <!-- <h2 class="featured-title">Latest  Products</h2> -->
+
+    <div class="row">
+        <% for(let f of farm.products){ %> 
+        <div class="col-4">
+            <a href="/products/<%= f._id %> ">
+                <% if(f.images.length > 1) {%> 
+                        <img src= "<%= f.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                    <!-- <img src="https://i.stack.imgur.com/y9DpT.jpg" alt="">  -->
+                <% }else{ %> 
+                    <% for(let i of f.images)  {%>   
+                    <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                    <% } %>
+                <% } %>   
+            </a>
+            <i class="far fa-heart mt-1 mr-1"></i>
+            <h5><%= f.name  %> Products</h5>
+            <div class="star-rating" style="color: rgb(209, 212, 0);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>$<%= f.price %>.99</p>
+        </div>
+        <% } %> 
+    </div>
+    <% if(currentUser && farm.author.equals(currentUser._id)){ %>
+    <div class="row product-row">
+        <form action="/farms/<%= farm._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger btn-md delete-products"><a href=""><i class="far fa-trash-alt"></i> Delete Store</a></button>
+        </form>
+    </div>
+    <% } %> 
+</div>
+    

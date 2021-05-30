@@ -1,0 +1,49 @@
+.col-sm-4 .adds-new{
+    transition: none;
+    float: right;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    background-color: rgb(2, 255, 78);
+}
+
+.col-md-6 .adds-new{
+    transition: none;
+    float: right;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    background-color: rgb(2, 255, 78);
+}
+
+
+
+.col-sm-4 .adds-new:hover{
+    transform: none;
+    color: #fff;
+    background-color:rgb(2, 255, 78);
+}
+
+.col-md-6 .adds-new:hover{
+    transform: none;
+    color: #fff;
+    background-color:rgb(2, 255, 78);
+}
+
+.card-body{
+    transition: none;
+}
+
+.card-body:hover{
+    transform: none;
+}
+
+
+@media only screen and (max-width: 720px){
+    .col-sm-4 label{ 
+        float: left;
+    }
+    .col-md-6 label{
+        float: left;
+    }
+}

@@ -1,0 +1,44 @@
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/productsNew.css">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-6">
+                <div class="card bg-dark mt-5 p-2" style="border-radius: 10px; box-shadow: 0 0 20px 0px rgba(255,255,255,0.8);">
+                    <h2 class="text-center mt-3 text-white">Edit Product</h2>
+                    <div class="card-body"> 
+                            <form action="/products/<%=products._id%>?_method=PUT " method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name" class="text-white">Product Name</label>
+                                    <input type="text" class="form-control bg-dark text-white" name="name" id="name" value="<%= products.name %> " required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price" class="text-white">Product price</label>
+                                    <input type="text" class="form-control bg-dark text-white" name="price" id="price" value="<%= products.price %> " required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="text-white">Description</label>
+                                    <textarea  class="form-control bg-dark text-white" name="description" id="description" cols="30" rows="4" value="<%= products.description %>"  required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category" class="text-white">Category</label>
+                                    <select class="form-control text-white bg-dark" name="categories" value="Categories" id="category">
+                                        <option value="Fashion" <%=products.category==='Fashion' ? 'selected' : '' %>>Fashion</option>
+                                        <option value="Electronics" <%=products.category==='Electronics' ? 'selected' : '' %>>Electronics</option>
+                                        <option value="Grocery" <%=products.category==='Grocery' ? 'selected' : '' %>>Grocery</option>
+                                        <option value="Appliances" <%=products.category==='Appliances' ? 'selected' : '' %>>Appliances</option>
+                                        <option value="Mobiles" <%=products.category==='Mobiles' ? 'selected' : '' %>>Mobiles</option>
+                                        <option value="Toys" <%=products.category==='Toys' ? 'selected' : '' %>>Toys</option>
+                                    </select>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="image" class="text-white">Upload Image</label>
+                                    <input type="file" class="form-control bg-dark text-white" name="images" id="image" value="<%= products.images %>" required multiple>
+                                </div>
+                                
+                                <button class="btn btn-success btn-sm adds-new">Submit</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

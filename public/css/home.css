@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background: black;
+}
+
+#brand{
+    color: #f50606;
+}
+
+/* .nav-item .signup-btn{
+    color: #fff;
+    border-radius: 2px;
+    padding: 0px;
+    margin-top: 0px;
+    border: none;
+    background-color: rgb(158, 13, 3);
+}
+
+.nav-item .signup-btn a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-item .signup-btn:hover{
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    background-color: rgb(158, 13, 3);;
+}
+.nav-item .login-btn{
+    color: #fff;
+    border-radius: 2px;
+    padding: 0px;
+    margin-top: 0px;
+    border: none;
+    background-color: rgb(158, 13, 3);
+}
+
+.nav-item .login-btn a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-item .login-btn:hover{
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    background-color: rgb(158, 13, 3);
+}
+         */
+
+#navlinks{
+    color: rgb(255, 255, 255);
+}
+
+#navlinks:hover{
+    border-bottom: 2px solid #f50606;
+}
+
+input[type="search"]{
+    background: black;
+    border-radius: 30px;
+}
+
+#dropdown-color{
+    color: #fff;
+    background: black;
+}
+
+#dropdown-color .dropdown-item{
+    color: #fff;
+    background-color: black;
+}
+
+#dropdown-color .dropdown-item:hover{
+    border-bottom: 2px solid #f50606;
+}
+
+.dropdown, .dropdown-menu:hover{
+    display: block;
+}

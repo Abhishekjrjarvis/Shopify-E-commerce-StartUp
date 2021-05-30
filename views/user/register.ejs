@@ -1,0 +1,86 @@
+<% layout('./layouts/boilerplate') %> 
+<link rel="stylesheet" href="/css/productIndex.css">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 offset-sm-3 col-md-6 offset-md-3 col-lg-4 offset-lg-1">
+            <div class="card bg-dark mt-4 mb-5" style="box-shadow: 0 0 20px 0px rgba(255,255,255,0.8); border-radius: 5px;" >
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                <h5 class="card-title text-center " style="color: rgb(151, 0, 0); font-weight: bold; font-size: 24px; letter-spacing: 1px; ">Sign Up</h5>
+                <div class="modal-login">
+                    <form action="/user/register" method="POST" class="validCredentials-form" novalidate>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                                <input class="form-control bg-dark text-white" type="email" id="email" name="email" placeholder="email" autofocus required>
+                                <div class="valid-feedback text-white">
+                                    Nice
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input class="form-control bg-dark text-white" type="text" id="username" name="username" placeholder="Username" autofocus required>
+                            <div class="valid-feedback text-white">
+                                Nice
+                            </div>    
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control bg-dark text-white" type="password" id="password" name="password" placeholder="password" required>
+                            <div class="valid-feedback text-white">
+                                Nice
+                            </div> 
+                        </div>
+                        <p><small class="mb-0 user"><a href="/user/login">Existing User?</a></small></p>
+                       <p><small>By continuing, you agree to Shopify's <a href="">Terms of Use</a> and <a href="">Privacy Policy</a>.</small></p>
+                        <button class="btn btn-primary btn-block checks">
+                            Sign Up
+                       </button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center">Sign Up</h5>
+                <form action="/user/register" method="POST" class="validCredentials-form" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="email" autofocus required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" placeholder="Username" autofocus required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" placeholder="password" required>
+                            <div class="valid-feedback">
+                                Nice
+                            </div>
+                        </div>
+                    <button class="btn btn-primary btn-block">
+                         Sign Up
+                    </button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
