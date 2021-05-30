@@ -42,7 +42,7 @@ const store = new mongoStore({
       touchAfter: 24 * 60 * 60,
 })
 
-const secret = process.env.SECRET || "adminCredentials";
+const secret = `${process.env.SECRET}` || "adminCredentials";
 
 const sessionConfig = {
     name: 'session',
