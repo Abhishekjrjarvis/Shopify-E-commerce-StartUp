@@ -22,7 +22,7 @@ const reviewRoutes = require('./routes/review');
 const catchAsync = require('./Utilities/catchAsync');
 const FarmError = require('./Utilities/FarmError');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/productInfofarm';
+const dbUrl = process.env.DB_URL;
 
 mongoose.connect(dbUrl,
     { 
@@ -96,7 +96,11 @@ app.use('/products/:id/review', reviewRoutes);
 app.use('/user', userRoutes);
 
 
-app.get('/home', (req, res)=>{
+app.get('/checks', (req, res)=>{
+  res.render('check')
+})
+
+app.get('/', (req, res)=>{
   req.flash('success', 'welcome');
   res.render('home');
 })

@@ -32,14 +32,36 @@
                                     </div>
                                 <div class="form-group">
                                     <label for="image" class="text-white">Upload Image</label>
-                                    <input type="file" class="form-control bg-dark text-white" name="images" id="image" placeholder="product image " required multiple>
+                                    <input type="file" class="form-control bg-dark text-white images-valid" accept="image/png, image/jpeg" name="images" id="image" placeholder="product image " required multiple>
+                                    <small class="text-white">Users must upload only 5 images.</small>
                                 </div>
                                 
-                                <button class="btn btn-success btn-sm adds-new">Submit</button>
+                                <button class="btn btn-success btn-sm adds-new images-button-valid" disabled="">Submit</button>
                             </form>
                          </div>
                 </div>      
             </div>
         </div>
     </div>
+    <script>
+        const b = document.getElementsByTagName('input')[3];
+        const button = document.querySelector('.images-button-valid')
+        b.addEventListener('change', function(){
+            if(b.files.length == 5){
+                button.removeAttribute('disabled')
+            }
+            else{
+
+            }
+        })
+        
+        // if(b.files.length == 5){
+        //     console.log('yeah...')
+        //     // button.removeAttribute('disabled')
+        // }
+        // else{
+
+        // }
+        
+    </script>
     

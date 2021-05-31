@@ -12,7 +12,11 @@ const reviewSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    // ratings:{
+    //     type: Number,
+    //     enum: ['5,4,3,2,1']
+    // }
 });
 
 module.exports = mongoose.model("Review", reviewSchema);

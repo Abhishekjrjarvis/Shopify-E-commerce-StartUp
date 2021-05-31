@@ -3,6 +3,17 @@ const Product = require('../models/product')
 const Review = require('../models/review')
 const router = express.Router({mergeParams: true});
 
+// router.get('/:rid', async(req, res) =>{
+//     const { ratings } = req.query;
+//     if (ratings) {
+//       const reviews = await Review.find({rating :ratings  });
+//       res.render("show", { reviews, ratings: ratings });
+//     }else{
+//         const reviews = await Review.find({});
+//         res.render("index", { reviews, rating: "All" });
+//     }
+// })
+
 router.post('/', async(req, res) =>{
     const{ id } = req.params;
     const product = await Product.findById({_id:id})

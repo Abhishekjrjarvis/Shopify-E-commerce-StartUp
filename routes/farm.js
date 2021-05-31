@@ -58,7 +58,9 @@ router.post("/:id/products", isLoggedIn, upload.array('images'), catchAsync(asyn
 }));
   
 router.delete("/:id", isLoggedIn, isFarmOwner,  catchAsync(async (req, res) => {
-    const farms = await Farm.findByIdAndDelete(req.params.id);
+    const { id } = req.params;
+    const farms = await Farm.findByIdAndDelete({_id:id});
+    console.log(farms)
     res.redirect("/farms");
 }));
   
