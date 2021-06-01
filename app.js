@@ -23,6 +23,7 @@ const catchAsync = require('./Utilities/catchAsync');
 const FarmError = require('./Utilities/FarmError');
 
 const dbUrl = process.env.DB_URL;
+// 'mongodb://localhost:27017/productInfofarm';
 
 mongoose.connect(dbUrl,
     { 

@@ -21,6 +21,7 @@ router.get("/", catchAsync(async(req, res) => {
       res.render("index", { products, categories: "All" });
     }
 }));
+
   
   
 router.get("/new", (req, res) => {
@@ -34,6 +35,7 @@ router.post("/", catchAsync(async (req, res) => {
     await product.save();
     res.redirect("/products");
 }));
+
   
 router.get("/:id", catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -50,6 +52,8 @@ router.get("/:id", catchAsync(async (req, res) => {
     const products = await Product.find({categories: product.categories});
     res.render("show", { product, products });
 }));
+
+
   
 router.get("/:id/edit", catchAsync(async (req, res) => {
     const { id } = req.params;

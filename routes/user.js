@@ -89,16 +89,23 @@ router.post('/forgot', function(req, res, next) {
         });
         var mailOptions = {
           to: user.email,
-          from: 'yelpcamp44@gmail.com',
-          subject: 'Node.js Password Reset',
-          text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+          from: 'Shopify',
+          subject: 'Shopify Reset Password ',
+          text: 'Hello,\n\n' +
+            'We have recieved a request to reset the password for the Shopify account associated with the ' + user.email + ' No changes have been made to your account yet. \n\n'+ 
+            '\n'+   
+            'You can reset the password by clicking the link below: \n\n' +
             'http://' + req.headers.host + '/user/reset/' + token + '\n\n' +
-            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            '\n\n'+
+            'If you did not request this, please ignore this email and your password will remain unchanged.\n\n'+
+            '\n\n'+
+            '- The Shopify Team',
+          // html: "<p><h3>Hello,</h3></p><p> Embedded image: <img src='https://img.icons8.com/ios-filled/50/fa314a/shopify.png'/></p>",
+          
         };
         smtpTransport.sendMail(mailOptions, function(err) {
           console.log('mail sent');
-          req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+          req.flash('success', 'An e-mail has been sent to ' + user.email + ' see for further instructions.');
           done(err, 'done');
         });
       }
@@ -111,7 +118,7 @@ router.post('/forgot', function(req, res, next) {
 router.get('/reset/:token', function(req, res) {
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
       if (!user) {
-        req.flash('error', 'Password reset token is invalid or has expired.');
+        req.flash('error', 'Sorry, this change password link is not valid. Please request another one.');
         return res.redirect('/user/forgot');
       }
       res.render('reset', {token: req.params.token});
@@ -123,7 +130,7 @@ router.post('/reset/:token', function(req, res) {
       function(done) {
         User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
           if (!user) {
-            req.flash('error', 'Password reset token is invalid or has expired.');
+            req.flash('error', 'Sorry, this change password link is not valid. Please request another one.');
             return res.redirect('back');
           }
           if(req.body.password === req.body.confirm) {
@@ -138,7 +145,7 @@ router.post('/reset/:token', function(req, res) {
               });
             })
           } else {
-              req.flash("error", "Passwords do not match.");
+              req.flash("error", "Passwords does not match.");
               return res.redirect('back');
           }
         });
@@ -153,13 +160,16 @@ router.post('/reset/:token', function(req, res) {
         });
         var mailOptions = {
           to: user.email,
-          from: 'yelpcamp44@gmail.com',
-          subject: 'Your password has been changed',
+          from: 'Shopify',
+          subject: 'Your Password has been Changed Successfully',
           text: 'Hello,\n\n' +
-            'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+            '\n' + 
+            'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n\n' + 
+            '\n' + 
+            '- The Shopify Team'
         };
         smtpTransport.sendMail(mailOptions, function(err) {
-          req.flash('success', 'Success! Your password has been changed.');
+          req.flash('success', 'Your password has been changed.');
           done(err);
         });
       }

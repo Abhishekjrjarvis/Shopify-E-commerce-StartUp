@@ -13,10 +13,10 @@ const reviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    // ratings:{
-    //     type: Number,
-    //     enum: ['5,4,3,2,1']
-    // }
+    reviewCategory: {
+        type: String,
+        enum: ['Best','Good','Moderate', 'Poor',"Bad"]
+    }
 });
 
 module.exports = mongoose.model("Review", reviewSchema);

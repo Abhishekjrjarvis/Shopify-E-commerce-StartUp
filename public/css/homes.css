@@ -471,7 +471,7 @@ th{
     text-align: left;
     padding: 6px;
     color: #fff;
-    background: rgb(0, 61, 61);
+    background: #f50606;
     font-weight: bold;
     border-radius: 3px;
 }
@@ -514,7 +514,7 @@ td small{
 
 .stars{
     color: #fff;
-    background: seagreen;
+    background: #07ce00;
     padding: 2px;
     border-radius: 3px;
 }

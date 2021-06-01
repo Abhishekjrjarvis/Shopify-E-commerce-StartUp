@@ -125,6 +125,7 @@
 <div class="carousel-category">
 
     <% if(currentUser){ %>
+        <h2 class="featured-title"> Reviews</h2>
         <div class=" row product-row mt-0 mb-5" style="float: right;">
             <div class="col-lg-2">
                 <% if(product.reviews.length >= 4) {%>
@@ -132,40 +133,12 @@
                         <a class="nav-link dropdown-toggle" id="dropdown-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Filter Reviews
                         </a>
-                        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <% ratings = 0 %> 
-                            <% let best = 0 %>
-                            <% let moderate = 0 %> 
-                            <% let good = 0 %>
-                            <% let poor = 0 %> 
-                            <% let bad = 0 %>   
+                        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown"> 
                         <% for(let r of product.reviews) {%> 
-                            <% if(r.rating > 4) {%>   
-                                <% best = r.rating %> 
-                            <% } else if(r.rating >= 3 && r.rating <= 4){ %>
-                                <% good = r.rating %> 
-                            <% } else if(r.rating >= 2 && r.rating < 3){%>
-                                <% moderate = r.rating %>
-                            <% } else if(r.rating >= 1 && r.rating < 2){%>
-                                <% poor = r.rating %> 
-                            <% } else {%>
-                            <% } %>     
-                        <% } %>
-                        <a href="/products/<%= product._id %>?ratings=<%= best %>" class="dropdown-item">
-                            Best
-                        </a>
-                        <a href="/products/<%= product._id %>?ratings=<%= good %>" class="dropdown-item">
-                            Good
-                        </a>
-                        <a href="/products/<%= product._id %>?ratings=<%= moderate %>" class="dropdown-item">
-                            Moderate
-                        </a>
-                        <a href="/products/<%= product._id %>?ratings=<%= poor %>" class="dropdown-item">
-                            Poor
-                        </a>
-                        <a href="/products/<%= product._id %>?ratings=<%= bad %>" class="dropdown-item">
-                            Bad
-                        </a>
+                            <a href="/products/<%= product._id %>?reviewCategory=<%= r.reviewCategory %>" class="dropdown-item">
+                                <%= r.reviewCategory  %> 
+                            </a>
+                        <% } %> 
                         </div>
                     </li>
                 <% } %> 
@@ -197,31 +170,31 @@
                 <button class="btn btn-success review-btn">Submit</button>
             </form>
                 
-                <div class="carousel-category">
+                <div class="carousel-category">  
                     <div class="row">
                         <% for(let review of product.reviews) { %>
-                                <div class="card bg-dark mb-3">
-                                    <div class="card-body">
-                                        <img src="https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg" alt=""><small class="ml-2 mt-3 review-star"><b><%=review.rating%><i class="fas fa-star ml-1"></i></b></small><small class="text-muted ml-2 review-date" style="float: right;"><%= moment(review.createdAt).fromNow()%></small>  
-                                        <hr>
-                                        <p class="starability-result review-stars" data-rating="<%=review.rating%>"></p>
-                                        <p class="card-text text-muted"><b><i class="fas fa-quote-left mr-2" style="font-size: 12px; color: rgb(31, 24, 24);"></i><%=review.body %></b><i class="fas fa-quote-right ml-2"style="font-size: 12px; color: rgb(31, 24, 24);"></i></p>
-                                        
-                                        <% if(currentUser && review.author.equals(currentUser._id)) {%> 
-                                                <form action="/products/<%=product._id %>/review/<%=review._id%>?_method=DELETE" method="POST">
-                                                    <button class="btn btn-outline-danger btn-sm delete">Delete</button>
-                                                </form>
-                                        <% } %> 
-                                        
-                                    </div>
+                            <div class="card bg-dark mb-3">
+                                <div class="card-body">
+                                    <img src="https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg" alt=""><small class="ml-2 mt-3 review-star"><b><%=review.rating%><i class="fas fa-star ml-1"></i></b></small><small class="text-muted ml-2 review-date" style="float: right;"><%= moment(review.createdAt).fromNow()%></small>  
+                                    <hr>
+                                    <p class="starability-result review-stars" data-rating="<%=review.rating%>"></p>
+                                    <p class="card-text text-muted"><b><i class="fas fa-quote-left mr-2" style="font-size: 12px; color: rgb(31, 24, 24);"></i><%=review.body %></b><i class="fas fa-quote-right ml-2"style="font-size: 12px; color: rgb(31, 24, 24);"></i></p>
+                                                
+                                    <% if(currentUser && review.author.equals(currentUser._id)) {%> 
+                                            <form action="/products/<%=product._id %>/review/<%=review._id%>?_method=DELETE" method="POST">
+                                                <button class="btn btn-outline-danger btn-sm delete">Delete</button>
+                                            </form>
+                                    <% } %> 
+                                                
                                 </div>
-                        <% } %>
+                            </div>
+                        <% } %> 
                     </div>
                 </div>
-        <% }else {%>
-            <h3 class="text-white">Write Your Own Review</h3>
+    <% }else {%>
+        <h3 class="text-white">Write Your Own Review</h3>
             <p class="text-white mt-5 mb-5" style="border: 0.5px dotted #c1cf00; padding: 3px; letter-spacing: 1px;" ><i class="fas fa-exclamation-triangle ml-1" style="color: #f50606"></i> UnAuthorized Users can't give the reviews to get access <a href="/user/login">Sign in</a> or <a href="/user/register">Create account</a></p> 
-            <% } %> 
+        <% } %> 
 </div>
 
 <script>
@@ -249,6 +222,10 @@
         <button class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;"><i class="far fa-trash-alt"></i> Delete </button>
     </form>
 <% } %>  
+
+
+
+
 
 
 
