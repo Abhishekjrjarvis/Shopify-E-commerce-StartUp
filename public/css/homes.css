@@ -137,7 +137,7 @@
 }
 
 .col-4:hover{
-    transform: translateY(-5px);
+    transform: scale(1.05);
     box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.4);
 }
 
@@ -530,6 +530,7 @@ td img{
 .price-text{
     margin:3px auto;
 }
+
 
 
 

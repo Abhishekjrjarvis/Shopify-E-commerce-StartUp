@@ -19,7 +19,7 @@ const farmSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Electronics', 'Fashion', 'Grocery', 'Appliances', 'Mobiles', 'Toys']
+        enum: ['Electronics', 'Fashion', 'Grocery', 'Appliances', 'Mobiles', 'Toys','Home Furniture']
     },
     city: {
         type: String,

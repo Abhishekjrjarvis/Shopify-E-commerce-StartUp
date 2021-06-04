@@ -10,6 +10,7 @@ router.post('/', async(req, res) =>{
     const product = await Product.findById({_id:id})
     const review = await new Review(req.body.review);
     review.author = req.user._id;
+    review.products = product;
     if(review.rating == 5){
         review.reviewCategory = 'Best'
     }else if(review.rating == 4){
@@ -21,7 +22,7 @@ router.post('/', async(req, res) =>{
     }else {
         review.reviewCategory = 'Bad'
     }
-    console.log(review);
+
     product.reviews.push(review);
     await review.save()
     await product.save()

@@ -6,7 +6,7 @@
         <div class="col-sm-4 col-md-6">
             <div class="card bg-dark mt-5 p-2" style="border-radius: 10px; box-shadow: 0 0 20px 0px rgba(255,255,255,0.8);">
             <h1 class="text-white text-center mt-4">Add Store</h1>
-            <form action="/farms" method="POST" class="validCredentials-form" novalidate >
+            <form action="/farms" method="POST" class="validCredentials-form" novalidate  >
                 <div class="form-group ">
                     <label for="name" class="text-white mt-2">Store Name</label>
                     <input type="text" class="form-control bg-dark text-white " name="name" id="name" placeholder="Apple Store" required>
@@ -32,8 +32,13 @@
                         <option class="text-white" value="Appliances">Appliances</option>
                         <option class="text-white" value="Mobiles">Mobiles</option>
                         <option class="text-white" value="Toys">Toys</option>
+                        <option class="text-white" value="Home Furniture">Home Furniture</option>
                     </select>
                     </div>
+                    <!-- <div class="form-group">
+                        <label for="image" class="text-white">Upload Image</label>
+                        <input type="file" class="form-control bg-dark text-white" accept="image/png, image/jpeg" name="images" id="image" placeholder="product image " required >
+                    </div> -->
                 <button class="btn btn-md btn-btn-danger save">Save</button>
             </form>
             </div>

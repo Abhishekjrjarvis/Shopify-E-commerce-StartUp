@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('./user');
+const Product = require('./product');
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
@@ -12,6 +13,10 @@ const reviewSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    products: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product'
     },
     reviewCategory: {
         type: String,

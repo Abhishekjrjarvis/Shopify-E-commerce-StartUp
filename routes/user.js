@@ -52,6 +52,10 @@ router.get('/logout', (req, res) =>{
 })
 
 
+router.get('/account/profile/overview', async(req, res) =>{
+  res.render('profile')
+})
+
 router.get('/forgot', function(req, res) {
     res.render('forgot');
   });

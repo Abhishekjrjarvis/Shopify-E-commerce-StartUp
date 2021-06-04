@@ -6,9 +6,12 @@ const catchAsync = require('../Utilities/catchAsync');
 const FarmError = require('../Utilities/FarmError');
 const {isLoggedIn, isFarmOwner} = require('../middleware.js');
 const multer = require('multer');
-const { storage } = require('../cloudinary');
+const { storage } = require('../cloudinary/index');
+// const { storages } = require('../cloudinary/farmIndex');
 const upload = multer({ storage })
+// const uploads = multer({ storages })
 const { cloudinary } = require('../cloudinary');
+;
 
 
 
@@ -21,7 +24,7 @@ router.get("/new", isLoggedIn,  (req, res) => {
     res.render("farm/new");
 });
   
-router.post("/", isLoggedIn,  catchAsync(async (req, res) => {
+router.post("/", isLoggedIn, catchAsync(async (req, res) => {
     const farm = await new Farm(req.body);
     // farm.images = await req.files.map(f => ({url: f.path, filename: f.filename}));
     // console.log(farm.images);

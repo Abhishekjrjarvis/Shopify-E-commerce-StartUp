@@ -52,6 +52,8 @@
     border-radius: 10px;
 }
 
+
+
 .modal-login .create{
     margin-top: 2px;
     font-weight: 600;
@@ -99,7 +101,7 @@
     transition: ease-out 0.3s;
 }
 .dropdown:hover .dropdown-menu {
-    transform: scale(1);
+    transform: translateX(-50px);
 }
 
 
@@ -132,11 +134,28 @@
 } */
 
 #check-login{
-    background-color: #000;
-    color: #fff;
+    /* background-color: #000; */
+    color: rgb(255, 255, 255);
+    font-weight: bold;
     border-radius: 2px;
 }
 
 #check-login:hover{
     border-bottom: 2px solid #f50606;
+}
+
+@media only screen and (max-width: 720px) {
+    .navbar-nav > li > .dropdown-menu {
+        margin-top: 0;
+        width: 50%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        display: block;
+        transform: scale(0);
+        transition: ease-out 0.3s;
+    }
+    .dropdown:hover .dropdown-menu {
+        transform: none;
+    }
+    
 }

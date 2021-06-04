@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/productIndex.css">
-<nav class=" navbar navbar-expand-md navbar-light bg-transparent">
-  <a class="navbar-brand" id="brand" href="/"><i class="fab fa-shopify pr-1"></i><b>Shopify</b></a>
+<nav id="mainnav" class=" navbar navbar-expand-md navbar-light ">
+  <a class="navbar-brand" id="brand" href="/"><i class="fab fa-shopify pr-1 ml-2" style="font-size: 30px;"></i><b>Shopify</b></a>
   <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,24 +11,36 @@
       <!-- <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li> -->
-      <form class="form-inline my-2 my-lg-0">
-        <input id="search" name="search" class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search"><i class="fas fa-search mr-2"></i>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input id="search" name="search" class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search"><i class="fas fa-search mr-4" style="color: #f50606;"></i>
 
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-      </form>
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdown-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Home
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+       <li class="nav-item dropdown mr-4">
+        <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage<i class="fas fa-chevron-down ml-1" style="font-size: 11px;"></i>
         </a>
-        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 14px; letter-spacing: 1px;">
+          <a class="dropdown-item" href="#">Manage Everything</a>
+          <hr class="dropdown-divider ml-2 mr-2" style="width: 150px; color: rgb(105, 105, 105);">
           <a class="dropdown-item" href="/farms"><i class="fas fa-store"></i> Store</a>
-          <a class="dropdown-item" href="/products"><i class="fab fa-product-hunt"></i> Products</a>
-          <a class="dropdown-item" href="/farms/new"><i class="fas fa-plus-circle"></i> Add Store</a>
+            <a class="dropdown-item" href="/products"><i class="fab fa-product-hunt"></i> Products</a>
+            <a class="dropdown-item" href="/farms/new"><i class="fas fa-plus-circle"></i> Add Store</a>
         </div>
         </li>
-        <li class="nav-item" >
-          <a class="nav-link" id="navlinks" href="/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart</b></a>
-        </li>
+        <li class="nav-item dropdown mr-4">
+          <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Learn<i class="fas fa-chevron-down ml-1" style="font-size: 11px;"></i>
+          </a>
+          <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 14px; letter-spacing: 1px;">
+            
+            <a class="dropdown-item" href="#">Help Center</a>
+            <a class="dropdown-item" href="#">Guides</a>
+            <a class="dropdown-item" href="#">Blog</a>
+            <a class="dropdown-item" href="#">Podcast</a>
+            <a class="dropdown-item" href="#">Business Encylopedia</a>
+          </div>
+          </li>
       <% if(!currentUser) { %> 
       <li class="nav-item" >
         <a class="nav-link" id="check-login" href="/user/register"><b>Sign Up</b></a>
@@ -45,17 +57,35 @@
             <a class="dropdown-item" href="/farms"><i class="far fa-user-circle"></i> Your Profile</a>
           </div>
           </li> -->
-        <li class="nav-item" >
-          <a class="nav-link" id="navlinks" href="#"><i class="far fa-user-circle"></i> <b><%= currentUser.username %></b></a>
+          <li class="nav-item dropdown mr-4 mt-0">
+            <a class="nav-link" id="dropdown-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="text-center user-avatar" style=" width: 30px; height: 31px; border-radius: 20px; ">
+                <h3 class="" style="font-weight: 600; font-size: 26px; padding: 2px;"><%= currentUser.username.slice(0,1).toUpperCase()  %> </h3>
+             </div>
+            </a>
+            <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="text-center" style="background-color: #999999; border-radius: 3px;">
+                <p class="mb-0"><i class="fab fa-shopify pr-1 " style="color: #f50606;"></i></p>
+                <p><h6 class="mt-0 mb-0" style="letter-spacing: 1px;"><b><%= currentUser.username %></b></h6>
+                <small class="mt-0 mb-0"><span><b><%= currentUser.email %></b></span></small>
+              </div>
+              <a class="dropdown-item mt-1" href="/user/account/profile/overview">Your Profile</a>
+              <a class="dropdown-item" href="#">Manage Accounts</a>
+              <a class="dropdown-item" href="#">Your Wishlist</a>
+              <a class="dropdown-item" href="#">Your Order</a>
+              <a class="dropdown-item" href="#">Your Coupon's</a>
+              <a class="dropdown-item " href="/user/logout"><i class="fas fa-sign-out-alt" style="color: #f50606;"></i> Logout</a>
+            </div>
         </li>
+      <% } %>
       <li class="nav-item" >
-        <a class="nav-link" id="navlinks" href="/user/logout"><i class="fas fa-sign-out-alt"></i></a>
-      </li>
-      <% } %> 
+        <a class="nav-link" id="navlinks" href="/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart</b></a>
+      </li> 
       <!-- </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
-    </ul>--->
+    </ul>
+    <i class="far fa-user-circle"></i>--->
   </div>
 </nav>

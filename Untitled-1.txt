@@ -32,3 +32,22 @@
       res.render("show", { review, reviewCategory: "All" });
     }
 })
+
+
+
+
+
+
+
+<a href="/products/<%= product._id %>?reviewCategory=Good" class="dropdown-item">
+                            Good
+                         </a>
+                         <a href="/products/<%= product._id %>?reviewCategory=Moderate" class="dropdown-item">
+                            Moderate
+                         </a>
+                         <a href="/products/<%= product._id %>?reviewCategory=Poor" class="dropdown-item">
+                            Poor
+                         </a>
+                         <a href="/products/<%= product._id %>?reviewCategory=Bad" class="dropdown-item">
+                            Bad
+                         </a>

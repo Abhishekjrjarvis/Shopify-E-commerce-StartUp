@@ -39,7 +39,7 @@
         </div>
     </div> -->
     <h2 class="featured-title"><%= categories %> Products</h2>
-    <% if(categories === 'All') {%> 
+    <% if(categories === 'All' || productPriceFilter === 'All') {%> 
         <div class="row product-row">
             <h2 class="mb-4" style="font-size: 22px; letter-spacing: 1px;">Fashion</h2>
             <li class="nav-item dropdown">
@@ -47,11 +47,28 @@
                   Filter By Products
                 </a>
                 <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <% for(let f of products) {%> 
-                        <a class="dropdown-item" href="/products?categories=<%= f.categories %>">
-                            <%= f.categories %>
-                        </a>
-                    <% } %> 
+                    <a class="dropdown-item" href="/products?categories=Fashion">
+                        Fashion
+                    </a>
+                    <a class="dropdown-item" href="/products?categories=Electronics">
+                        Electronics
+                    </a>
+                    <a class="dropdown-item" href="/products?categories=Appliances">
+                        Tv & Appliances
+                    </a>
+                    <a class="dropdown-item" href="/products?categories=Mobiles">
+                        Mobiles
+                    </a>
+                    <a class="dropdown-item" href="/products?categories=Toys">
+                        Toys/Beauty
+                    </a>
+                    <a class="dropdown-item" href="/products?categories=Grocery">
+                        Grocery
+                    </a>
+                    <a class="dropdown-item" href="/products?productPriceFilter=under100">Under 0-100</a>
+                    <a class="dropdown-item" href="/products?productPriceFilter=under1000">Under 101-1000</a>
+                    <a class="dropdown-item" href="/products?productPriceFilter=under10000">Under 1001-10000</a>
+                    <a class="dropdown-item" href="/products?productPriceFilter=under100000">Under 100001-100000</a>
                 </div>
                 </li>
         </div>
@@ -275,13 +292,58 @@
                    </div>
                    <% } %>
                    <% } %>  
+        </div> 
+        ||
+        <% if(productPriceFilter) {%>  
+        <div class="carousel-category">
+            <div class="row">
+                <% for(let p of products) {%>
+                      
+                <div class="col-4">
+                    <a href="/products/<%= p._id %> ">
+                        <% if(p.images.length > 1) {%> 
+                            <img src= "<%= p.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                        <% }else{ %> 
+                            <% for(let i of p.images)  {%>   
+                            <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                            <% } %>
+                        <% } %>  
+                        
+                    </a>
+                    <i class="far fa-heart mt-1 mr-1"></i>
+                    <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                    <div class="star-rating">
+                        <% if(p.reviews.length >= 1){ %>
+                            <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
+                        <% }else{ %>
+                            <p><span style="color: #fff;">No Reviews</span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p> 
+                        <% } %> 
+                    </div>
+                    <span class="text-white" style="float: right;"><%= p.categories %></span>
+                    <p>$<%= p.price %>.99</p>
+                </div>
+                <% } %>
+                
+            </div>
+    
         </div>
+        <% } else{%>
+        <% } %>  
+    
         <% } %> 
     </div>
+
+    
 
 <p>
     <% if (categories !=='All' ){ %>
         <a class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;" href="/products">All Product</a>
         <% } %>
 </p>
+
+
+   
+
+ 
+    
 
