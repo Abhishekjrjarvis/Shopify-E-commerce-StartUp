@@ -11,6 +11,7 @@ const opts = {toJSON: {virtuals: true}}
 const farmSchema = new mongoose.Schema({
     name: {
         type: String,
+        unique: true,
         required: [true, 'Name must be Valid']
     },
     qty: {

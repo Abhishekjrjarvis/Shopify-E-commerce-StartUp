@@ -101,7 +101,7 @@
     transition: ease-out 0.3s;
 }
 .dropdown:hover .dropdown-menu {
-    transform: translateX(-50px);
+    transform: translateX(-60px);
 }
 
 

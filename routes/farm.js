@@ -19,6 +19,18 @@ router.get("/", catchAsync(async (req, res) => {
     const farms = await Farm.find({});
     res.render("farm/index", { farms });
 }));
+// let h = ''
+//  const hello = async() =>{
+//     const farmss = await Farm.find({name: 'banana'})
+//     for(let p of farmss){
+//         h = `${p.name}`
+//         console.log(h)  
+//     }
+//  }
+// hello()
+// router.get('/b', (req, res) =>{
+//     res.send(`${req.headers.host}/store/${h}`)
+// })
   
 router.get("/new", isLoggedIn,  (req, res) => {
     res.render("farm/new");

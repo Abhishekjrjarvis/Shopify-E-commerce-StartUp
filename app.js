@@ -19,6 +19,7 @@ const farmRoutes = require('./routes/farm');
 const productRoutes = require('./routes/product');
 const userRoutes = require('./routes/user');
 const reviewRoutes = require('./routes/review');
+const addressRoutes = require('./routes/address');
 const catchAsync = require('./Utilities/catchAsync');
 const FarmError = require('./Utilities/FarmError');
 
@@ -96,6 +97,7 @@ app.use('/farms', farmRoutes);
 app.use('/products', productRoutes);
 app.use('/products/:id/review', reviewRoutes);
 app.use('/user', userRoutes);
+app.use('/user', addressRoutes);
 
 
 app.get('/checks', (req, res)=>{

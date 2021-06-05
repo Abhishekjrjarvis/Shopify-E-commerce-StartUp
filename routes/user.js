@@ -16,8 +16,8 @@ router.get('/register', (req, res) =>{
 
 router.post('/register', async(req, res, next) =>{
         try {
-            const { email, username, password } = req.body;
-            const user = new User({ email, username });
+            const { email, username, password, firstname, lastname, mobno } = req.body;
+            const user = new User({ email, username, firstname, lastname, mobno });
             const registeredUser = await User.register(user, password);
             // console.log(registeredUser);
             req.login(registeredUser, err => {
@@ -53,8 +53,18 @@ router.get('/logout', (req, res) =>{
 
 
 router.get('/account/profile/overview', async(req, res) =>{
-  res.render('profile')
+  const user = await User.find({});
+  res.render('profile', {user})
 })
+
+
+
+router.get('/account/profile/overview/address', async(req, res) =>{
+  const user = await User.findById({_id: req.user._id}).populate('addresses');
+  // console.log(user);
+  res.render('addshow', { user });
+})
+
 
 router.get('/forgot', function(req, res) {
     res.render('forgot');

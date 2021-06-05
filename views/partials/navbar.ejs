@@ -11,11 +11,11 @@
       <!-- <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li> -->
-      <!-- <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0">
         <input id="search" name="search" class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search"><i class="fas fa-search mr-4" style="color: #f50606;"></i>
-
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+<!-- 
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      </form>
        <li class="nav-item dropdown mr-4">
         <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage<i class="fas fa-chevron-down ml-1" style="font-size: 11px;"></i>
@@ -64,16 +64,13 @@
              </div>
             </a>
             <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <div class="text-center" style="background-color: #999999; border-radius: 3px;">
+              <div class="text-center" style="background-color: #e6e6e6; border-radius: 3px; color: #000;">
                 <p class="mb-0"><i class="fab fa-shopify pr-1 " style="color: #f50606;"></i></p>
                 <p><h6 class="mt-0 mb-0" style="letter-spacing: 1px;"><b><%= currentUser.username %></b></h6>
-                <small class="mt-0 mb-0"><span><b><%= currentUser.email %></b></span></small>
+                <small class="mt-0 ml-1 mr-1 mb-0"><span><b><%= currentUser.email %></b></span></small>
               </div>
               <a class="dropdown-item mt-1" href="/user/account/profile/overview">Your Profile</a>
               <a class="dropdown-item" href="#">Manage Accounts</a>
-              <a class="dropdown-item" href="#">Your Wishlist</a>
-              <a class="dropdown-item" href="#">Your Order</a>
-              <a class="dropdown-item" href="#">Your Coupon's</a>
               <a class="dropdown-item " href="/user/logout"><i class="fas fa-sign-out-alt" style="color: #f50606;"></i> Logout</a>
             </div>
         </li>
@@ -81,11 +78,6 @@
       <li class="nav-item" >
         <a class="nav-link" id="navlinks" href="/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart</b></a>
       </li> 
-      <!-- </li> -->
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <i class="far fa-user-circle"></i>--->
+    <!-- <i class="far fa-user-circle"></i>--->
   </div>
 </nav>

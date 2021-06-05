@@ -64,6 +64,8 @@ router.get("/:id", catchAsync(async (req, res) => {
             res.redirect('/products')
         }
     const products = await Product.find({categories: product.categories});
+    const pr = await Product.find({createdAt: {$gte: "2021-06-05T03:45:11.363Z"}})
+    console.log(pr)
     res.render("show", { product, products });
 
 }));
