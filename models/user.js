@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    // storename: {
+    //     type: String,
+    //     required: true
+    // },
     addresses: [
         {
             type: mongoose.Schema.Types.ObjectId,

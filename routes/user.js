@@ -16,7 +16,7 @@ router.get('/register', (req, res) =>{
 
 router.post('/register', async(req, res, next) =>{
         try {
-            const { email, username, password, firstname, lastname, mobno } = req.body;
+            const { email, username, password, firstname, lastname, mobno} = req.body;
             const user = new User({ email, username, firstname, lastname, mobno });
             const registeredUser = await User.register(user, password);
             // console.log(registeredUser);
@@ -64,7 +64,6 @@ router.get('/account/profile/overview/address', async(req, res) =>{
   // console.log(user);
   res.render('addshow', { user });
 })
-
 
 router.get('/forgot', function(req, res) {
     res.render('forgot');

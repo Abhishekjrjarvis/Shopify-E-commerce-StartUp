@@ -38,6 +38,13 @@
                                 Nice
                             </div>    
                         </div>
+                        <!-- <div class="form-group">
+                            <label for="storename">Store name</label>
+                            <input class="form-control bg-dark text-white" type="text" id="storename" name="storename" placeholder="storename" autofocus required>
+                            <div class="valid-feedback text-white">
+                                Nice
+                            </div>    
+                        </div> -->
                         <div class="form-group">
                             <label for="mobno">Mob No</label>
                                 <input class="form-control bg-dark text-white" type="tel" minlength="10" maxlength="10" id="mobno"  name="mobno" placeholder="1234567890" required>
@@ -47,7 +54,8 @@
                             </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control bg-dark text-white" type="password" maxlength="6" id="password" name="password" placeholder="password" required>
+                            <input class="form-control bg-dark text-white" type="password" minlength="8" maxlength="8" id="password" name="password" placeholder="password" required>
+                            <small>Password must contain atleast one uppercase, one lowercase, one numeric and one special symbols</small>
                             <div class="valid-feedback text-white">
                                 Nice
                             </div> 
@@ -65,14 +73,17 @@
     </div>
 </div>
 <script>
+    const passExp =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{1,8}$/;
+    const small = document.getElementsByTagName('small')[0];
     const passInput = document.getElementsByTagName('input')[6];
     const btChecks = document.querySelector('.checks');
     passInput.addEventListener('input', function(){
-        if(passInput.value.length == 6){
+        if(passInput.value.length == 8 && passInput.value.match(passExp)){
             btChecks.removeAttribute('disabled');
         }
         else{
-
+            small.classList.toggle('passalert')
+            
         }
     })
     

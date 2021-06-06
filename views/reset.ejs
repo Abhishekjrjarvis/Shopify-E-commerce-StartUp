@@ -6,11 +6,11 @@
 			<legend class="text-white mt-5">Reset Password</legend>
 			<div class="form-group">
 			  <label for="password" class="text-white">New Password</label>
-			  <input type="password" name="password" value="" maxlength="6" placeholder="New password" autofocus="autofocus" class="form-control" required/>
+			  <input type="password" name="password" value="" maxlength="8" placeholder="New password" autofocus="autofocus" class="form-control" required/>
 			</div>
 			<div class="form-group">
 			  <label for="confirm" class="text-white">Confirm Password</label>
-			  <input type="password" name="confirm" value="" maxlength="6" placeholder="Confirm password" class="form-control" required/>
+			  <input type="password" name="confirm" value="" maxlength="8" placeholder="Confirm password" class="form-control" required/>
 			</div>
 			<div class="form-group">
 			  <button class="btn btn-sm btn btn-danger reset" disabled="">Update Password</button>
@@ -24,7 +24,7 @@
 	const passInputs = document.getElementsByTagName('input')[2];
     const btReset = document.querySelector('.reset');
     passInputs.addEventListener('input', function(){
-        if(passInputs.value.length == 6){
+        if(passInputs.value.length == 8){
             btReset.removeAttribute('disabled');
         }
         else{
