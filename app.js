@@ -23,7 +23,7 @@ const addressRoutes = require('./routes/address');
 const catchAsync = require('./Utilities/catchAsync');
 const FarmError = require('./Utilities/FarmError');
 
-const dbUrl = 'mongodb://localhost:27017/productInfofarm';
+const dbUrl = process.env.DB_URL;
 
 
 // 'mongodb://localhost:27017/productInfofarm';
@@ -40,16 +40,16 @@ mongoose.connect(dbUrl,
         console.log('Something went Wrong......')
     })
 
-// const store = new mongoStore({
-//       mongoUrl: dbUrl,
-//       touchAfter: 24 * 60 * 60,
-// })
+const store = new mongoStore({
+      mongoUrl: dbUrl,
+      touchAfter: 24 * 60 * 60,
+})
 
 const secret = `${process.env.SECRET}` || "adminCredentials";
 
 const sessionConfig = {
     name: 'session',
-    // store,
+    store,
     secret,
     resave: false,
     saveUninitialized: false,
