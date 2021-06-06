@@ -25,7 +25,7 @@ const FarmError = require('./Utilities/FarmError');
 
 const dbUrl = process.env.DB_URL;
 
-
+// process.env.DB_URL;
 // 'mongodb://localhost:27017/productInfofarm';
 mongoose.connect(dbUrl,
     { 
@@ -98,11 +98,6 @@ app.use('/products', productRoutes);
 app.use('/products/:id/review', reviewRoutes);
 app.use('/user', userRoutes);
 app.use('/user', addressRoutes);
-
-app.get('/store', (req, res) =>{
-  res.render('farm/store');
-})
-
 
 app.get('/checks', (req, res)=>{
   res.render('check')

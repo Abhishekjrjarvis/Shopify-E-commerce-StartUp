@@ -13,10 +13,10 @@
 </head>
 <body style="background-color: black;">
     <div class="container-fluid">
-        <div class="ui inverted segment" style="margin: 0px auto; border-radius: 0px;">
+        <div class="ui inverted segment" style="margin: 0px auto; border-radius: 0px; background-color: black;">
             <div class="ui inverted secondary pointing menu">
               <a class="item">
-                <h3>Amazon-red-forest</h3>
+                <h3><%= farm.name %> </h3>
               </a>
               <a class="item" >
                <h3> Products</h3>
@@ -43,9 +43,10 @@
         </div>
         <div class="column" style="margin: 50px auto ; color: #fff;">
           <h3>Image with text</h3>
-           <p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+           <p><%= farm.description %> </p>
           </div>
       </div>
+      <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">Blogs</h2>
 
       <div class="ui stackable three column grid" style="margin: 50px 40px;">
         <div class="column">
@@ -67,27 +68,30 @@
       
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">FEATURED COLLECTION</h2>
 
-      <div class="ui stackable four column grid" style="margin: 50px 40px;">
-        <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-           <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-          </div> 
-         <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-          <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-        </div>
-         <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-          <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-        </div>
-        <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-           <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-          </div> 
+      <div class="ui stackable three column grid" style="margin: 50px 40px;">
+          <% for(let p of farm.products) {%>
+
+            
+            <div class="ui card" style="margin:40px 40px; background-color: black; box-sizing: border-box;">
+              <% if(p.images.length >= 1) {%> 
+              <div class="ui slide masked reveal image">
+                <a class="ui red ribbon label"><%= p.tag %> </a>  
+                <img src="<%= p.images[0].url %> " class="visible content">
+                <img src="<%= p.images[1].url %> " class="hidden content">
+                <img src="<%= p.images[2].url %> " class="hidden content">
+                <img src="<%= p.images[3].url %> " class="hidden content">
+                <img src="<%= p.images[4].url %> " class="hidden content">   
+              </div>
+              <% } %> 
+              <div class="content">
+                <a class="header" href="/products/<%= p._id %> " style="color: #f50606;"><%= p.name %> </a>
+                <div class="meta">
+                  <span class="date" style="color: #fff;">$ <%= p.price %>.99</span>
+                </div>
+              </div>
+            </div> 
+          </a> 
+          <% } %> 
       </div>
       <div class="ui stackable four column grid" style="margin: 50px 40px;">
         <div class="column">
@@ -130,6 +134,7 @@
           <span style="text-align: right; color: #fff;">- User name</span>
           </div>
       </div>
+   
 
       <hr style="color: #fff; background-color: #fff; margin: 40px 40px;">
 
@@ -140,8 +145,9 @@
         <button class="ui button" style="color: #fff; background-color: #f50606;">Subscribe</button>
       </div>
       <div style="color: #fff; margin: 5px 40px; text-align: right;">
-        <i class="fas fa-copyright" style="color: #fff"></i><a href="#" style="color: #ffffff;"> Amazon-red-forest</a> Powered by <a href="/" style="color: #f50606;"> Shopify</a>
+        <i class="fas fa-copyright" style="color: #fff"></i><a href="#" style="color: #ffffff;"> <%= farm.name %> </a> Powered by <a href="/" style="color: #f50606;"> Shopify</a>
       </div>
       <hr style="color: #fff; background-color: rgb(156, 151, 151); margin: 40px 40px;">
+              
 </body>
 </html>

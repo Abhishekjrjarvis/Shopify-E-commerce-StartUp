@@ -71,6 +71,14 @@ router.post("/:id/products", isLoggedIn, upload.array('images'), catchAsync(asyn
     await product.save();
     res.redirect("/farms");
 }));
+
+
+router.get('/:id/products', async(req, res) =>{
+    const { id } = req.params;
+    const farm = await Farm.findById(req.params.id).populate('products');
+    res.render('farm/store', { farm })
+
+})
   
 router.delete("/:id", isLoggedIn, isFarmOwner,  catchAsync(async (req, res) => {
     const { id } = req.params;

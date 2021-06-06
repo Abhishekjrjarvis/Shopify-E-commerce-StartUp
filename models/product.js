@@ -18,6 +18,10 @@ const productSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    tag: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
         min: 0

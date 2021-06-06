@@ -64,7 +64,7 @@
                       <small class="text-right mb-2" style="color: rgb(104, 100, 95); float:right;"><b>At <%= farm.city %></b></small>
                   </div>
                   <% if(currentUser && farm.author.equals(currentUser._id)) {%> 
-                  <span style="color: rgb(97, 97, 97);">created by</span> <small style="color: rgb(110, 0, 0); font-size: 17px; font-weight: bold;"><%= currentUser.username.slice(0,1).toUpperCase() + currentUser.username.slice(1) %> <span style="float: right;"><a href="/store">Visit</a></span></small>
+                  <span style="color: rgb(97, 97, 97);">created by</span> <small style="color: rgb(110, 0, 0); font-size: 17px; font-weight: bold;"><%= currentUser.username.slice(0,1).toUpperCase() + currentUser.username.slice(1) %></small>
                   <% } %> 
                   
               </div>
