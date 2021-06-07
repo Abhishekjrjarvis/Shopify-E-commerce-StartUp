@@ -7,6 +7,11 @@ const bcrypt = require('bcrypt');
 const async = require('async');
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
+// const multer = require('multer');
+// const { storages } = require('../cloudinary/farmIndex');
+// const uploads = multer({ storages })
+// const { cloudinary } = require('../cloudinary');
+
 
 
 
@@ -72,9 +77,18 @@ router.get('/account/profile/overview/address', async(req, res) =>{
   res.render('addshow', { user });
 })
 
+router.delete('/account/profile/overview/address/:id', async(req, res) =>{
+  const { id }  = req.params;
+  const user = await User.findById({_id: req.user._id});
+  user.addresses.splice(id, 1)
+  await user.save();
+  res.redirect('/user/account/profile/overview/address')
+})
+
+
 
 router.get('/cart', async(req,res) =>{
-  const user = await User.findById({_id: req.user._id}).populate('cart');
+  const user = await User.findById({_id: req.user._id}).populate('cart').populate('addresses');
   res.render('cart', {user})
 })
 

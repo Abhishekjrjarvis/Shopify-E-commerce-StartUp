@@ -71,6 +71,29 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter By Tag
+            </a>
+            <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if (categories !=='All' ){ %>
+                    <a class="dropdown-item" href="/products">
+                        All Products
+                    </a>
+                    <% } %>
+                <a class="dropdown-item" href="/products?productTag=T-Shirts">T-shirts</a>
+            <a class="dropdown-item" href="/products?productTag=Jeans">Jeans</a>
+            <a class="dropdown-item" href="/products?productTag=Pants">Pants</a>
+            <a class="dropdown-item" href="/products?productTag=Cotton">Cotton</a>
+            <a class="dropdown-item" href="/products?productTag=Formal">Formal</a>
+            <a class="dropdown-item" href="/products?productTag=Trousers">Trousers</a>
+            <a class="dropdown-item" href="/products?productTag=E-Gadgets">E-Gadgets</a>
+            <a class="dropdown-item" href="/products?productTag=Mob-Acce">Mob-Acce</a>
+            <a class="dropdown-item" href="/products?productTag=Food">Food</a>
+            <a class="dropdown-item" href="/products?productTag=H-Gadgets">H-Gadgets</a>
+            <a class="dropdown-item" href="/products?productTag=B/Kids">B/Kids</a>
+        </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filter By Price
             </a>
             <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -89,7 +112,7 @@
 
 
 
-    <% if(categories === 'All' || productPriceFilter === 'All') {%> 
+    <% if(categories === 'All' || productPriceFilter === 'All' || productTag === 'All') {%> 
         <div class="row product-row">
             <h2 class="mb-4" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-tshirt" style="color: #f50606;"></i> Fashion</h2>
 
@@ -351,7 +374,42 @@
         </div>
         <% } else{%>
         <% } %>  
-    
+        ||
+        <% if(productTag) {%> 
+            <div class="carousel-category">
+                <div class="row">
+                    <% for(let p of products) {%>
+                          
+                    <div class="col-4">
+                        <a href="/products/<%= p._id %> ">
+                            <% if(p.images.length > 1) {%> 
+                                <img src= "<%= p.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                            <% }else{ %> 
+                                <% for(let i of p.images)  {%>   
+                                <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                                <% } %>
+                            <% } %>  
+                            
+                        </a>
+                        <i class="far fa-heart mt-1 mr-1"></i>
+                        <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
+                        <div class="star-rating">
+                            <% if(p.reviews.length >= 1){ %>
+                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
+                            <% }else{ %>
+                                <p><span style="color: #fff;">No Reviews</span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p> 
+                            <% } %> 
+                        </div>
+                        <span class="text-white" style="float: right;"><%= p.categories %></span>
+                        <p>$<%= p.price %>.99</p>
+                    </div>
+                    <% } %>
+                    
+                </div>
+        
+            </div>
+        <% }else {%>
+        <% } %>  
         <% } %> 
     </div>
 

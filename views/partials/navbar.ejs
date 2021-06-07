@@ -12,7 +12,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li> -->
       <form class="form-inline my-2 my-lg-0">
-        <input id="search" name="search" class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search"><i class="fas fa-search mr-4" style="color: #f50606;"></i>
+        <input id="search" name="search" class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search" style="border-radius: 3px;"><i class="fas fa-search mr-4" style="color: #f50606; cursor: pointer;"></i>
 <!-- 
          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
       </form>
@@ -70,13 +70,13 @@
                 <small class="mt-0 ml-1 mr-1 mb-0"><span><b><%= currentUser.email %></b></span></small>
               </div>
               <a class="dropdown-item mt-1" href="/user/account/profile/overview">Your Profile</a>
-              <a class="dropdown-item" href="#">Manage Accounts</a>
+              <a class="dropdown-item" href="/user/account/profile/overview/m-account">Manage Accounts</a>
               <a class="dropdown-item " href="/user/logout"><i class="fas fa-sign-out-alt" style="color: #f50606;"></i> Logout</a>
             </div>
         </li>
       
       <li class="nav-item" >
-        <a class="nav-link" id="navlinks" href="/user/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart <span class="badge badge-danger" style="background-color: #f50606; color: #fff;"><%= currentUser.cart.length %></span></b></a>
+        <a class="nav-link" id="navlinks" href="/user/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart <span class="badge badge-danger" style="background-color: #f50606; color: #fff; border-radius: 10px;"><%= currentUser.cart.length %></span></b></a>
       </li> 
       <% } %>
     <!-- <i class="far fa-user-circle"></i>--->

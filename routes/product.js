@@ -10,33 +10,115 @@ const { isLoggedIn } = require('../middleware');
 
 // const categories = ["fruit", "electronics", "fashion"];
 router.get("/", catchAsync(async(req, res) => {
-    const { categories, productReviewRatings, productPriceFilter } = req.query;
+    const { categories, productReviewRatings, productPriceFilter, productTag } = req.query;
     if (categories) {
       const products = await Product.find({ categories: categories,});
-      res.render("index", { products, categories: categories,productPriceFilter: productPriceFilter});
+      res.render("index", { products, categories: categories,productPriceFilter: productPriceFilter, productTag: productTag});
     }
     else if(productPriceFilter) {
         if(productPriceFilter === 'under100'){
         const products = await Product.find({$and: [{ price: {$gte: '0'}}, {price: {$lte: '100'}}]});
-        res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter});
+        res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
         }
         else if(productPriceFilter === 'under1000'){
             const products = await Product.find({$and: [{ price: {$gte: '101'}}, {price: {$lte: '1000'}}]});
-            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
         }
         else if(productPriceFilter === 'under10000'){
             const products = await Product.find({$and: [{ price: {$gte: '1001'}}, {price: {$lte: '10000'}}]});
-            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
         }
         else if(productPriceFilter === 'under100000'){
             const products = await Product.find({$and: [{ price: {$gte: '10001'}}, {price: {$lte: '100000'}}]});
-            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
         }
-    } else {
+    }
+    else if(productTag){
+        if(productTag === 'T-Shirts'){
+            const products = await Product.find({tag: 'T-Shirts'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Jeans'){
+            const products = await Product.find({tag: 'Jeans'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Pants'){
+            const products = await Product.find({tag: 'Pants'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Cotton'){
+            const products = await Product.find({tag: 'Cotton'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Formal'){
+            const products = await Product.find({tag: 'Formal'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Trousers'){
+            const products = await Product.find({tag: 'Trousers'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'E-Gadgets'){
+            const products = await Product.find({tag: 'E-Gadgets'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Mob-Acce'){
+            const products = await Product.find({tag: 'Mob-Acce'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'Food'){
+            const products = await Product.find({tag: 'Food'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'H-Gadgets'){
+            const products = await Product.find({tag: 'H-Gadgets'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+        else if(productTag === 'B/Kids'){
+            const products = await Product.find({tag: 'B/Kids'});
+            res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
+        }
+    } 
+    else {
       const products = await Product.find({});
-      res.render("index", { products, categories: "All", productPriceFilter: 'All'});
+      res.render("index", { products, categories: "All", productPriceFilter: 'All', productTag: 'All'});
     }
 }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
   

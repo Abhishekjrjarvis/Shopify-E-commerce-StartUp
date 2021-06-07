@@ -2,72 +2,82 @@
 <link rel="stylesheet" href="/css/homes.css">
 
 
-<div class="carousel-category cart-details">
+<div class="container-fluid cart-details">
     <% if(user.cart.length === 0) {%> 
         <p class="text-white mt-5  mb-5 " style="text-align: center; font-size: 30px;"><i class="fas fa-cart-plus pr-1" style="color: #f50606;"></i> Your Cart is empty<br> 
         <a class="btn btn-sm btn-danger" href="/products" style="color: #fff; background-color: #f50606; border: none; border-radius: 2px;">Shop now</a></p>
         <% } else{%> 
-    <table>
-            <tr>
-                <th>Product</th>
-                <th>Qty</th>
-                <th class="ml-5 text-right">Price</th>
-            </tr>
-            <% let total = 0 %> 
-            <% for(let u of user.cart) {%>     
-            <tr>
-                <td>
-                    <div class="cart-value">
-                        <% if(u.images.length > 1) {%> 
-                            <img src= "<%= u.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
-                        <!-- <img src="https://i.stack.imgur.com/y9DpT.jpg" alt="">  -->
-                        <% }else{ %> 
-                            <% for(let i of u.images)  {%>   
-                            <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
-                            <% } %>
-                        <% } %> 
-                        <!-- <img src="https://images.unsplash.com/photo-1525092029632-cb75fe5dd776?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt=""> -->
-                        <div>
-                            <p><%= u.name  %></p>
-                            <small class="stars">4<i class="fas fa-star ml-1"></i></small>
-                            <small class="text-muted">Price $ <%= u.price  %></small><br>
-                            <% total = total + u.price %> 
-                            <form action="/products/<%= u._id %>/cart?_method=DELETE " method="POST">
-                               <button class="btn btn-sm btn-danger" style="float:left; border: none; border-radius: 2px; color: #fff;background-color: #790000;"><i class="far fa-trash-alt"></i></button>
-                            </form>
-                            <button class="btn btn-sm btn-danger ml-1" style="border: none; border-radius: 2px; color: #fff; background-color: #790000;"><i class="fas fa-save"></i> Save</button>
-                        </div>
-                    </div>
-            </td>
-                <td><input type="number" value="1" ></td>
-                <td class="cart-price">$ <%= u.price  %></td>
-            </tr>
-            <% } %> 
-    </table>
-  
-    <h5 class="price-text text-white mt-2">Price Details</h5>
-    <div class="cart-total">
-        <table>
+    <div class="row">  
+        <div class="col-8" style="background-color: rgb(0, 0, 0);">
+            <h5 class="mt-3 mb-3" style="float: left; font-weight: 600; color: #fff;">My Cart (<%= user.cart.length  %>)</h5 > 
+                <img class="mt-3 mb-3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZWxsaXBzZSBjeD0iOSIgY3k9IjE0LjQ3OCIgZmlsbD0iI0ZGRTExQiIgcng9IjkiIHJ5PSIzLjUyMiIvPjxwYXRoIGZpbGw9IiMyODc0RjAiIGQ9Ik04LjYwOSA3LjAxYy0xLjA4IDAtMS45NTctLjgyNi0xLjk1Ny0xLjg0NSAwLS40ODkuMjA2LS45NTguNTczLTEuMzA0YTIuMDIgMi4wMiAwIDAgMSAxLjM4NC0uNTRjMS4wOCAwIDEuOTU2LjgyNSAxLjk1NiAxLjg0NCAwIC40OS0uMjA2Ljk1OS0uNTczIDEuMzA1cy0uODY0LjU0LTEuMzgzLjU0ek0zLjEzIDUuMTY1YzAgMy44NzQgNS40NzkgOC45MjIgNS40NzkgOC45MjJzNS40NzgtNS4wNDggNS40NzgtOC45MjJDMTQuMDg3IDIuMzEzIDExLjYzNCAwIDguNjA5IDAgNS41ODMgMCAzLjEzIDIuMzEzIDMuMTMgNS4xNjV6Ii8+PC9nPjwvc3ZnPg==" alt="" style="margin-left: 90px;float: left;">       
+                <% if(user.addresses) {%>     
+                    <% if(user.addresses.length > 1) {%>
+                            <p class="mt-3 mb-3 " style="font-weight: 600; margin-left:10px ;color: #fff; "> Deliver to <small style="padding: 6px; font-weight: 600; letter-spacing: 1px;">
+                            <select name="" id="" style="background-color:rgb(99, 96, 96) ; border-radius: 3px;">
+                                <% for(let p of user.addresses) {%>
+                                    <option value=""><%= p.name  %>, <%= p.mobno %>,  <%= p.address %> - <%= p.pincode  %> <span style="padding: 2px; border-radius: 5px; background-color: #3d3535; color: #fff;"><%= p.tag %> </span></option>
+                                <% } %>
+                            </select>
+                    <% } else{%>
+                        <p class="mt-3 mb-3 " style="font-weight: 600; margin-left:10px ;color: #fff;"> Deliver to <small style="padding: 6px; border: 0.5px solid #423838; font-weight: 600; letter-spacing: 1px;">
+                            <% for(let p of user.addresses) {%>
+                                <%= p.name  %>, <%= p.mobno %>,  <%= p.address %> - <%= p.pincode  %>  <span style="padding: 2px; border-radius: 5px; background-color: #3d3535; color: #fff;"><%= p.tag %> </span>
+                            <% } %> 
+                    <% } %> 
+                <% } else{%>
 
-            <tr>
-                <td>Price (<%= user.cart.length %>  Items)</td>
-                <td>$ <%= total %> </td> 
-            </tr>
-            <tr>
-                <td>Discount</td>
-                <td>-0$</td>
-            </tr>
-            <tr>
-                <td>Delievery Charges</td>
-                <td>Free</td>
-            </tr>
-            <hr class="divider">
-            <tr>
-                <td>Total Amount</td>
-                <td>$ <%= total %></td>
-            </tr>
-        </table>
+                <% } %>  
+                    </small> 
+                </p>
+                <hr style=" background-color: rgb(145, 133, 133);">
+            <% let total = 0 %> 
+            <% for(let u of user.cart) {%>
+            
+            <% if(u.images.length > 1) {%> 
+                <img src= "<%= u.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg" style="border-radius: 10px; width: 120px; height: 160px; float: left;">
+            <!-- <img src="https://i.stack.imgur.com/y9DpT.jpg" alt="">  -->
+            <% }else{ %> 
+                <% for(let i of u.images)  {%>   
+                <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
+                <% } %>
+            <% } %>
+            <h5 class="" style="margin-left: 150px; font-weight: 600; color: rgb(145, 133, 133);"><%= u.name  %></h5>
+            <small class="stars" style="margin-left: 30px;">4<i class="fas fa-star ml-1"></i></small><span><i class="fab fa-shopify ml-3 mb-3" style="color: #f50606;">+</i></span><br>
+            <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 30px; font-size: 16px;">$<%= u.price  %> <span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
+            <% total = total + u.price %>
+            <form action="/products/<%= u._id %>/cart?_method=DELETE " method="POST">
+                <button class="btn btn-sm btn-danger" style="float:left;margin-left: 30px; border: none; border-radius: 2px; color: #fff;background-color: #790000;"><i class="far fa-trash-alt"></i></button>
+             </form>
+             <button class="btn btn-sm btn-danger ml-1" style="border: none; border-radius: 2px; color: #fff; background-color: #790000;">Save</button><br>
+             <hr style=" background-color: rgb(145, 133, 133);">
+        <% } %> 
+        <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/myProfileFooter_4e9fe2.png" alt="" style="width: 100%;">
+
+        </div>
+        <div class="col-4 mt-0" style="position: sticky; background-color: rgb(0, 0, 0); transition: none; box-shadow: none; transform: none;">
+            <h5 style="font-weight: 600; color: rgb(145, 133, 133); letter-spacing: 1px;">PRICE DETAILS</h5>
+            <hr style=" background-color: rgb(145, 133, 133);">
+            <p style="font-weight: 500; font-size: 16px;"><span>Price (<%= user.cart.length %>  Items)</span><span style="float: right;">$<%= total %></span></p>
+            <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-0$</span></p>
+            <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">Free</span></p>
+            <hr class="mb-3" style=" background-color: rgb(145, 133, 133);">
+            <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= total %></span></p>
+            <hr class="mt-3" style=" background-color: rgb(145, 133, 133);">
+            <a href="/checkout" class="btn btn-md btn-btn-danger check-cart " style="float: right;">Proceed To Checkout</a>
+            <p ><span class="mt-3" style="float: right; color:rgb(145, 133, 133) ; font-weight: 600; letter-spacing: 1px;"><i class="fas fa-shield-alt ml-1" style="color: #f50606;"></i> Safe and Secure Authentic products.</span></p>
+            <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/myProfileFooter_4e9fe2.png" alt="" style="width: 100%;">
+
+        </div>
     </div>
-    <a href="/checkout" class="btn btn-md btn-btn-danger check-cart mb-5">Proceed To Checkout</a>
+</div>
+<div>
+    <p></p>
+     
+    </div>
+
+<div class="carousel-category cart-details">
+    
+                    <div class="cart-value">
     <% } %> 
 </div>

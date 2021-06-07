@@ -49,8 +49,10 @@
                                   <i class="fas fa-ellipsis-h" style="color: rgb(163, 163, 163)"></i>
                                 </a>
                                 <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 14px; letter-spacing: 1px;">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Delete</a>
+                                  <!-- <a class="dropdown-item" href="#">Edit</a> -->
+                                  <form action="/user/account/profile/overview/address/<%= d._id %>?_method=DELETE " method="POST">
+                                    <button class="dropdown-item">Delete</button> 
+                                    </form>
                                 </div>
                                 </li>
                             <p class="ml-3 mt-3"><small style="background-color: #690101; padding: 3px; border-radius: 4px; color: #fff;"><%= d.tag %> </small></p>
