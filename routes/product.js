@@ -1,9 +1,11 @@
 const express = require('express');
 const Product = require('../models/product');
+const User = require('../models/user');
 const router = express.Router({mergeParams: true})
 const catchAsync = require('../Utilities/catchAsync');
 const FarmError = require('../Utilities/FarmError');
 const Review = require('../models/review');
+const { isLoggedIn } = require('../middleware');
 
 
 // const categories = ["fruit", "electronics", "fashion"];
@@ -64,13 +66,36 @@ router.get("/:id", catchAsync(async (req, res) => {
             res.redirect('/products')
         }
     const products = await Product.find({categories: product.categories});
-    const pr = await Product.find({createdAt: {$gte: "2021-06-05T03:45:11.363Z"}})
-    console.log(pr)
+    // const pr = await Product.find({createdAt: {$gte: "2021-06-05T03:45:11.363Z"}})
+    // console.log(pr)
     res.render("show", { product, products });
 
 }));
 
 
+
+// router.get('/:id/cart', (req, res) =>{
+//     res.send('wertyui')
+// })
+
+
+router.post('/:id/cart', isLoggedIn, async(req, res)=>{
+    const { id } = req.params;
+    const products = await Product.findById({ _id: id });
+    const user = await User.findById({_id: req.user._id})
+    user.cart.push(products);
+    await user.save();
+    res.redirect('/user/cart');
+})
+
+
+router.delete('/:id/cart', async(req, res) =>{
+    const { id }  = req.params;
+    const user = await User.findById({_id: req.user._id});
+    user.cart.splice(id, 1)
+    await user.save()
+    res.redirect('/user/cart')
+})
   
 router.get("/:id/edit", catchAsync(async (req, res) => {
     const { id } = req.params;

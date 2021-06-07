@@ -86,7 +86,10 @@
             <input type="number" class="mt-3" value="1">
             <a href="#" class="btn btn-warning btn-block buy mt-5">Buy Now</a>
             <!-- <span class="text-white ml-5 mt-3 mb-5" style="text-align: center;">Or</span> -->
-            <a href="/cart" class="btn btn-warning btn-block add mt-4 addtocart">Add To Cart</a>
+            <form action="/products/<%= product._id %>/cart" method="POST">
+                <button class="btn btn-warning btn-block add mt-4 addtocart">Add To Cart</button>
+            </form>
+            <!-- <a href="/cart " class="btn btn-warning btn-block add mt-4 addtocart">Add To Cart</a> -->
             <h5 class="text-white" style="letter-spacing: 0.6px;">Desgnied In <%= product.farm.name %> <i class="fas fa-store" style="color: brown;"></i></h5>
             <h4 class="text-white" style="font-weight: normal;">Description <i class="fas fa-audio-description" style="color: rgb(70, 26, 26);"></i></h4>
             <p class="text-white"><%= product.description  %> </p>

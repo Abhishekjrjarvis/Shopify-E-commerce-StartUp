@@ -49,7 +49,7 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 router.get('/logout', (req, res) =>{
     req.logout();
     req.flash('success', 'successfully logout')
-    res.redirect('/products');
+    res.redirect('/farms');
 })
 
 
@@ -61,7 +61,7 @@ router.get('/account/profile/overview', async(req, res) =>{
 router.get('/account/profile/overview/m-account', async(req, res) =>{
   const user = await User.find({});
   const farm = await Farm.find({});
-  res.render('account', { user, farm });
+  res.render('account', {user, farm });
 })
 
 
@@ -70,6 +70,12 @@ router.get('/account/profile/overview/address', async(req, res) =>{
   const user = await User.findById({_id: req.user._id}).populate('addresses');
   // console.log(user);
   res.render('addshow', { user });
+})
+
+
+router.get('/cart', async(req,res) =>{
+  const user = await User.findById({_id: req.user._id}).populate('cart');
+  res.render('cart', {user})
 })
 
 router.get('/forgot', function(req, res) {

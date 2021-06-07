@@ -33,8 +33,10 @@ router.get("/", catchAsync(async (req, res) => {
 //     res.send(`${req.headers.host}/store/${h}`)
 // })
   
-router.get("/new", isLoggedIn,  (req, res) => {
-    res.render("farm/new");
+router.get("/new", isLoggedIn,  async(req, res) => {
+    const user = await User.findById(req.user._id);
+    const farm = await Farm.find({name: user.storename})
+    res.render("farm/new", { farm , user });
 });
   
 router.post("/", isLoggedIn, catchAsync(async (req, res) => {

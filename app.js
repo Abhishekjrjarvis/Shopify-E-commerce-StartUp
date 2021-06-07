@@ -109,9 +109,7 @@ app.get('/', (req, res)=>{
 })
 
 
-app.get('/cart',(req,res) =>{
-  res.render('cart')
-})
+
 
 app.get('/checkout',(req, res)=>{
   res.render('payment')

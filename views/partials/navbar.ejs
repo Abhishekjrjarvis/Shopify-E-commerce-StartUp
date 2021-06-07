@@ -74,10 +74,11 @@
               <a class="dropdown-item " href="/user/logout"><i class="fas fa-sign-out-alt" style="color: #f50606;"></i> Logout</a>
             </div>
         </li>
-      <% } %>
+      
       <li class="nav-item" >
-        <a class="nav-link" id="navlinks" href="/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart</b></a>
+        <a class="nav-link" id="navlinks" href="/user/cart"><i class="fas fa-cart-plus pr-1"></i><b>Cart <span class="badge badge-danger" style="background-color: #f50606; color: #fff;"><%= currentUser.cart.length %></span></b></a>
       </li> 
+      <% } %>
     <!-- <i class="far fa-user-circle"></i>--->
   </div>
 </nav>
