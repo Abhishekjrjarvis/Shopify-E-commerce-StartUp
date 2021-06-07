@@ -1,6 +1,7 @@
 const express = require('express');
 const Farm = require('../models/farm');
 const Product = require('../models/product');
+const User = require('../models/user');
 const router = express.Router({mergeParams: true})
 const catchAsync = require('../Utilities/catchAsync');
 const FarmError = require('../Utilities/FarmError');
@@ -37,11 +38,14 @@ router.get("/new", isLoggedIn,  (req, res) => {
 });
   
 router.post("/", isLoggedIn, catchAsync(async (req, res) => {
-    const farm = await new Farm(req.body);
+    const farm = await new Farm(req.body); 
+    const user = await User.findById(req.user._id);
     // farm.images = await req.files.map(f => ({url: f.path, filename: f.filename}));
     // console.log(farm.images);
     farm.author = req.user._id;
+    user.storename = farm.name; 
     await farm.save();
+    await user.save();
     res.redirect("/farms");
 }));
   

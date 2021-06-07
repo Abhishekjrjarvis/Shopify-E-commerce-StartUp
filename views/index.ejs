@@ -39,38 +39,60 @@
         </div>
     </div> -->
     <h2 class="featured-title"><%= categories %> Products</h2>
+    <div class="row product-row">
+    <li class="nav-item dropdown">
+        <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter By Products
+        </a>
+        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if (categories !=='All' ){ %>
+                <a class="dropdown-item" href="/products">
+                    All Products
+                </a>
+                <% } %>
+            <a class="dropdown-item" href="/products?categories=Fashion">
+                Fashion
+            </a>
+            <a class="dropdown-item" href="/products?categories=Electronics">
+                Electronics
+            </a>
+            <a class="dropdown-item" href="/products?categories=Appliances">
+                Tv & Appliances
+            </a>
+            <a class="dropdown-item" href="/products?categories=Mobiles">
+                Mobiles
+            </a>
+            <a class="dropdown-item" href="/products?categories=Toys">
+                Toys/Beauty
+            </a>
+            <a class="dropdown-item" href="/products?categories=Grocery">
+                Grocery
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter By Price
+            </a>
+            <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if (categories !=='All' ){ %>
+                    <a class="dropdown-item" href="/products">
+                        All Products
+                    </a>
+                    <% } %>
+                <a class="dropdown-item" href="/products?productPriceFilter=under100">Under 0-100</a>
+            <a class="dropdown-item" href="/products?productPriceFilter=under1000">Under 101-1000</a>
+            <a class="dropdown-item" href="/products?productPriceFilter=under10000">Under 1001-10000</a>
+            <a class="dropdown-item" href="/products?productPriceFilter=under100000">Under 100001-100000</a>
+        </div>
+        </li>
+    </div>
+
+
+
     <% if(categories === 'All' || productPriceFilter === 'All') {%> 
         <div class="row product-row">
-            <h2 class="mb-4" style="font-size: 22px; letter-spacing: 1px;">Fashion</h2>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Filter By Products
-                </a>
-                <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/products?categories=Fashion">
-                        Fashion
-                    </a>
-                    <a class="dropdown-item" href="/products?categories=Electronics">
-                        Electronics
-                    </a>
-                    <a class="dropdown-item" href="/products?categories=Appliances">
-                        Tv & Appliances
-                    </a>
-                    <a class="dropdown-item" href="/products?categories=Mobiles">
-                        Mobiles
-                    </a>
-                    <a class="dropdown-item" href="/products?categories=Toys">
-                        Toys/Beauty
-                    </a>
-                    <a class="dropdown-item" href="/products?categories=Grocery">
-                        Grocery
-                    </a>
-                    <a class="dropdown-item" href="/products?productPriceFilter=under100">Under 0-100</a>
-                    <a class="dropdown-item" href="/products?productPriceFilter=under1000">Under 101-1000</a>
-                    <a class="dropdown-item" href="/products?productPriceFilter=under10000">Under 1001-10000</a>
-                    <a class="dropdown-item" href="/products?productPriceFilter=under100000">Under 100001-100000</a>
-                </div>
-                </li>
+            <h2 class="mb-4" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-tshirt" style="color: #f50606;"></i> Fashion</h2>
+
         </div>
         <div class="row">
              <% for(let p of products){ %>
@@ -87,7 +109,7 @@
                             
                         </a>
                         <i class="far fa-heart mt-1 mr-1"></i>
-                        <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                        <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                         <div class="star-rating">
                             <% if(p.reviews.length >= 1){ %>
                                     <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -102,7 +124,7 @@
                     <% } %>  
                 <% } %> 
         </div>
-        <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;">Electronics </h2>
+        <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-bolt" style="color: #f50606;"></i> Electronics </h2>
         <div class="row">
             <% for(let p of products){ %>
                <% if(p.categories === 'Electronics') {%> 
@@ -118,7 +140,7 @@
                            
                        </a>
                        <i class="far fa-heart mt-1 mr-1"></i>
-                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                        <div class="star-rating">
                            <% if(p.reviews.length >= 1){ %>
                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -133,7 +155,7 @@
                    <% } %>  
                <% } %> 
        </div>
-       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;">TVs & Appliances </h2>
+       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-tv" style="color: #f50606;"></i> TVs & Appliances </h2>
         <div class="row">
             <% for(let p of products){ %>
                <% if(p.categories === 'Appliances') {%> 
@@ -149,7 +171,7 @@
                            
                        </a>
                        <i class="far fa-heart mt-1 mr-1"></i>
-                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                        <div class="star-rating">
                            <% if(p.reviews.length >= 1){ %>
                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -164,7 +186,7 @@
                    <% } %>  
                <% } %> 
        </div>
-       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;">Beauty/Toys </h2>
+       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-gamepad" style="color: #f50606;"></i> Beauty/Toys </h2>
         <div class="row">
             <% for(let p of products){ %>
                <% if(p.categories === 'Toys') {%> 
@@ -180,7 +202,7 @@
                            
                        </a>
                        <i class="far fa-heart mt-1 mr-1"></i>
-                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                        <div class="star-rating">
                            <% if(p.reviews.length >= 1){ %>
                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -195,7 +217,7 @@
                    <% } %>  
                <% } %> 
        </div>
-       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;">Mobiles Accessories </h2>
+       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-mobile-alt" style="color: #f50606;"></i> Mobiles Accessories </h2>
         <div class="row">
             <% for(let p of products){ %>
                <% if(p.categories === 'Mobiles') {%> 
@@ -211,7 +233,7 @@
                            
                        </a>
                        <i class="far fa-heart mt-1 mr-1"></i>
-                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                        <div class="star-rating">
                            <% if(p.reviews.length >= 1){ %>
                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -226,7 +248,7 @@
                    <% } %>  
                <% } %> 
        </div>
-       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;">Grocery </h2>
+       <h2 class="mb-5" style="font-size: 22px; letter-spacing: 1px;"><i class="fas fa-shopping-basket" style="color: #f50606;"></i> Grocery </h2>
         <div class="row">
             <% for(let p of products){ %>
                <% if(p.categories === 'Grocery') {%> 
@@ -242,7 +264,7 @@
                            
                        </a>
                        <i class="far fa-heart mt-1 mr-1"></i>
-                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                        <div class="star-rating">
                            <% if(p.reviews.length >= 1){ %>
                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -274,7 +296,7 @@
                            
                        </a>
                        <i class="far fa-heart mt-1 mr-1"></i>
-                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                       <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                        <div class="star-rating">
                            <% if(p.reviews.length >= 1){ %>
                                <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -311,7 +333,7 @@
                         
                     </a>
                     <i class="far fa-heart mt-1 mr-1"></i>
-                    <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= p.name %></a></h5>
+                    <h5><a href="/products/<%= p._id %> " style="text-decoration: none; color: #f50606;;"><%= p.name %></a></h5>
                     <div class="star-rating">
                         <% if(p.reviews.length >= 1){ %>
                             <p><span style="background-color: rgb(89, 194, 3); color: #fff; padding: 3px; border-radius: 3px;"><%= Math.floor(Math.random() * 5) %> <i class="fas fa-star" style="color: rgb(255, 255, 255);"></i></span><span style="color: rgb(172, 170, 167);"> ( <%= p.reviews.length %> )</span> <span style="float: right; font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
@@ -334,12 +356,12 @@
     </div>
 
     
-
+<!-- 
 <p>
-    <% if (categories !=='All' ){ %>
+    
         <a class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;" href="/products">All Product</a>
-        <% } %>
-</p>
+        
+</p> -->
 
 
    

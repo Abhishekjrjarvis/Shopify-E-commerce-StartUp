@@ -66,8 +66,10 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <p>$<%= f.price %>.99 <span style="margin-left: 100px; color: #fff;"><a href="/farms/<%= farm._id %>/products " style="text-decoration: none;">Take a Preview</a></span></p> 
+            <p>$<%= f.price %>.99 <span style="margin-left: 50px; color: #fff;"><a href="/farms/<%= farm._id %>/products " style="text-decoration: none;">Take a Preview</a></span></p> 
+            <% if(currentUser && !farm.author.equals(currentUser._id)){ %>
             <span ><button class="btn btn-success btn-block" style="border: none; border-radius: 2px; color: #fff;"><a href="/products/<%= f._id %> " style="color: #fff; text-decoration: none;">Buy</a></button></span>
+            <% } %> 
         </div>
         <% } %> 
     </div>

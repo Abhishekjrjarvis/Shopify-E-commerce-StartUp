@@ -15,10 +15,10 @@
     <div class="container-fluid">
         <div class="ui inverted segment" style="margin: 0px auto; border-radius: 0px; background-color: black;">
             <div class="ui inverted secondary pointing menu">
-              <a class="item">
-                <h3><%= farm.name %> </h3>
+              <a class="item" href="/farms" style="color: #f50606;">
+                <h3><%= farm.name %></h3>
               </a>
-              <a class="item" >
+              <a class="item" href="/products">
                <h3> Products</h3>
               </a>
               <a class="item">
@@ -38,7 +38,22 @@
 
       <div class="ui stackable two column grid" style="margin: 40px 40px;">
         <div class="column">
-<img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
+          <% if(farm.category === 'Electronics') {%> 
+            <img class="ui image"  src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
+        <% } else if(farm.category === 'Fashion') {%>
+            <img class="ui image"  src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" alt="">
+        <% } else if(farm.category === 'Grocery') {%>
+            <img class="ui image"  src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt=""> 
+        <% } else if(farm.category === 'Appliances') {%>
+            <img class="ui image"  src="https://images.unsplash.com/photo-1601760562234-9814eea6663a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXBwbGlhbmNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+        <% } else if(farm.category === 'Mobiles') {%>
+            <img class="ui image"  src= "https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
+        <% } else if(farm.category === 'Toys') {%>    
+            <img class="ui image"  src= "https://images.unsplash.com/photo-1515281239448-2abe329fe5e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80" alt="">
+        <% } else if(farm.category === 'Home Furniture') {%> 
+            <img class="ui image"  src="https://images.unsplash.com/photo-1617325710236-4a36d46427c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="image-scale-valid" alt="">
+        <% } %>
+<!-- <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80"> -->
 
         </div>
         <div class="column" style="margin: 50px auto ; color: #fff;">
@@ -141,13 +156,17 @@
       <h4 style="color: #fff; margin: 10px 40px;">News Letter</h4>
       <div class="ui action input" style="margin: 10px 40px; color: #fff;">
         
-        <input type="email" id="search" placeholder="Email Address">
-        <button class="ui button" style="color: #fff; background-color: #f50606;">Subscribe</button>
+        <input type="email" id="search" placeholder="Email Address" style="background-color: rgb(117, 115, 115);">
+        <div class="ui button" data-inverted="" data-tooltip="Enter email for a subscriptions" data-position="top center" style="color: #fff; background-color: #f50606;">
+          Subscribe
+        </div>
       </div>
       <div style="color: #fff; margin: 5px 40px; text-align: right;">
         <i class="fas fa-copyright" style="color: #fff"></i><a href="#" style="color: #ffffff;"> <%= farm.name %> </a> Powered by <a href="/" style="color: #f50606;"> Shopify</a>
       </div>
       <hr style="color: #fff; background-color: rgb(156, 151, 151); margin: 40px 40px;">
+
+      
               
 </body>
 </html>

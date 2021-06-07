@@ -5,8 +5,6 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 
 
-
-
 const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -20,10 +18,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    // storename: {
-    //     type: String,
-    //     required: true
-    // },
+    storename: {
+        type: String,
+        unique: true
+    },
     addresses: [
         {
             type: mongoose.Schema.Types.ObjectId,

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Farm = require('../models/farm');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const async = require('async');
@@ -54,7 +55,13 @@ router.get('/logout', (req, res) =>{
 
 router.get('/account/profile/overview', async(req, res) =>{
   const user = await User.find({});
-  res.render('profile', {user})
+  res.render('profile', {user});
+})
+
+router.get('/account/profile/overview/m-account', async(req, res) =>{
+  const user = await User.find({});
+  const farm = await Farm.find({});
+  res.render('account', { user, farm });
 })
 
 
