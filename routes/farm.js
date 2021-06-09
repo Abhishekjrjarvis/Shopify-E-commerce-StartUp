@@ -66,6 +66,7 @@ router.get("/:id/products/new", isLoggedIn, catchAsync(async (req, res) => {
 router.post("/:id/products", isLoggedIn, upload.array('images'), catchAsync(async (req, res) => {
     const farm = await Farm.findById(req.params.id);
     const product = await new Product(req.body);
+    product.qty = 1;
     product.author = req.user._id;
     product.images = await req.files.map(f => ({url: f.path, filename: f.filename})); 
     farm.products.push(product);
@@ -79,7 +80,8 @@ router.post("/:id/products", isLoggedIn, upload.array('images'), catchAsync(asyn
 router.get('/:id/products', async(req, res) =>{
     const { id } = req.params;
     const farm = await Farm.findById(req.params.id).populate('products');
-    res.render('farm/store', { farm })
+    const user = await User.findById({_id: req.user._id});
+    res.render('farm/store', { farm, user })
 
 })
   

@@ -1,8 +1,41 @@
 <% layout('./layouts/boilerplate') %> 
-    <div class="container">
-        <div class="header">
-            <h3 class="text-white text-center mt-5 mb-5">Payment Page Under Processing............</h3>
+    <div class="container-fluid">
+       <div class="row mt-4">
+           <div class="col-8" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px;">
+                <span class="" style="font-size: 13px; font-weight: 600; background-color: rgb(70, 70, 70);float: left; color:#f50606; padding: 3px; ">1</span>
+               <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff;">Login
+                <% if(currentUser) {%>
+                    <i class="fas fa-check ml-2" style="font-size: 11px; color: #f50606;"></i></span></p>
+                    <span class="ml-4 mt-0" style="font-weight: 600; color: #fff;"><%= currentUser.firstname %> <%= currentUser.lastname %> <span class="ml-2" style="color: rgb(156, 156, 156);"><%= currentUser.mobno %></span>  </span>
+                <% } %>  
+            </div>
+       </div>
+       <div class="row  mt-4">
+        <div class="col-8" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px;">
+             <span class="" style="font-size: 13px;float: left; font-weight: 600; background-color: rgb(70, 70, 70); color:#f50606; padding: 3px; ">2</span>
+             <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff;">Delivery Address
+                <% if(user.addresses.length >= 1) {%>
+                    <i class="fas fa-check ml-2" style="font-size: 11px; color: #f50606;"></i></span></p>   
+                 
+                <span class="ml-4 mt-0" style="font-weight: 600; color: #fff;">
+                <% for(let u of user.addresses) {%>
+                <span class="ml-0" style="color: rgb(145, 139, 139);"><%= u.name  %> <%= u.address %>, <%= u.city %>, <%= u.country %> - <%= u.pincode %></span></span> 
+            <% } %>
+            <% } else {%>
+                <p><span>
+                <button class="btn btn-md btn-danger ml-3 mb-0 mt-0" style="float: right; color: #fff; background-color: #aa0000; border-radius: 2px;">
+                    <a href="/user/account/profile/overview/m-address" style="text-decoration: none; color: rgb(255, 255, 255);">+ Add Address</a></button>
+            </span></p>
+            <% } %>               
         </div>
+    </div>
+    <div class="row  mt-4 mb-5">
+        <div class="col-8" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px;">
+             <span class="" style="font-size: 13px;float: left; font-weight: 600; background-color: rgb(70, 70, 70); color:#f50606; padding: 3px; ">3</span>
+             <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff;">Order Summary <br>
+                <span class="ml-3" style="color: rgb(145, 139, 139);">Order Confirmation email will be sent to <span style="color: rgb(206, 206, 206);"><%= currentUser.email%></span></span></span> 
+        </div>
+    </div>
     </div>
 
     

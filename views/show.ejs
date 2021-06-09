@@ -84,7 +84,10 @@
             <span class="text-white mt-3" style="float: right;"><a href="#">Write A Review</a></span>
             <% } %> 
             <input type="number" class="mt-3" value="1">
-            <a href="#" class="btn btn-warning btn-block buy mt-5">Buy Now</a>
+            <form action="/products/<%= product._id %>/wishlist" method="POST">
+                <button class="btn btn-warning btn-block add mt-4 addtocart">Add To Wishlist</button>
+            </form>
+            <!-- <a href="#" class="btn btn-warning btn-block buy mt-5">Buy Now</a> -->
             <!-- <span class="text-white ml-5 mt-3 mb-5" style="text-align: center;">Or</span> -->
             <form action="/products/<%= product._id %>/cart" method="POST">
                 <button class="btn btn-warning btn-block add mt-4 addtocart">Add To Cart</button>

@@ -11,3 +11,23 @@ const rgbColor = () =>{
 rgbColor();
 
 
+const des = document.querySelector('.desc')
+const aes = document.querySelector('.asen')
+  
+const input = document.querySelectorAll('input')[1];
+  
+des.addEventListener('click', function(){
+    if(input.value > 1){
+        input.value = input.value - 1;
+    }else{
+  
+}})
+let total = input.value
+aes.addEventListener('click', function(){
+    input.value = parseInt(total) + 1 
+    total = input.value
+})
+
+
+
+

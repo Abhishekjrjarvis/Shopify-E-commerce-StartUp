@@ -37,6 +37,9 @@ const productSchema = new mongoose.Schema({
         required: true,
         enum: ['Electronics', 'Fashion', 'Grocery', 'Appliances', 'Mobiles', 'Toys']
     },
+    qty:{
+        type: Number
+    },
     images: [ImageSchema],
     farm: {
         type: mongoose.Schema.Types.ObjectId,

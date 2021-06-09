@@ -148,6 +148,7 @@ router.get("/:id", catchAsync(async (req, res) => {
             res.redirect('/products')
         }
     const products = await Product.find({categories: product.categories});
+    // const user = await User.findById({_id: req.user._id})
     // const pr = await Product.find({createdAt: {$gte: "2021-06-05T03:45:11.363Z"}})
     // console.log(pr)
     res.render("show", { product, products });
@@ -177,6 +178,25 @@ router.delete('/:id/cart', async(req, res) =>{
     user.cart.splice(id, 1)
     await user.save()
     res.redirect('/user/cart')
+})
+
+
+router.post('/:id/wishlist', isLoggedIn, async(req, res)=>{
+    const { id } = req.params;
+    const products = await Product.findById({ _id: id });
+    const user = await User.findById({_id: req.user._id})
+    user.wishlist.push(products);
+    await user.save();
+    res.redirect('/user/account/profile/overview/home_wishlist');
+})
+
+
+router.delete('/:id/wishlist', async(req, res) =>{
+    const { id }  = req.params;
+    const user = await User.findById({_id: req.user._id});
+    user.wishlist.splice(id, 1)
+    await user.save()
+    res.redirect('/user/account/profile/overview/home_wishlist')
 })
   
 router.get("/:id/edit", catchAsync(async (req, res) => {

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Farm = require('../models/farm');
+const Product = require('../models/product');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const async = require('async');
@@ -44,7 +45,7 @@ router.get('/login', (req, res)=>{
 
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }) , async(req, res, next) =>{
-    req.flash('success', 'welcome back!');
+    req.flash('success', `welcome back! ${req.user.username}`);
     const redirectUrl = req.session.returnTo || '/farms';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
@@ -89,8 +90,48 @@ router.delete('/account/profile/overview/address/:id', async(req, res) =>{
 
 router.get('/cart', async(req,res) =>{
   const user = await User.findById({_id: req.user._id}).populate('cart').populate('addresses');
-  res.render('cart', {user})
+  res.render('cart', { user })
 })
+
+router.get('/account/profile/overview/home_wishlist', async(req, res) =>{
+  const user = await User.findById({_id: req.user._id}).populate('wishlist').populate('addresses');
+  res.render('wishlist', { user });
+})
+
+
+router.post('/account/:id/p-qty', async(req, res) =>{
+  const { id } = req.params;
+  const products = await Product.findById({ _id: id });
+  const user = await User.findById({_id: req.user._id}).populate('cart')
+  products.qty = products.qty + 1;
+  for(let f of user.cart){
+    f.qty = products.qty 
+  }
+  await products.save()
+  await user.save()
+  console.log(user) 
+  res.redirect('/user/cart')
+})
+
+router.delete('/account/:id/p-qty', async(req, res) =>{
+  const { id }  = req.params;
+  const products = await Product.findById({ _id: id });
+  const user = await User.findById({_id: req.user._id});
+  products.qty = products.qty - 1;
+  for(let f of user.cart){
+    f.qty = products.qty 
+  }
+  await products.save()
+  await user.save()
+  res.redirect('/user/cart')
+})
+
+
+router.get('/verify-acc-cart/checkout',async(req, res)=>{
+  const user = await User.findById({_id: req.user._id}).populate('cart').populate('addresses');
+  res.render('payment', { user })
+})
+
 
 router.get('/forgot', function(req, res) {
     res.render('forgot');

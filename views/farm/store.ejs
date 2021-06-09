@@ -26,7 +26,12 @@
               </a>
               <div class="ui inverted secondary pointing menu" style="margin-left: auto;">
                 <a class="item">
-                  <h3> User</h3>
+                  <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg">
+                    <span>
+                      <% if(farm.name === user.storename) {%>
+                      <h3><%= user.username  %> </h3>
+                    <% } %></span> 
+                     
                  </a>
               </div>
               

@@ -111,12 +111,6 @@ app.get('/', (req, res)=>{
 
 
 
-app.get('/checkout',(req, res)=>{
-  res.render('payment')
-})
-
-
-
 app.all('*', (req, res, next) =>{
    return next(new FarmError('Page Not Found', '404'))
 })
