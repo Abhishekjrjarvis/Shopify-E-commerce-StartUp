@@ -225,3 +225,5 @@ slider.init({
 	buttons: true,
 	dots: true
 });
+
+

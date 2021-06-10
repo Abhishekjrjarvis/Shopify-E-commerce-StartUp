@@ -89,12 +89,20 @@ router.delete('/account/profile/overview/address/:id', async(req, res) =>{
 
 
 router.get('/cart', async(req,res) =>{
-  const user = await User.findById({_id: req.user._id}).populate('cart').populate('addresses');
+  const user = await User.findById({_id: req.user._id}).populate({
+    path:'cart',
+    populate: {
+        path:'reviews'
+    }}).populate('addresses')
   res.render('cart', { user })
 })
 
 router.get('/account/profile/overview/home_wishlist', async(req, res) =>{
-  const user = await User.findById({_id: req.user._id}).populate('wishlist').populate('addresses');
+  const user = await User.findById({_id: req.user._id}).populate({
+    path:'wishlist',
+    populate: {
+        path:'reviews'
+    }}).populate('addresses');
   res.render('wishlist', { user });
 })
 

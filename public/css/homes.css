@@ -571,18 +571,23 @@ td:last-child{
 }
 
 
-.carousel-category .row .far.fa-heart{
+.carousel-category .row .mywishlistheart{
     position: absolute;
     z-index: 1;
     top: 10px;
     right: 10px;
+    cursor: pointer;
 }
 
-.carousel-category .row .far.fa-heart:hover{
+.carousel-category .row .mywishlistheart:hover{
     color: #f50606;
+    cursor: pointer;
     
 }
 
+.addHeart{
+    color: #f50606;
+}
 
 
 

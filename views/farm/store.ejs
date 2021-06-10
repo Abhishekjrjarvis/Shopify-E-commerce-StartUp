@@ -9,23 +9,25 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="https://kit.fontawesome.com/b18fc4a9f4.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
 
 </head>
-<body style="background-color: black;">
+<body style="background-color: black; font-family: Roboto, 'sans-serif';">
     <div class="container-fluid">
         <div class="ui inverted segment" style="margin: 0px auto; border-radius: 0px; background-color: black;">
             <div class="ui inverted secondary pointing menu">
               <a class="item" href="/farms" style="color: #f50606;">
-                <h3><%= farm.name %></h3>
+                <h3 style="color: #f50606;"><%= farm.name %></h3>
               </a>
-              <a class="item" href="/products">
-               <h3> Products</h3>
+              <a class="item" href="/farms/<%= farm._id %> ">
+               <h3>Add Products</h3>
               </a>
-              <a class="item">
+              <!-- <a class="item">
                <h3> Learn</h3>
-              </a>
+              </a> -->
               <div class="ui inverted secondary pointing menu" style="margin-left: auto;">
-                <a class="item">
+                <a class="item" href="/user/account/profile/overview">
                   <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg">
                     <span>
                       <% if(farm.name === user.storename) {%>
@@ -62,33 +64,33 @@
 
         </div>
         <div class="column" style="margin: 50px auto ; color: #fff;">
-          <h3>Image with text</h3>
-           <p><%= farm.description %> </p>
+          <h3 style="text-align: center;color: #f50606; "><%= farm.name  %> </h3>
+           <p style="text-align: center; letter-spacing: 1px; "><%= farm.description %> </p>
           </div>
       </div>
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">Blogs</h2>
 
       <div class="ui stackable three column grid" style="margin: 50px 40px;">
         <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Image with text</h3>
-           <p style="margin: 10px auto ; color: #fff;">Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+          <img class="ui image" src="https://cdn.shopify.com/s/files/1/0070/7032/files/diy-product-photography.jpg?v=1599161908&width=600">
+          <h3 style="margin: 10px auto ; color: #fff;">Brand</h3>
+           <p style="margin: 10px auto ; color: #fff;">A Picture Is Worth a Thousand Sales: A DIY Guide to Beautiful Product Photography</p>
           </div> 
          <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Image with text</h3>
-          <p style="margin: 10px auto ; color: #fff;">Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+          <img class="ui image" src="https://cdn.shopify.com/s/files/1/0070/7032/files/email-marketing.jpg?v=1554225457&width=600">
+          <h3 style="margin: 10px auto ; color: #fff;">Guides</h3>
+          <p style="margin: 10px auto ; color: #fff;">Learn Email Marketing: Everything from List Building to Advanced Lifecycle Automation</p>
         </div>
          <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Image with text</h3>
-          <p style="margin: 10px auto ; color: #fff;">Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>
+          <img class="ui image" src="https://cdn.shopify.com/s/files/1/0070/7032/files/subscription-business.jpg?v=1604195360&width=600">
+          <h3 style="margin: 10px auto ; color: #fff;">Find an Idea</h3>
+          <p style="margin: 10px auto ; color: #fff;">How to Start a Subscription Business: A Brief Guide</p>
         </div>
       </div>
       
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">FEATURED COLLECTION</h2>
 
-      <div class="ui stackable three column grid" style="margin: 50px 40px;">
+      <div class="ui stackable four column grid" style="margin: 50px 40px;">
           <% for(let p of farm.products) {%>
 
             
@@ -106,14 +108,22 @@
               <div class="content">
                 <a class="header" href="/products/<%= p._id %> " style="color: #f50606;"><%= p.name %> </a>
                 <div class="meta">
-                  <span class="date" style="color: #fff;">$ <%= p.price %>.99</span>
+                  <span class="date" style="color: #fff; margin-top: 5px;">$<%= p.price %>.99 <span >
+                    <form>
+                    <button class="ui left attached ui orange button" style="float: left; margin-left: 10px; margin-top: 15px;letter-spacing: 1px;"><a href="/user/verify-acc-cart/checkout" style="color: #fff;"><i class="fas fa-bolt"></i> Buy Now</a></button>
+                    </form>
+                    <form action="/products/<%= p._id %>/cart" method="POST">
+                    <button class="ui right attached ui yellow button" style="margin-top: 15px; letter-spacing: 1px;"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+                    </form>
+                  
+                  </span></span>
                 </div>
               </div>
             </div> 
           </a> 
           <% } %> 
       </div>
-      <div class="ui stackable four column grid" style="margin: 50px 40px;">
+      <!-- <div class="ui stackable four column grid" style="margin: 50px 40px;">
         <div class="column">
           <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
           <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
@@ -134,7 +144,7 @@
           <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
            <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
           </div> 
-      </div>
+      </div> -->
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">CUSTOMER REVIEWS</h2>
 
       <div class="ui stackable three column grid" style="margin: 20px 40px;">

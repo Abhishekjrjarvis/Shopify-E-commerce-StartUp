@@ -44,7 +44,44 @@
                 <% } %>
             <% } %>
             <h5 class="" style="margin-left: 150px; font-weight: 600; color: rgb(145, 133, 133);"><%= u.name  %></h5>
-            <small class="stars" style="margin-left: 30px;">4<i class="fas fa-star ml-1"></i></small><span><i class="fab fa-shopify ml-3 mb-3" style="color: #f50606;">+</i></span><br>
+            
+            <% if(u.reviews.length >=1) {%> 
+                <% let total = 0 %>
+                <% let avg = 0 %>  
+                <% for(let r of u.reviews) {%> 
+                    <% total = total + r.rating  %>   
+                <% } %>
+                <% avg = parseFloat(total/u.reviews.length) %>
+                <p>
+                    <% if(avg >= 0 && avg <= 1) {%> 
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">1<i class="fas fa-star ml-1"></i></small>
+                        <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
+                        </span>
+                    <% } else if (avg >= 1.1 && avg <= 2) {%>
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">2<i class="fas fa-star ml-1"></i></small>
+                        <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
+                        </span>
+                    <% } else if (avg >= 2.1 && avg <= 3) {%> 
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">3<i class="fas fa-star ml-1"></i></small>
+                        <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
+                        </span>
+                    <% } else if (avg >= 3.1 && avg <= 4) {%> 
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">4<i class="fas fa-star ml-1"></i></small>
+                        <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
+                        </span>
+                    <% } else if (avg >= 4.1 && avg <= 5) {%> 
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">5<i class="fas fa-star ml-1"></i></small>
+                        <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
+                        </span>
+                    <% } else {%>
+                    <% } %>
+                </p>
+            <% } else {%>
+                <p><span style="margin-left: 30px; color: rgb(228, 228, 228);">No Reviews </span></p>
+            <% } %>  
+            <!-- <small class="stars" style="margin-left: 30px;">4<i class="fas fa-star ml-1"></i></small><span><i class="fab fa-shopify ml-3 mb-3" style="color: #f50606;">+</i></span><br> -->
+            
+            
             <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 30px; font-size: 16px;">$<%= u.qty * u.price  %> <span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
             <% total = total + (u.qty * u.price) %>
             <form action="/products/<%= u._id %>/cart?_method=DELETE " method="POST">
@@ -75,8 +112,7 @@
                     <span class="ml-2 my-1 px-1 py-0 pb-1 asen" style="font-size: 30px; cursor: pointer;  font-size: 18px;"><i class="fas fa-plus"></i></span>
                 </button>
             </form>
-            
-
+             
                
 
              <hr style=" background-color: rgb(145, 133, 133);">

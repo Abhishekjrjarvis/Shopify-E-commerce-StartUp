@@ -57,7 +57,7 @@
                     <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
                     <% } %>
                 <% } %>   
-            <i class="far fa-heart mt-1 mr-1"></i>
+            <i class="fas fa-heart mt-1 mr-1 mywishlistheart"></i>
             <h5><%= f.name  %> Products</h5>
             <div class="star-rating" style="color: #f50606">
                 <i class="fas fa-star"></i>
@@ -66,10 +66,7 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <p>$<%= f.price %>.99 <span style="margin-left: 70px; color: #fff;"><a href="/farms/<%= farm._id %>/products " style="text-decoration: none;"> Preview</a></span></p> 
-            <% if(currentUser && !farm.author.equals(currentUser._id)){ %>
-            <span ><button class="btn btn-success btn-block" style="border: none; border-radius: 2px; color: #fff;"><a href="/products/<%= f._id %> " style="color: #fff; text-decoration: none;">Buy</a></button></span>
-            <% } %> 
+            <p>$<%= f.price %>.99 <span style="margin-left: 50px; color: #fff;"><a href="/farms/<%= farm._id %>/products " style="text-decoration: none;">Take a Preview</a></span></p> 
         </div>
         <% } %> 
     </div>

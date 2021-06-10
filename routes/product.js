@@ -81,7 +81,8 @@ router.get("/", catchAsync(async(req, res) => {
     } 
     else {
       const products = await Product.find({});
-      res.render("index", { products, categories: "All", productPriceFilter: 'All', productTag: 'All'});
+      const user = await User.findById({_id: req.user._id}).populate('wishlist')
+      res.render("index", { products, categories: "All", productPriceFilter: 'All', productTag: 'All', user });
     }
 }));
 
@@ -166,6 +167,9 @@ router.post('/:id/cart', isLoggedIn, async(req, res)=>{
     const { id } = req.params;
     const products = await Product.findById({ _id: id });
     const user = await User.findById({_id: req.user._id})
+    products.price = products.price;
+    products.qty = 1
+    await products.save();
     user.cart.push(products);
     await user.save();
     res.redirect('/user/cart');
