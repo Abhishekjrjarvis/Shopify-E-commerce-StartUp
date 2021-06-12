@@ -66,7 +66,11 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <p>$<%= f.price %>.99 <span style="margin-left: 50px; color: #fff;"><a href="/farms/<%= farm._id %>/products " style="text-decoration: none;">Take a Preview</a></span></p> 
+            <% let offer = 0 %>
+            <% let calcoffer = 0 %> 
+            <% offer =  f.saleprice - f.price  %> 
+            <% calcoffer = (offer * 100)/f.saleprice %> 
+            <p><span>$<%= f.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= f.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
         </div>
         <% } %> 
     </div>

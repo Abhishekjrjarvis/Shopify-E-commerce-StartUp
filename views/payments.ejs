@@ -33,33 +33,32 @@
                <div class="mt-3" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px; border-bottom: 2px solid black;">
                     <span class="" style="font-size: 13px;float: left; font-weight: 600; background-color: rgb(70, 70, 70); color:#f50606; padding: 3px; ">3</span>
                     <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff; letter-spacing: 1px; ">Order Summary 
-                       <% if(user.cart) {%> 
+                       <% if(products) {%> 
                        <i class="fas fa-check ml-2" style="font-size: 11px; color: #f50606;"></i></span></p>  <br>
-                       <% } %>
-                       <% let discount = 0 %> 
-                       <% for(let u of user.cart) {%>        
-                       <div class="acc-cart">
+                       <% } %> 
+                        <p><span style="margin-left: 18px; background-color: rgb(97, 58, 58);color: #fff; letter-spacing: 2px;font-size: 13px; font-weight: 600;border-radius: 4px;padding: 10px;">You Purchased Only 1 Unit Multiple Items Add To Cart Then Shop Now</span></p>
+                       <div class="acc-cart mb-5">
                        <!-- <p><span class="mt-0 ml-3" style="color: rgb(148, 148, 148); font-weight: 600; letter-spacing: 1px; padding: 10px;border-radius: 3px; background-color: rgb(80, 53, 53);">You have Purchased Only 1 Unit Multiple Then Add It To Cart Then Shop Now</span></p> -->
                        <!-- <span class="ml-3" style="color: rgb(145, 139, 139);">Order Confirmation email will be sent to <span style="color: rgb(206, 206, 206);"><%= currentUser.email%></span></span></span>  -->
-                       <a href="/products/<%= u._id %>">
-                       <% if(u.images.length > 1) {%> 
-                           <img class="mt-0 ml-3" src= "<%= u.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg" style="border-radius: 10px; width: 120px; height: 160px; float: left;">
+                       <a href="/products/<%= products._id %>">
+                       <% if(products.images.length > 1) {%> 
+                           <img class="mt-0 ml-3" src= "<%= products.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg" style="border-radius: 10px; width: 120px; height: 160px; float: left;">
                        <!-- <img src="https://i.stack.imgur.com/y9DpT.jpg" alt="">  -->
                        <% }else{ %> 
-                           <% for(let i of u.images)  {%>   
+                           <% for(let i of products.images)  {%>   
                            <img class="mt-0 ml-3" src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg" style="border-radius: 10px; width: 120px; height: 160px; float: left;">
                            <% } %>
                        <% } %>
                        </a>
-                       <h5 style="margin-left: 154px; font-weight: 600; color: rgb(145, 133, 133); letter-spacing: 1px;"><%= u.name  %></h5>
+                       <h5 style="margin-left: 154px; font-weight: 600; color: rgb(145, 133, 133); letter-spacing: 1px;"><%= products.name  %></h5>
                        
-                       <% if(u.reviews.length >=1) {%> 
+                       <% if(products.reviews.length >=1) {%> 
                            <% let total = 0 %>
                            <% let avg = 0 %>  
-                           <% for(let r of u.reviews) {%> 
+                           <% for(let r of products.reviews) {%> 
                                <% total = total + r.rating  %>   
                            <% } %>
-                           <% avg = parseFloat(total/u.reviews.length) %>
+                           <% avg = parseFloat(total/products.reviews.length) %>
                            <p>
                                <% if(avg >= 0 && avg <= 1) {%> 
                                    <span><small class="text-white" style="margin-left: 17px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
@@ -76,7 +75,7 @@
                                <% } else if (avg >= 3.1 && avg <= 4) {%> 
                                    <span><small class="text-white" style="margin-left: 17px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                                    <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
-                             </span>
+                                   </span>
                                <% } else if (avg >= 4.1 && avg <= 5) {%> 
                                    <span><small class="text-white" style="margin-left: 17px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                                    <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
@@ -91,39 +90,33 @@
                        
                        <% let offer = 0 %>
                        <% let calcoffer = 0 %> 
-                       <% offer =  u.saleprice - u.price  %> 
-                       <% calcoffer = (offer * 100)/u.saleprice %>
-                       <% discount = discount + (u.qty * offer) %>  
- 
-                       <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 18px; font-size: 16px;">$<%= u.qty * u.price  %> <span class="ml-1" style=" color: rgb(34, 34, 34); text-decoration: line-through;">$<%= u.qty * u.saleprice %></span> <span style="color: #8a0000;"><%= calcoffer.toFixed(0) %>% off  </span><span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
+                       <% offer =  products.saleprice - products.price  %> 
+                       <% calcoffer = (offer * 100)/products.saleprice %> 
+                       <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 18px; font-size: 16px;">$<%= products.price  %> <span class="ml-1" style=" color: rgb(34, 34, 34); text-decoration: line-through;">$<%= products.saleprice %></span> <span style="color: #8a0000;"><%= calcoffer.toFixed(0) %>% off  </span><span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
                        
                        <br>
-                       <hr class="mt-5">
+                       
                        </div>
-                       <% } %>
                        <!-- <p><span class="item-cart" style="display: none;">Your checkout has no items</span></p> -->
-               </div>
+               </div> 
                <div class="mt-2" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px; border-bottom: 2px solid black;">
                 <span class="" style="font-size: 13px; font-weight: 600; background-color: rgb(70, 70, 70);float: left; color:#f50606; padding: 3px; ">4</span>
                <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff; letter-spacing: 1px; ">Payments
                 <p><span style="margin-left: 27px; letter-spacing: 1px; color: #fff;">Payment Option will be available soon......</span></p>
-            </div> 
+
             </div>
-            <% let total = 0 %>   
-            <% for(let u of user.cart) {%> 
-            <% total = total + (u.qty * u.saleprice) %>
-            <% } %>  
+            </div>
+ 
             <div class="col-4 mt-0" style="position: sticky; background-color: rgb(77, 77, 77); transition: none; box-shadow: none; transform: none;">
                 <h5 style="font-weight: 600; color: rgb(0, 0, 0); letter-spacing: 1px;">PRICE DETAILS</h5>
                 <hr style=" background-color: rgb(0, 0, 0);">
-                <p style="font-weight: 500; font-size: 16px;"><span>Price (<%= user.cart.length %>  Items)</span><span style="float: right;">$<%= total %></span></p>
-                <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-$<%= discount %> </span></p>
+                <p style="font-weight: 500; font-size: 16px;"><span>Price (<%= products.length %>  Items)</span><span style="float: right;">$<%= products.saleprice %></span></p>
+                <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-$<%= products.saleprice - products.price %> </span></p>
                 <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">Free</span></p>
                 <hr class="mb-3" style=" background-color: rgb(0, 0, 0);">
-                <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= total - discount %></span></p>
-                <hr class="mt-3" style=" background-color: rgb(0, 0, 0);">
-                <p><span style="color: #ca5656; letter-spacing: 1px; font-weight: 600;">You will save $<%= discount %> on this order </span></p>
-                
+                <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= products.price  %></span></p>
+                <hr class="mt-3" style=" background-color: rgb(0, 0, 0);">  
+                <p><span style="color: #ca5656; letter-spacing: 1px; font-weight: 600;">You will save $<%= products.saleprice - products.price %> on this order </span></p>              
                 <p ><span class="mt-3" style="float: right; color:rgb(0, 0, 0) ; font-weight: 600; letter-spacing: 1px;"><i class="fas fa-shield-alt ml-1" style="color: #f50606;"></i> Safe and Secure Authentic products.</span></p>
                 
                 <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/myProfileFooter_4e9fe2.png" alt="" style="width: 100%;">

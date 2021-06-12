@@ -32,6 +32,7 @@
                     </small> 
                 </p>
                 <hr style=" background-color: rgb(145, 133, 133);">
+            <% let discount = 0 %> 
             <% let total = 0 %> 
             <% for(let u of user.cart) {%>
             
@@ -43,8 +44,8 @@
                 <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
                 <% } %>
             <% } %>
-            <h5 class="" style="margin-left: 150px; font-weight: 600; color: rgb(145, 133, 133);"><%= u.name  %></h5>
-            
+            <h5 class="" style="float: left; margin-left: 30px; font-weight: 600; color: rgb(145, 133, 133);"><%= u.name  %></h5>
+            <p><span style="margin-left: 20px; color: rgb(255, 255, 255);font-size: 12px;font-weight: 600;letter-spacing: 1px;border-radius: 3px; background-color: coral; padding: 3px;"><%= u.tag %></span></p>
             <% if(u.reviews.length >=1) {%> 
                 <% let total = 0 %>
                 <% let avg = 0 %>  
@@ -54,23 +55,23 @@
                 <% avg = parseFloat(total/u.reviews.length) %>
                 <p>
                     <% if(avg >= 0 && avg <= 1) {%> 
-                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">1<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 1.1 && avg <= 2) {%>
-                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">2<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 2.1 && avg <= 3) {%> 
-                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">3<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 3.1 && avg <= 4) {%> 
-                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">4<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 4.1 && avg <= 5) {%> 
-                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">5<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="margin-left: 30px; background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"> <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else {%>
@@ -81,9 +82,13 @@
             <% } %>  
             <!-- <small class="stars" style="margin-left: 30px;">4<i class="fas fa-star ml-1"></i></small><span><i class="fab fa-shopify ml-3 mb-3" style="color: #f50606;">+</i></span><br> -->
             
-            
-            <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 30px; font-size: 16px;">$<%= u.qty * u.price  %> <span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
-            <% total = total + (u.qty * u.price) %>
+            <% let offer = 0 %>
+            <% let calcoffer = 0 %> 
+            <% offer =  u.saleprice - u.price  %> 
+            <% calcoffer = (offer * 100)/u.saleprice %>
+            <% discount = discount + (u.qty * offer) %>  
+            <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 30px; font-size: 16px;">$<%= u.qty * u.price  %> <span class="ml-1" style=" color: rgb(85, 85, 85); text-decoration: line-through;">$<%= u.qty * u.saleprice %></span> <span style="color: #8a0000;"><%= calcoffer.toFixed(0) %>% off  </span><span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
+            <% total = total + (u.qty * u.saleprice) %>
             <form action="/products/<%= u._id %>/cart?_method=DELETE " method="POST">
                 <button class="btn btn-sm btn-danger" style="float:left;margin-left: 30px; border: none; border-radius: 2px; color: #fff;background-color: #790000;"><i class="far fa-trash-alt"></i></button>
              </form>
@@ -124,12 +129,16 @@
             <h5 style="font-weight: 600; color: rgb(145, 133, 133); letter-spacing: 1px;">PRICE DETAILS</h5>
             <hr style=" background-color: rgb(145, 133, 133);">
             <p style="font-weight: 500; font-size: 16px;"><span>Price (<%= user.cart.length %>  Items)</span><span style="float: right;">$<%= total %></span></p>
-            <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-10$</span></p>
+            <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-$<%= discount  %> </span></p>
             <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">Free</span></p>
             <hr class="mb-3" style=" background-color: rgb(145, 133, 133);">
-            <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= total - 10 %></span></p>
+            <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= total - discount %></span></p>
             <hr class="mt-3" style=" background-color: rgb(145, 133, 133);">
+            <p><span style="color: #f50606; letter-spacing: 1px; font-weight: 600;">You will save $<%= discount %> on this order </span></p>
+
+
             <a href="/user/verify-acc-cart/checkout" class="btn btn-md btn-btn-danger check-cart " style="float: right;">Place Order</a>
+            
             <p ><span class="mt-3" style="float: right; color:rgb(145, 133, 133) ; font-weight: 600; letter-spacing: 1px;"><i class="fas fa-shield-alt ml-1" style="color: #f50606;"></i> Safe and Secure Authentic products.</span></p>
             
             <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/myProfileFooter_4e9fe2.png" alt="" style="width: 100%;">

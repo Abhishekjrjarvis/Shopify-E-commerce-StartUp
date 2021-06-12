@@ -56,23 +56,23 @@
                 <% avg = parseFloat(total/product.reviews.length) %>
                 <p>
                     <% if(avg >= 0 && avg <= 1) {%> 
-                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">1<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"><%= total %>  Ratings & <%= product.reviews.length %> Reviews <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 1.1 && avg <= 2) {%>
-                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">2<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"><%= total %>  Ratings & <%= product.reviews.length %> Reviews <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 2.1 && avg <= 3) {%> 
-                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">3<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"><%= total %>  Ratings & <%= product.reviews.length %> Reviews <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 3.1 && avg <= 4) {%> 
-                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">4<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"><%= total %>  Ratings & <%= product.reviews.length %> Reviews <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else if (avg >= 4.1 && avg <= 5) {%> 
-                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;">5<i class="fas fa-star ml-1"></i></small>
+                        <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>
                         <small class="ml-1" style="color: aliceblue; font-size: 14px; font-weight:600;"><%= total %>  Ratings & <%= product.reviews.length %> Reviews <span class="ml-2" style="font-size: 20px; color: #f50606;"><i class="fab fa-shopify">+</i></span></small> 
                         </span>
                     <% } else {%>
@@ -81,7 +81,12 @@
             <% } else {%>
                 <p><span style="color: #fff;">No Reviews</span></p>
             <% } %>  
-            <h5 class="text-white mt-3">$<%= product.price %>.99</h5><br>
+            <% let offer = 0 %>
+            <% let calcoffer = 0 %> 
+            <% offer =  product.saleprice - product.price  %> 
+            <% calcoffer = (offer * 100)/product.saleprice %> 
+            <h5 class="text-white mt-3"><span>$<%= product.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= product.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span></h5><br>
+
             <p class="mt-2">
                 <span class="mb-3" style="color: #fff;">Available Offers</span><br>
                 <span class="" style="color: #fff; font-size: 14px;"><i class="fas fa-tag" style="color: rgb(1, 201, 1);"></i> Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit Card
@@ -91,12 +96,15 @@
             <% if(currentUser) { %>
             <span class="text-white mt-3" style="float: right;"><a href="#">Write A Review</a></span>
             <% } %> 
-
+            
+            
             <button class="btn btn-warning btn-block add mt-4 addtocart" style="background-color: rgb(255, 94, 0);">
-                <a href="/user/verify-acc-cart/checkout" style="text-decoration: none; color: #fff;"><i class="fas fa-bolt"></i> Buy Now</a>
+                <a href="/user/verify-acc-cart/<%=product._id %>/checkout" style="text-decoration: none; color: #fff;"><i class="fas fa-bolt"></i> Buy Now</a>
             </button>
             <!-- <a href="#" class="btn btn-warning btn-block buy mt-5">Buy Now</a> -->
             <!-- <span class="text-white ml-5 mt-3 mb-5" style="text-align: center;">Or</span> -->
+            
+    
             <form action="/products/<%= product._id %>/cart" method="POST">
                 <button class="btn btn-warning btn-block add mt-4 addtocart" style="background-color: rgb(248, 223, 0);"><i class="fas fa-cart-plus"></i> Add To Cart</button>
             </form>

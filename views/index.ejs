@@ -143,7 +143,11 @@
                             <% } %> 
                         </div>
                         <span class="text-white" style="float: right;"><%= p.categories %></span>
-                        <p>$<%= p.price %>.99</p>
+                        <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
                     </div>
                     <% }else{ %>
                     <% } %>  
@@ -176,7 +180,12 @@
                            <% } %> 
                        </div>
                        <span class="text-white" style="float: right;"><%= p.categories %></span>
-                       <p>$<%= p.price %>.99</p>
+                       <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                    </div>
                    <% }else{ %>
                    <% } %>  
@@ -209,7 +218,12 @@
                            <% } %> 
                        </div>
                        <span class="text-white" style="float: right;"><%= p.categories %></span>
-                       <p>$<%= p.price %>.99</p>
+                       <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                    </div>
                    <% }else{ %>
                    <% } %>  
@@ -242,7 +256,12 @@
                            <% } %> 
                        </div>
                        <span class="text-white" style="float: right;"><%= p.categories %></span>
-                       <p>$<%= p.price %>.99</p>
+                       <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                    </div>
                    <% }else{ %>
                    <% } %>  
@@ -275,7 +294,12 @@
                            <% } %> 
                        </div>
                        <span class="text-white" style="float: right;"><%= p.categories %></span>
-                       <p>$<%= p.price %>.99</p>
+                       <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                    </div>
                    <% }else{ %>
                    <% } %>  
@@ -308,7 +332,12 @@
                            <% } %> 
                        </div>
                        <span class="text-white" style="float: right;"><%= p.categories %></span>
-                       <p>$<%= p.price %>.99</p>
+                       <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                    </div>
                    <% }else{ %>
                    <% } %>  
@@ -347,8 +376,12 @@
                            <i class="far fa-star"></i> -->
                        </div>
                        <span class="text-white" style="float: right;"><%= p.categories %></span>
-                       <p>$<%= p.price %>.99</p>
-                   </div>
+                       <% let offer = 0 %>
+                       <% let calcoffer = 0 %> 
+                       <% offer =  p.saleprice - p.price  %> 
+                       <% calcoffer = (offer * 100)/p.saleprice %> 
+                       <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+                  </div>
                    <% } %>
                    <% } %>  
         </div> 
@@ -381,7 +414,12 @@
                         <% } %> 
                     </div>
                     <span class="text-white" style="float: right;"><%= p.categories %></span>
-                    <p>$<%= p.price %>.99</p>
+                    <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                 </div>
                 <% } %>
                 
@@ -419,7 +457,12 @@
                             <% } %> 
                         </div>
                         <span class="text-white" style="float: right;"><%= p.categories %></span>
-                        <p>$<%= p.price %>.99</p>
+                        <% let offer = 0 %>
+                        <% let calcoffer = 0 %> 
+                        <% offer =  p.saleprice - p.price  %> 
+                        <% calcoffer = (offer * 100)/p.saleprice %> 
+                        <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+
                     </div>
                     <% } %>
                     

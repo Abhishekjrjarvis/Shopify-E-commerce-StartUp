@@ -22,6 +22,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    saleprice: {
+        type: Number,
+        min: 0
+    },
     price: {
         type: Number,
         min: 0
@@ -56,6 +60,15 @@ const productSchema = new mongoose.Schema({
         }
     ]
 }, opts);
+
+
+
+productSchema.post('findOneAndDelete', async function (product) {
+    if (product.reviews.length) {
+        const check = await Review.deleteMany({ _id: { $in: product.reviews } })
+        console.log(product)
+    }
+})
 
 const Product = mongoose.model('Product', productSchema);
 

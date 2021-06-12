@@ -33,6 +33,7 @@ router.post('/register', async(req, res, next) =>{
                 res.redirect('/farms');
             })
         }catch (e) {
+          console.log(e)
             req.flash('error', e.message);
             res.redirect('register');
         }
@@ -117,7 +118,7 @@ router.post('/account/:id/p-qty', async(req, res) =>{
   }
   await products.save()
   await user.save()
-  console.log(user) 
+  // console.log(user) 
   res.redirect('/user/cart')
 })
 
@@ -135,10 +136,27 @@ router.delete('/account/:id/p-qty', async(req, res) =>{
 })
 
 
-router.get('/verify-acc-cart/checkout',async(req, res)=>{
+router.get('/verify-acc-cart/:id/checkout',async(req, res)=>{
+  const { id }  = req.params;
+  const products = await Product.findById({ _id: id }).populate('reviews');
   const user = await User.findById({_id: req.user._id}).populate('cart').populate('addresses');
+  res.render('payments', { user, products })
+})
+
+
+router.get('/verify-acc-cart/checkout',async(req, res)=>{
+  const { id }  = req.params;
+  const user = await User.findById({_id: req.user._id}).populate({
+    path:'cart',
+    populate: {
+        path:'reviews'
+    }}).populate('addresses');
   res.render('payment', { user })
 })
+
+
+
+
 
 
 router.get('/forgot', function(req, res) {

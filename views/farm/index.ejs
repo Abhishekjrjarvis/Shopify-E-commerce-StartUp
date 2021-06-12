@@ -37,6 +37,7 @@
       <div class="row">
         <% for(let farm of farms){ %>
               <div class="col-4">
+                <% if(currentUser && farm.author.equals(currentUser._id)) {%> 
                   <a href="/farms/<%= farm._id %> ">
                     <% if(farm.category === 'Electronics') {%> 
                         <img src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
@@ -54,7 +55,32 @@
                         <img src="https://images.unsplash.com/photo-1617325710236-4a36d46427c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="image-scale-valid" alt="">
                     <% } %> 
                     </a>
+                    <% } else if(currentUser && !(farm.author.equals(currentUser._id))) {%>
+                        <a href="/farms/<%= farm._id %>/products ">
+                            <% if(farm.category === 'Electronics') {%> 
+                                <img src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
+                            <% } else if(farm.category === 'Fashion') {%>
+                                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" alt="">
+                            <% } else if(farm.category === 'Grocery') {%>
+                                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt=""> 
+                            <% } else if(farm.category === 'Appliances') {%>
+                                <img src="https://images.unsplash.com/photo-1601760562234-9814eea6663a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXBwbGlhbmNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                            <% } else if(farm.category === 'Mobiles') {%>
+                                <img src= "https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
+                            <% } else if(farm.category === 'Toys') {%>    
+                                <img src= "https://images.unsplash.com/photo-1515281239448-2abe329fe5e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80" alt="">
+                            <% } else if(farm.category === 'Home Furniture') {%> 
+                                <img src="https://images.unsplash.com/photo-1617325710236-4a36d46427c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="image-scale-valid" alt="">
+                            <% } %> 
+                            </a>
+                    <% } %>
+
+
+                  <% if(currentUser && farm.author.equals(currentUser._id)) {%> 
                   <h5><a href="/farms/<%= farm._id %> " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= farm.name %> Store</a></h5>
+                  <% } else if(currentUser && !(farm.author.equals(currentUser._id))) {%>
+                  <h5><a href="/farms/<%= farm._id %>/products " style="text-decoration: none; color: rgb(209, 111, 19);;"><%= farm.name %> Store</a></h5>
+                  <% } %>  
                   <div class="star-rating" style="color: #f50606">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>

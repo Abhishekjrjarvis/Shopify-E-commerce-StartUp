@@ -20,21 +20,25 @@
               <a class="item" href="/farms" style="color: #f50606;">
                 <h3 style="color: #f50606;"><%= farm.name %></h3>
               </a>
+              <% if(currentUser && farm.author.equals(currentUser._id)) {%> 
               <a class="item" href="/farms/<%= farm._id %> ">
                <h3>Add Products</h3>
               </a>
+              <% } %> 
               <!-- <a class="item">
                <h3> Learn</h3>
               </a> -->
               <div class="ui inverted secondary pointing menu" style="margin-left: auto;">
+                <% if(currentUser && farm.author.equals(currentUser._id)){%>
                 <a class="item" href="/user/account/profile/overview">
                   <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/jenny.jpg">
                     <span>
-                      <% if(farm.name === user.storename) {%>
+                      
                       <h3><%= user.username  %> </h3>
-                    <% } %></span> 
+                    </span> 
                      
                  </a>
+                 <% } %>
               </div>
               
             </div>
@@ -107,16 +111,32 @@
               <% } %> 
               <div class="content">
                 <a class="header" href="/products/<%= p._id %> " style="color: #f50606;"><%= p.name %> </a>
-                <div class="meta">
-                  <span class="date" style="color: #fff; margin-top: 5px;">$<%= p.price %>.99 <span >
-                    <form>
-                    <button class="ui left attached ui orange button" style="float: left; margin-left: 10px; margin-top: 15px;letter-spacing: 1px;"><a href="/user/verify-acc-cart/checkout" style="color: #fff;"><i class="fas fa-bolt"></i> Buy Now</a></button>
-                    </form>
-                    <form action="/products/<%= p._id %>/cart" method="POST">
-                    <button class="ui right attached ui yellow button" style="margin-top: 15px; letter-spacing: 1px;"><i class="fas fa-cart-plus"></i> Add To Cart</button>
-                    </form>
+                <div class="meta" style="margin-top: 5px; margin-bottom: 3px;">
+                  <% let offer = 0 %>
+                  <% let calcoffer = 0 %> 
+                  <% offer =  p.saleprice - p.price  %> 
+                  <% calcoffer = (offer * 100)/p.saleprice %> 
+                  <p><span style=" color: #fff;">$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+                  <% if(currentUser && farm.author.equals(currentUser._id)) {%> 
+
+                  <% }else {%> 
+                    <form action="/products/<%= p._id %>/wishlist" method="POST">
+                      <button class="ui labeled icon button ui  red button" style="text-align: center; margin-left: 27px; letter-spacing: 1px;">
+                        <i class="fas fa-heart"></i>
+                        Add To Wishlist
+                      </button>                  
+                    </form>                    
+                      <form>
+                        <button class="ui left attached ui orange button" style="float: left; margin-left: 10px; margin-top: 15px;letter-spacing: 1px;"><a href="/user/verify-acc-cart/<%= p._id %>/checkout" style="color: #fff;"><i class="fas fa-bolt"></i> Buy Now</a></button>
+                      </form>
+                      <form action="/products/<%= p._id %>/cart" method="POST">
+                        <button class="ui right attached ui yellow button" style="margin-top: 15px; letter-spacing: 1px;"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+                      </form> 
+                  <% } %> 
+                    
+                    
                   
-                  </span></span>
+                  
                 </div>
               </div>
             </div> 
@@ -145,6 +165,8 @@
            <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
           </div> 
       </div> -->
+
+      
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">CUSTOMER REVIEWS</h2>
 
       <div class="ui stackable three column grid" style="margin: 20px 40px;">

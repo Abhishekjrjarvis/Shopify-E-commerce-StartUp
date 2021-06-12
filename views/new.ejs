@@ -17,7 +17,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="price" class="text-white">Price</label>
-                                    <input type="Number" class="form-control bg-dark text-white" name="price" id="price" placeholder="$ 19.99 " required>
+                                    <input type="number" class="form-control bg-dark text-white" min="10" name="price" id="price" placeholder="$ 19.99 " required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="saleprice" class="text-white">Sale Price</label>
+                                    <input type="number" class="form-control bg-dark text-white" min="10" name="saleprice" id="saleprice" placeholder="$ 99.99 " required>
                                 </div>
                                 <div class="form-group">
                                     <label for="category" class="text-white">Category</label>
@@ -60,7 +64,7 @@
         </div>
     </div>
     <script>
-        const b = document.getElementsByTagName('input')[3];
+        const b = document.getElementsByTagName('input')[4];
         const button = document.querySelector('.images-button-valid')
         b.addEventListener('change', function(){
             if(b.files.length == 5){

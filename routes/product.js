@@ -81,8 +81,8 @@ router.get("/", catchAsync(async(req, res) => {
     } 
     else {
       const products = await Product.find({});
-      const user = await User.findById({_id: req.user._id}).populate('wishlist')
-      res.render("index", { products, categories: "All", productPriceFilter: 'All', productTag: 'All', user });
+    //   const user = await User.findById({_id: req.user._id}).populate('wishlist')
+      res.render("index", { products, categories: "All", productPriceFilter: 'All', productTag: 'All' });
     }
 }));
 
@@ -149,10 +149,10 @@ router.get("/:id", catchAsync(async (req, res) => {
             res.redirect('/products')
         }
     const products = await Product.find({categories: product.categories});
-    // const user = await User.findById({_id: req.user._id})
+    const user = await User.findById({_id: req.user._id})
     // const pr = await Product.find({createdAt: {$gte: "2021-06-05T03:45:11.363Z"}})
     // console.log(pr)
-    res.render("show", { product, products });
+    res.render("show", { product, products, user });
 
 }));
 
@@ -179,7 +179,8 @@ router.post('/:id/cart', isLoggedIn, async(req, res)=>{
 router.delete('/:id/cart', async(req, res) =>{
     const { id }  = req.params;
     const user = await User.findById({_id: req.user._id});
-    user.cart.splice(id, 1)
+    const findCartItem = user.cart.indexOf(id);
+    user.cart.splice(findCartItem, 1)
     await user.save()
     res.redirect('/user/cart')
 })

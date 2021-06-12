@@ -32,7 +32,7 @@ router.get("/", catchAsync(async (req, res) => {
   
 router.get("/new", isLoggedIn,  async(req, res) => {
     const user = await User.findById(req.user._id);
-    const farm = await Farm.find({name: user.storename})
+    const farm = await Farm.find({})
     res.render("farm/new", { farm , user });
 });
   
@@ -88,7 +88,6 @@ router.get('/:id/products', async(req, res) =>{
 router.delete("/:id", isLoggedIn, isFarmOwner,  catchAsync(async (req, res) => {
     const { id } = req.params;
     const farms = await Farm.findByIdAndDelete({_id:id});
-    console.log(farms)
     res.redirect("/farms");
 }));
   
