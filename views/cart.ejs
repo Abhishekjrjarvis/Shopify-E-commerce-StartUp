@@ -35,7 +35,7 @@
             <% let discount = 0 %> 
             <% let total = 0 %> 
             <% for(let u of user.cart) {%>
-            
+            <a href="/products/<%= u._id %> ">
             <% if(u.images.length > 1) {%> 
                 <img src= "<%= u.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg" style="border-radius: 10px; width: 120px; height: 160px; float: left;">
             <!-- <img src="https://i.stack.imgur.com/y9DpT.jpg" alt="">  -->
@@ -44,6 +44,7 @@
                 <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
                 <% } %>
             <% } %>
+            </a>
             <h5 class="" style="float: left; margin-left: 30px; font-weight: 600; color: rgb(145, 133, 133);"><%= u.name  %></h5>
             <p><span style="margin-left: 20px; color: rgb(255, 255, 255);font-size: 12px;font-weight: 600;letter-spacing: 1px;border-radius: 3px; background-color: coral; padding: 3px;"><%= u.tag %></span></p>
             <% if(u.reviews.length >=1) {%> 

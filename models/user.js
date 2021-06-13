@@ -3,12 +3,6 @@ const Product = require('./product');
 const Address = require('./address');
 const passportLocalMongoose = require('passport-local-mongoose');
 
-// const avatarSchema = new mongoose.Schema({
-//     url: String,
-//     filename: String
-// })
-
-// const opts = {toJSON: {virtuals: true}}
 
 
 const userSchema = new mongoose.Schema({
@@ -23,10 +17,6 @@ const userSchema = new mongoose.Schema({
     mobno: {
         type: Number,
         required: true
-    },
-    storename: {
-        type: String,
-        unique: true
     },
     addresses: [
         {

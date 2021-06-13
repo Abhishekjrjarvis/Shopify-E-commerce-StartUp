@@ -571,15 +571,16 @@ td:last-child{
 }
 
 
-.carousel-category .row .mywishlistheart{
+.carousel-category .row .mywishlist{
     position: absolute;
     z-index: 1;
     top: 10px;
     right: 10px;
     cursor: pointer;
+    border: none;
 }
 
-.carousel-category .row .mywishlistheart:hover{
+.carousel-category .row .mywishlist:hover{
     color: #f50606;
     cursor: pointer;
     

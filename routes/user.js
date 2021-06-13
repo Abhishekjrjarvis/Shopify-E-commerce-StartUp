@@ -29,7 +29,7 @@ router.post('/register', async(req, res, next) =>{
             // console.log(registeredUser);
             req.login(registeredUser, err => {
                 if (err) return next(err);
-                req.flash('success', 'yeah Farm...');
+                req.flash('success', 'Welcome to shopify');
                 res.redirect('/farms');
             })
         }catch (e) {

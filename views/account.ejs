@@ -33,14 +33,18 @@
             <div class="col-8 ml-5">
                 <div class="ml-4" style="background-color: rgb(0, 0, 0);  padding: 15px; border-radius: 4px;">
                 <h4 class="mt-3 mb-3" style="color: rgb(255, 255, 255);font-weight: 600; letter-spacing: 1px;">Manage Accounts</h4>     
+                <% for(let f of farm) {%>
+                    <% if(f.author.equals(currentUser._id)) {%> 
                 <div class="form-group mt-0">
                     <label for="storename" style="color: rgb(255, 255, 255); font-weight: 600; letter-spacing: 1px;">Your Store</label>
-                    <input class="form-control" type="text" name="storename" value="<%= u.storename  %> " id="storename" style=" width: 40%;height: 50px;  cursor: pointer;background-color: grey; color: #fff;">
+                    <input class="form-control" type="text" name="storename" value="<%= f.name  %> " id="storename" style=" width: 40%;height: 50px;  cursor: pointer;background-color: grey; color: #fff;">
                 </div>
+                <% } %>
+                <% } %>  
                 <% for(let f of farm) {%>
-                    <% if(f.name === u.storename) {%> 
-                    <button class="btn btn-md btn-danger ml-3 mb-5" style="float: right; color: #fff; background-color: #aa0000; border-radius: 2px;">
-                        <a href="/farms/<%= f._id %>/products " style=" color: #fff; text-decoration: none;">Visit Peter England</a></button>
+                    <% if(f.author.equals(currentUser._id)) {%> 
+                        <button class="btn btn-md btn-danger ml-3 mb-5" style="float: right; color: #fff; background-color: #aa0000; border-radius: 2px;">
+                        <a href="/farms/<%= f._id %>/products " style=" color: #fff; text-decoration: none;"><%= f.name  %> </a></button>
                          <% } %> 
                 <% } %>
                 <div class="form-group mt-0">
@@ -54,7 +58,7 @@
                    <span class="" style="color: rgb(255, 255, 255); font-size: 15px; font-weight: 600; letter-spacing: 1px;">Your Store contain</span>
                    <span class=" text-white">   
                        <% for(let f of farm) {%>
-                        <% if(f.name === u.storename) {%> 
+                        <% if(f.author.equals(currentUser._id)) {%> 
                             <span style="color: #f50606;">( <%= f.products.length %> )</span><span style="color: rgb(255, 255, 255); font-size: 15px; font-weight: 600; letter-spacing: 1px;"> products</span>
                              <% } %> 
                         <% } %>   

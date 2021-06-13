@@ -17,18 +17,6 @@ router.get("/", catchAsync(async (req, res) => {
     const farms = await Farm.find({});
     res.render("farm/index", { farms });
 }));
-// let h = ''
-//  const hello = async() =>{
-//     const farmss = await Farm.find({name: 'banana'})
-//     for(let p of farmss){
-//         h = `${p.name}`
-//         console.log(h)  
-//     }
-//  }
-// hello()
-// router.get('/b', (req, res) =>{
-//     res.send(`${req.headers.host}/store/${h}`)
-// })
   
 router.get("/new", isLoggedIn,  async(req, res) => {
     const user = await User.findById(req.user._id);
@@ -38,13 +26,8 @@ router.get("/new", isLoggedIn,  async(req, res) => {
   
 router.post("/", isLoggedIn, catchAsync(async (req, res) => {
     const farm = await new Farm(req.body); 
-    const user = await User.findById(req.user._id);
-    // farm.images = await req.files.map(f => ({url: f.path, filename: f.filename}));
-    // console.log(farm.images);
     farm.author = req.user._id;
-    user.storename = farm.name; 
     await farm.save();
-    await user.save();
     res.redirect("/farms");
 }));
   
@@ -88,6 +71,7 @@ router.get('/:id/products', async(req, res) =>{
 router.delete("/:id", isLoggedIn, isFarmOwner,  catchAsync(async (req, res) => {
     const { id } = req.params;
     const farms = await Farm.findByIdAndDelete({_id:id});
+
     res.redirect("/farms");
 }));
   

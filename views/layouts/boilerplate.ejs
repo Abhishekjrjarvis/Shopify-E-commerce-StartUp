@@ -16,8 +16,11 @@
       
       
     </head>
-  <body>
-      
+  <body >
+
+<div id="shopify-loader">
+
+</div>
     <%- include('../partials/navbar')%>
 
     <main class="container">
@@ -39,6 +42,12 @@
     <script type="text/javascript" src="/js/validCredentials.js"></script>
     <script src="/js/create.js">
 
+    </script>
+    <script>
+      const shopifyLoader = document.getElementById('shopify-loader');
+      window.addEventListener('load', function(){
+        shopifyLoader.style.display = 'none'
+      })
     </script>
   </body>
 </html>

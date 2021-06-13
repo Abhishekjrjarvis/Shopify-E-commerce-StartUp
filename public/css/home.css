@@ -5,6 +5,28 @@
     font-family: 'Roboto', sans-serif;
 }
 
+#shopify-loader{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: transparent url('https://image.flaticon.com/icons/png/64/3082/3082031.png')
+     no-repeat center;
+    z-index: 9999;
+    transform: rotate(360deg);
+    animation: 1050ms cartAnimation ease-in-out infinite;;
+}
+
+@keyframes cartAnimation {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 0;
+	}
+}
 /* #mainnav{
     background-color: #9e0101;
 } */
