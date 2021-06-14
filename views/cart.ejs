@@ -32,6 +32,8 @@
                     </small> 
                 </p>
                 <hr style=" background-color: rgb(145, 133, 133);">
+            <% let deliveryPrice = 0 %> 
+            <% let deliveryPriceQty = 0 %> 
             <% let discount = 0 %> 
             <% let total = 0 %> 
             <% for(let u of user.cart) {%>
@@ -85,6 +87,8 @@
             
             <% let offer = 0 %>
             <% let calcoffer = 0 %> 
+            <% deliveryPrice = u.price %>
+            <% deliveryPriceQty = u.qty %>  
             <% offer =  u.saleprice - u.price  %> 
             <% calcoffer = (offer * 100)/u.saleprice %>
             <% discount = discount + (u.qty * offer) %>  
@@ -131,9 +135,21 @@
             <hr style=" background-color: rgb(145, 133, 133);">
             <p style="font-weight: 500; font-size: 16px;"><span>Price (<%= user.cart.length %>  Items)</span><span style="float: right;">$<%= total %></span></p>
             <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-$<%= discount  %> </span></p>
-            <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">Free</span></p>
+            <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">
+                <% if(deliveryPrice <= 500) {%>
+                    $<%= deliveryPriceQty * 50 %>
+                <% } else{%>  
+                Free
+            <% } %> 
+            </span></p>
             <hr class="mb-3" style=" background-color: rgb(145, 133, 133);">
-            <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= total - discount %></span></p>
+            <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">
+                <% if(deliveryPrice > 500) {%>
+                    $<%= total - discount %>
+                <% } else{%>  
+                    $<%= total - discount + deliveryPriceQty * 50%>
+            <% } %>
+                </span></p>
             <hr class="mt-3" style=" background-color: rgb(145, 133, 133);">
             <p><span style="color: #f50606; letter-spacing: 1px; font-weight: 600;">You will save $<%= discount %> on this order </span></p>
 

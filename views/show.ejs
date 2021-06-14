@@ -47,7 +47,7 @@
             
     </div>
         <div class="col-6">
-            <h1 class="text-white mt-5"><%= product.name.slice(0,1).toUpperCase() + product.name.slice(1,) %></h1>
+            <h1 class="text-white mt-5" style="letter-spacing: 0.5px;"><%= product.name.slice(0,1).toUpperCase() + product.name.slice(1,) %></h1>
             <% if(product.reviews.length >=1) {%> 
                 <% let total = 0 %>
                 <% let avg = 0 %>  
@@ -120,11 +120,15 @@
 <div class="carousel-category">
     <div class="row product-row">
         <h2>Related Products</h2>
-        <p class="text-white">View More</p>
+        <p class="text-white" style="font-weight: 600; letter-spacing: 1px;">View More</p>
     </div>
     <div class="row">
+        <% let offers = 0 %>
+        <% let calcoffers = 0 %> 
         <% for(let p of products) {%>
-            <% if(!(p.name === product.name)) {%>   
+            <% if(!(p.name === product.name)) {%> 
+                <% offers =  p.saleprice - p.price  %> 
+                <% calcoffers = (offers * 100)/p.saleprice %>  
                 <div class="col-4">
                     <a href="/products/<%= p._id  %> ">
                     <% if(p.images.length > 1) {%> 
@@ -135,9 +139,11 @@
                         <% } %>
                     <% } %> 
                     </a> 
-                    <i class="fas fa-heart mt-1 mr-1 mywishlistheart"></i>    
+                    <form action="/products/<%= product._id %>/wishlist" method="POST">
+                        <button class="mywishlist" style="background-color: transparent;"><i class="fas fa-heart mywishlistheart mt-2 mr-3"></i></button>
+                    </form>    
                     <h5><%= p.name  %></h5>
-                    <p>$<%= p.price %>.99 <span class="" style="float: right; font-size: 18px; color: #f50606;"><i class="fab fa-shopify">+</i></span></p>
+                    <span style="color: #fff;">$<%= product.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= product.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span>
                 </div>
                 <% } else{%>
                     <% } %>  
@@ -234,19 +240,18 @@
 <script>
     const productImg = document.getElementById('product-img');
     const smallProductImg = document.getElementsByClassName('small-product-img');
-    const dots = document.querySelectorAll('.three-dot');
-    smallProductImg[0].onclick = function(){
+    smallProductImg[0].addEventListener('click', function(){
         productImg.src = smallProductImg[0].src;
-    }
-    smallProductImg[1].onclick = function(){
+    })
+    smallProductImg[1].addEventListener('click', function(){
         productImg.src = smallProductImg[1].src;
-    }
-    smallProductImg[2].onclick = function(){
+    })
+    smallProductImg[2].addEventListener('click', function(){
         productImg.src = smallProductImg[2].src;
-    }
-    smallProductImg[3].onclick = function(){
+    })
+    smallProductImg[3].addEventListener('click', function(){
         productImg.src = smallProductImg[3].src;
-    }
+    })
 </script>
 
 

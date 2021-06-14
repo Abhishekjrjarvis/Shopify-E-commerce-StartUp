@@ -15,19 +15,25 @@
                 <div class="mt-3" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px; border-bottom: 2px solid black;">
                     <span class="" style="font-size: 13px;float: left; font-weight: 600; background-color: rgb(70, 70, 70); color:#f50606; padding: 3px; ">2</span>
                     <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff; letter-spacing: 1px; ">Delivery Address
-                       <% if(user.addresses.length >= 1) {%>
+                       <% if(user.addresses) {%> 
+                        <% if(user.addresses.length >= 1) {%>
                            <i class="fas fa-check ml-2" style="font-size: 11px; color: #f50606;"></i></span></p>   
                         
                        <span class="ml-4 mt-0" style="font-weight: 600; color: #fff;">
-                       <% for(let u of user.addresses) {%>
-                       <span class="ml-0" style="color: rgb(145, 139, 139); letter-spacing: 1px;"><%= u.name  %> <%= u.address %>, <%= u.city %>, <%= u.country %> - <%= u.pincode %></span></span> 
-                   <% } %>
+                        <select name="" id="" style="background-color:rgb(99, 96, 96) ; border-radius: 3px;">
+                            <% for(let u of user.addresses) {%>
+                                <option value=""><%= u.name  %>, <%= u.mobno %>,  <%= u.address %> - <%= u.pincode  %> <span style="padding: 2px; border-radius: 5px; background-color: #3d3535; color: #fff;"><%= u.tag %> </span></option>
+                            <% } %>
+                        </select>
+                    </span>       
                    <% } else {%>
                        <p><span>
                        <button class="btn btn-md btn-danger ml-3 mb-0 mt-0" style=" color: #fff; background-color: #aa0000; border-radius: 2px;">
                            <a href="/user/account/profile/overview/m-address" style="text-decoration: none; color: rgb(255, 255, 255);">+ Add Address</a></button>
                    </span></p>
-                   <% } %>  
+                   <% } %> 
+                   <% } else{%>
+                    <% } %>   
                    <br>             
                </div>
                <div class="mt-3" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px; border-bottom: 2px solid black;">
@@ -38,6 +44,8 @@
                        <% } %> 
                         <p><span style="margin-left: 18px; background-color: rgb(97, 58, 58);color: #fff; letter-spacing: 2px;font-size: 13px; font-weight: 600;border-radius: 4px;padding: 10px;">You Purchased Only 1 Unit Multiple Items Add To Cart Then Shop Now</span></p>
                        <div class="acc-cart mb-5">
+                        <% let deliveryPrice = 0 %> 
+                        <% let deliveryPriceQty = 0 %>
                        <!-- <p><span class="mt-0 ml-3" style="color: rgb(148, 148, 148); font-weight: 600; letter-spacing: 1px; padding: 10px;border-radius: 3px; background-color: rgb(80, 53, 53);">You have Purchased Only 1 Unit Multiple Then Add It To Cart Then Shop Now</span></p> -->
                        <!-- <span class="ml-3" style="color: rgb(145, 139, 139);">Order Confirmation email will be sent to <span style="color: rgb(206, 206, 206);"><%= currentUser.email%></span></span></span>  -->
                        <a href="/products/<%= products._id %>">
@@ -89,7 +97,9 @@
                        <!-- <small class="stars" style="margin-left: 30px;">4<i class="fas fa-star ml-1"></i></small><span><i class="fab fa-shopify ml-3 mb-3" style="color: #f50606;">+</i></span><br> -->
                        
                        <% let offer = 0 %>
-                       <% let calcoffer = 0 %> 
+                       <% let calcoffer = 0 %>
+                       <% deliveryPrice = products.price %>
+                       <% deliveryPriceQty = products.qty %> 
                        <% offer =  products.saleprice - products.price  %> 
                        <% calcoffer = (offer * 100)/products.saleprice %> 
                        <small class="mt-5 mb-3"  style="color: rgb(145, 133, 133); font-weight: 600; margin-left: 18px; font-size: 16px;">$<%= products.price  %> <span class="ml-1" style=" color: rgb(34, 34, 34); text-decoration: line-through;">$<%= products.saleprice %></span> <span style="color: #8a0000;"><%= calcoffer.toFixed(0) %>% off  </span><span><i class="fas fa-info-circle" style="color: #7a2828; "></i></span> </small><br>
@@ -112,9 +122,21 @@
                 <hr style=" background-color: rgb(0, 0, 0);">
                 <p style="font-weight: 500; font-size: 16px;"><span>Price (<%= products.length %>  Items)</span><span style="float: right;">$<%= products.saleprice %></span></p>
                 <p style="font-weight: 500; font-size: 16px;"><span>Discount</span><span style="float: right;">-$<%= products.saleprice - products.price %> </span></p>
-                <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">Free</span></p>
+                <p style="font-weight: 500; font-size: 16px;"><span>Delievery Charges</span><span style="float: right; color: #f50606;">
+                    <% if(deliveryPrice <= 500) {%>
+                        $<%= 50 %>
+                    <% } else{%>  
+                    Free
+                <% } %> 
+                </span></p>
                 <hr class="mb-3" style=" background-color: rgb(0, 0, 0);">
-                <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">$<%= products.price  %></span></p>
+                <p style="font-weight: 500; font-size: 16px;"><span>Total Amount</span><span style="float: right;">     
+                    <% if(deliveryPrice > 500) {%>
+                        $<%= products.price  %>
+                    <% } else{%>  
+                        $<%= products.price + 50%>
+                <% } %>
+            </span></p>
                 <hr class="mt-3" style=" background-color: rgb(0, 0, 0);">  
                 <p><span style="color: #ca5656; letter-spacing: 1px; font-weight: 600;">You will save $<%= products.saleprice - products.price %> on this order </span></p>              
                 <p ><span class="mt-3" style="float: right; color:rgb(0, 0, 0) ; font-weight: 600; letter-spacing: 1px;"><i class="fas fa-shield-alt ml-1" style="color: #f50606;"></i> Safe and Secure Authentic products.</span></p>
