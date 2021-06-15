@@ -130,9 +130,9 @@
                     </div>
                 </div>
                 <div class="mt-2 " style="cursor: pointer;">
-                <input class="ml-4 creditDebit" type="radio" name="paymentGateway" id="" style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">Credit / Debit / ATM Card</span> <br>
+                <input class="ml-4 creditDebit" type="radio" name="paymentGateway"  style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">Credit / Debit / ATM Card</span> <br>
                 <div class="creditDebitInput" hidden>
-                    <input class="ml-5 mt-3 mb-1 " type="text" minlength="16"  maxlength="16" name="" id="" placeholder="Enter Card Number" style="font-size: 14px;padding: 5px;outline: #f50606; height: 50px;width: 40%;font-weight: 600;">
+                    <input class="ml-5 mt-3 mb-1 " type="text" minlength="16"  maxlength="16" name=""  placeholder="Enter Card Number" style="font-size: 14px;padding: 5px;outline: #f50606; height: 50px;width: 40%;font-weight: 600;">
                     <p class="ml-5 mt-0" style="font-weight: 600;letter-spacing: 1px;"><span class="text-white">Valid Thru</span> 
                         <span>MM <select name="" id="" style="border: none;border-radius: 2px;box-shadow: none;">
                             <option value="Jan">Jan</option>
@@ -145,23 +145,23 @@
                             <option value="2022">2022</option>
                         </select>
                     </span>
-                    <input class="ml-3" type="password" name="" min="0" minlength="3" maxlength="3"  id="" placeholder="cvv" style="width: 10%;padding: 10px;font-weight: 600;">
+                    <input class="ml-3" type="password" name="" min="0" minlength="3" maxlength="3"  placeholder="cvv" style="width: 10%;padding: 10px;font-weight: 600;">
                     <button class="btn btn-md btn-outline-danger ml-2" style="height: 49px; border: none;border-radius: 2px;color: #fff;background-color: #ee8105;font-weight: 600;">Pay $170 </button>
                 </p>
                 </div>
                 </div>
                 <div class="mt-2 " style="cursor: pointer;">
-                <input class="ml-4 netbanking" type="radio" name="paymentGateway" id="" style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">NetBanking</span> <br>
+                <input class="ml-4 netbanking" type="radio" name="paymentGateway"  style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">NetBanking</span> <br>
                 <div class="netbankingInput" hidden>
                     <p class="ml-5 mt-3 mb-3"><span style="color: #fff;font-weight: 600;letter-spacing: 1px;">NetBanking Option will be available soon........</span></p>
                 </div>
                 </div>
                 <div class="mt-2 mb-3" style="cursor: pointer;">
-                <input class="ml-4 cash" type="radio" name="paymentGateway" id="" style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">Cash On Delivery</span>
+                <input class="ml-4 cash" type="radio" name="paymentGateway"  style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">Cash On Delivery</span>
                 <div class=" cashInput" hidden>
-                    <input class="ml-5 mt-3 mb-3" type="text" minlength="4" maxlength="4" name="" id="" placeholder="786" style="font-size: 26px;padding: 5px;outline: #f50606; height: 50px; font-weight: 600; width: 15%;"><i class="fas fa-redo-alt ml-1"></i>
-                    <input class="ml-5 mt-3 mb-3" type="text" minlength="4" maxlength="4" name="" id="" placeholder="786" style="font-size: 20px;padding: 5px;outline: #f50606; height: 50px; font-weight: 600; width: 15%;"><br>
-                    <button class="btn btn-md btn-outline-danger ml-5 mb-5 mt-3" style="height: 50px; border: none;border-radius: 2px;color: #fff;background-color: #ee8105;font-weight: 600;">CONFIRM ORDER</button>
+                    <input class="ml-5 mt-3 mb-3 captchaHolder" type="text" minlength="4" maxlength="4" name=""   style="font-size: 26px;padding: 5px;outline: #f50606; height: 50px; font-weight: 600; width: 15%;"><i class="fas fa-redo-alt ml-1" style="color: #f50606;"></i>
+                    <input class="ml-5 mt-3 mb-3 validCaptcha" type="text" minlength="4" maxlength="4" name=""  placeholder="786" style="font-size: 20px;padding: 5px;outline: #f50606; height: 50px; font-weight: 600; width: 15%;"><br>
+                    <button class="btn btn-md btn-outline-danger ml-5 mb-5 mt-3 captchaSubmit" disabled="" style="height: 50px; border: none;border-radius: 2px;color: #fff;background-color: #ee8105;font-weight: 600;">CONFIRM ORDER</button>
                 </div>
                 </div>
             </div> 
@@ -207,6 +207,7 @@
     </div>
 
 
+
 <script>
     const upi = document.querySelector('.upi');
     const upiInput = document.querySelector('.upiInput');
@@ -243,19 +244,13 @@
     })
     
 
+    
+
 </script>
 
 
-    <!-- <script>
-        const a = document.querySelector('.buy-acc');
-        const div = document.querySelector('.acc-cart');
-        const p = document.querySelector('.Item-cart');
-        a.addEventListener('click', function(){
-            div.style.display = 'none';
-            p.style.display = 'block'
-        })
-    </script> -->
-
     
 
+<script src="/js/captcha.js">
 
+</script>

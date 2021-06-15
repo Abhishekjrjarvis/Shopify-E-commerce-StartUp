@@ -111,11 +111,57 @@
                </div> 
                <div class="mt-2" style="background-color: rgb(77, 77, 77); border-radius: 2px; padding: 10px; border-bottom: 2px solid black;">
                 <span class="" style="font-size: 13px; font-weight: 600; background-color: rgb(70, 70, 70);float: left; color:#f50606; padding: 3px; ">4</span>
-               <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff; letter-spacing: 1px; ">Payments
-                <p><span style="margin-left: 27px; letter-spacing: 1px; color: #fff;">Payment Option will be available soon......</span></p>
-
-            </div>
-            </div>
+               <p><span class="ml-3 mt-2" style="font-weight: 600; color: #fff; letter-spacing: 1px; ">Payments </span></p>
+                <!-- <p><span style="margin-left: 27px; letter-spacing: 1px; color: #fff;">Payment Option will be available soon......</span></p> -->
+                <div class="mt-2" style="cursor: pointer;">
+                    <input class="ml-4 upi" type="radio" name="paymentGateway" id="" style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">UPI</span> <br>  
+                    <div class="upiInput" hidden>
+                        <p class="ml-5 mt-3 "><span style="font-weight: 600;letter-spacing: 1px;">Choose an Option</span><br>
+                        <input class="mt-3" type="radio" name="upiname"><span class="ml-3" style="font-weight: 600;letter-spacing: 1px;">PhonePe</span><br>
+                        <input class="mt-3" type="radio" name="upiname"><span class="ml-3" style="font-weight: 600;letter-spacing: 1px;">Your UPI ID</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-2 " style="cursor: pointer;">
+                <input class="ml-4 creditDebit" type="radio" name="paymentGateway"  style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">Credit / Debit / ATM Card</span> <br>
+                <div class="creditDebitInput" hidden>
+                    <input class="ml-5 mt-3 mb-1 " type="text" minlength="16"  maxlength="16" name=""  placeholder="Enter Card Number" style="font-size: 14px;padding: 5px;outline: #f50606; height: 50px;width: 40%;font-weight: 600;">
+                    <p class="ml-5 mt-0" style="font-weight: 600;letter-spacing: 1px;"><span class="text-white">Valid Thru</span> 
+                        <span>MM <select name="" id="" style="border: none;border-radius: 2px;box-shadow: none;">
+                            <option value="Jan">Jan</option>
+                            <option value="Feb">Feb</option>
+                        </select>
+                    </span>
+                    <span>YYYY
+                        <select name="" id="" style="border: none;border-radius: 2px;box-shadow: none;">
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                        </select>
+                    </span>
+                    <input class="ml-3" type="password" name="" min="0" minlength="3" maxlength="3"  placeholder="cvv" style="width: 10%;padding: 10px;font-weight: 600;">
+                    <button class="btn btn-md btn-outline-danger ml-2" style="height: 49px; border: none;border-radius: 2px;color: #fff;background-color: #ee8105;font-weight: 600;">Pay $170 </button>
+                </p>
+                </div>
+                </div>
+                <div class="mt-2 " style="cursor: pointer;">
+                <input class="ml-4 netbanking" type="radio" name="paymentGateway"  style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">NetBanking</span> <br>
+                <div class="netbankingInput" hidden>
+                    <p class="ml-5 mt-3 mb-3"><span style="color: #fff;font-weight: 600;letter-spacing: 1px;">NetBanking Option will be available soon........</span></p>
+                </div>
+                </div>
+                <div class="mt-2 mb-3" style="cursor: pointer;">
+                <input class="ml-4 cash" type="radio" name="paymentGateway"  style="cursor: pointer;"><span class="ml-3 text-muted" style="font-size: 15px; font-weight: 600;letter-spacing: 1px;">Cash On Delivery</span>
+                <div class=" cashInput" hidden>
+                    <input class="ml-5 mt-3 mb-3 captchaHolder" type="text" minlength="4" maxlength="4" name=""   style="font-size: 26px;padding: 5px;outline: #f50606; height: 50px; font-weight: 600; width: 15%;"><i class="fas fa-redo-alt ml-1" style="color: #f50606;"></i>
+                    <input class="ml-5 mt-3 mb-3 validCaptcha" type="text" minlength="4" maxlength="4" name=""  placeholder="786" style="font-size: 20px;padding: 5px;outline: #f50606; height: 50px; font-weight: 600; width: 15%;"><br>
+                    <button class="btn btn-md btn-outline-danger ml-5 mb-5 mt-3 captchaSubmit" disabled="" style="height: 50px; border: none;border-radius: 2px;color: #fff;background-color: #ee8105;font-weight: 600;">CONFIRM ORDER</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+            
+            
  
             <div class="col-4 mt-0" style="position: sticky; background-color: rgb(77, 77, 77); transition: none; box-shadow: none; transform: none;">
                 <h5 style="font-weight: 600; color: rgb(0, 0, 0); letter-spacing: 1px;">PRICE DETAILS</h5>
@@ -150,17 +196,50 @@
 
 
 
-
-
-    <!-- <script>
-        const a = document.querySelector('.buy-acc');
-        const div = document.querySelector('.acc-cart');
-        const p = document.querySelector('.Item-cart');
-        a.addEventListener('click', function(){
-            div.style.display = 'none';
-            p.style.display = 'block'
+    <script>
+        const upi = document.querySelector('.upi');
+        const upiInput = document.querySelector('.upiInput');
+        const creditDebit = document.querySelector('.creditDebit')
+        const creditDebitInput = document.querySelector('.creditDebitInput')
+        const netbanking = document.querySelector('.netbanking')
+        const netbankingInput = document.querySelector('.netbankingInput')
+        const cash = document.querySelector('.cash')
+        const cashInput = document.querySelector('.cashInput')
+        
+        upi.addEventListener('click', function(){
+            upiInput.removeAttribute('hidden')
+            cashInput.setAttribute('hidden','')
+            creditDebitInput.setAttribute('hidden','')
+            netbankingInput.setAttribute('hidden','')
         })
-    </script> -->
+        creditDebit.addEventListener('click', function(){
+            upiInput.setAttribute('hidden','')
+            netbankingInput.setAttribute('hidden','')
+            cashInput.setAttribute('hidden','')
+            creditDebitInput.removeAttribute('hidden')
+        })
+        netbanking.addEventListener('click', function(){
+            upiInput.setAttribute('hidden','')
+            creditDebitInput.setAttribute('hidden','')
+            cashInput.setAttribute('hidden','')
+            netbankingInput.removeAttribute('hidden')
+        })
+        cash.addEventListener('click', function(){
+            upiInput.setAttribute('hidden','')
+            creditDebitInput.setAttribute('hidden','')
+            netbankingInput.setAttribute('hidden','')
+            cashInput.removeAttribute('hidden')
+        })
+        
+    
+        
+    
+    </script>     
+    
+    <script src="/js/captcha.js">
+    
+    </script>
+
 
     
 
