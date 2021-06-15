@@ -6,4 +6,19 @@ input[type="number"]{
     background: rgb(105, 105, 105);
     color: rgb(255, 255, 255);
 }
-  
+
+.Correctcard{
+    display:none;
+    color:rgb(4, 252, 4);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.Errorcard{
+    display: none;
+    color: #ff0000;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+

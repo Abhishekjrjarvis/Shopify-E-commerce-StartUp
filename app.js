@@ -99,6 +99,8 @@ app.use('/products/:id/review', reviewRoutes);
 app.use('/user', userRoutes);
 app.use('/user', addressRoutes);
 
+
+
 app.get('/checks', (req, res)=>{
   res.render('check')
 })

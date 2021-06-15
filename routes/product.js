@@ -78,14 +78,13 @@ router.get("/", catchAsync(async(req, res) => {
             const products = await Product.find({tag: 'B/Kids'});
             res.render("index", { products,categories: categories, productPriceFilter: productPriceFilter , productTag: productTag});
         }
-    } 
+    }
     else {
       const products = await Product.find({});
     //   const user = await User.findById({_id: req.user._id}).populate('wishlist')
       res.render("index", { products, categories: "All", productPriceFilter: 'All', productTag: 'All' });
     }
 }));
-
 
 
 

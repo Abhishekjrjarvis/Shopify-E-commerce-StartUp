@@ -1,0 +1,21 @@
+<!-- < layout('./layouts/boilerplate') %>
+
+<p><span class="text-white">
+    query results 
+    < for(let p of products) {%>
+        <= p.name %>
+    < } %>   
+</span></p>
+<p><span class="text-white">
+    < for(let p of productsTag) {%>
+        <= p.name %> - <= p.price  %> <= p.categories  %> <b><= p.tag  %> </b>  <br>
+    < } %>
+</span></p>    
+
+
+else if(q){
+    const qw = q.slice(0,1).toUpperCase() + q.slice(1,)
+    const products = await Product.find({categories: qw});
+    const productsTag = await Product.find({tag: qw});
+    res.render('queryResults', { products, productsTag })
+}  -->
