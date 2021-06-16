@@ -1,0 +1,11 @@
+
+.col-6{
+    transition: transform 0.4s;
+
+}
+
+.col-6:hover{
+    transform: scale(1.01) translateY(-1px);
+    box-shadow: 0 0 18px 0px rgba(255, 255, 255, 0.3);
+
+}
