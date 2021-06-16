@@ -1,6 +1,7 @@
 const express = require('express');
 const Farm = require('../models/farm');
 const Product = require('../models/product');
+const Blog = require('../models/blogs');
 const User = require('../models/user');
 const router = express.Router({mergeParams: true})
 const catchAsync = require('../Utilities/catchAsync');
@@ -17,6 +18,39 @@ router.get("/", catchAsync(async (req, res) => {
     const farms = await Farm.find({});
     res.render("farm/index", { farms });
 }));
+
+
+
+
+
+
+
+router.get('/blogs', async(req, res)=>{
+    const blogs = await Blog.find()
+    res.render('blogs', { blogs })
+})
+
+router.post('/blogs', async(req, res) =>{
+    const blogs = await new Blog(req.body);
+    blogs.user = req.user._id;
+    await blogs.save();
+    res.redirect('/farms/blogs')
+})
+
+router.delete('/blogs/:id', async(req, res) =>{
+    const { id } = req.params;
+    console.log(id)
+    const blog = await Blog.findByIdAndDelete({_id:id});
+    res.redirect('/farms/blogs')
+})
+
+
+
+
+
+
+
+
   
 router.get("/new", isLoggedIn,  async(req, res) => {
     const user = await User.findById(req.user._id);

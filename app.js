@@ -49,6 +49,7 @@ const secret = `${process.env.SECRET}` || "adminCredentials";
 
 const sessionConfig = {
     name: 'session',
+    
     store,
     secret,
     resave: false,
@@ -101,9 +102,7 @@ app.use('/user', addressRoutes);
 
 
 
-app.get('/checks', (req, res)=>{
-  res.render('check')
-})
+
 
 app.get('/', (req, res)=>{
   req.flash('success', 'welcome');

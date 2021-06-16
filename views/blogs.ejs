@@ -1,0 +1,95 @@
+
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/homes.css">
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1>Starting up </h1><br>
+                <p> We’re here to help. Get free education, tips, and <br> inspiration to help you start and grow a successful business. </p>
+                <a class="btn " href="#" style="border-radius: 5px;color: #fff;background-color: rgb(201, 0, 0);">Start Up</a>
+            </div>
+            <div class="col-2">
+                <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/product-page-increase-conversion.jpg?v=1619700078&width=600" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container-fluid">
+        <h2 class="text-center text-white mt-4 add-blog featured-title" style="cursor: pointer;">Blog Articles</h2>
+    <div class="row">
+        <div class="col-6 blog-form" hidden>
+            <div class="card bg-dark mb-3" style="padding: 20px;text-align: center;">
+             <form action="/farms/blogs" method="POST" class="validCredentials-form " novalidate>
+                <h4 class="mt-3" style="text-align: center;color: #fff;">Add Blog</h4>
+                <label for="title" class="mt-3" style="color: #fff; font-weight: 600;letter-spacing: 1px;">Title</label><br>
+                <input type="text" name="title" id="title" placeholder="Enter title here......" required style="cursor: pointer; width: 550px;color: #fff; border-radius: 3px;border: none;padding: 10px; background-color: gray;"><br>
+                <label for="body" class="mt-3" style="color: #fff; font-weight: 600;letter-spacing: 1px;">Description</label><br>
+                <textarea type="text" name="body" id="body" cols="63" rows="6" placeholder="Detailed about Your Topic........" required style="cursor: pointer; color: #fff; border-radius: 3px;border: none;padding: 10px; background-color: gray;"></textarea><br>
+                <label for="blogTag"class="mt-3" style="color: #fff; font-weight: 600;letter-spacing: 1px;">Tag</label>
+                <select name="blogTag" id="" style="font-weight: 600;border: none;border-radius: 2px; background-color: gray;">
+                    <option value="Brand" style="font-weight: 600;">Brand</option>
+                    <option value="Find An Idea" style="font-weight: 600;">Find An Idea</option>
+                    <option value="Guides" style="font-weight: 600;">Guides</option>
+                    <option value="Business Intelligence" style="font-weight: 600;">Business Intelligence</option>
+                    <option value="Backoffice" style="font-weight: 600;">Backoffice</option>
+                    <option value="Podcasts" style="font-weight: 600;">Podcasts</option>
+
+
+                </select><br>
+                <button class="btn btn-sm btn-outline-danger save-blog btn-block" style="border-radius: 3px;border: none;color: #fff;">Save</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <% for(let blog of blogs) {%> 
+        <div class="col-4" style="box-shadow: none;transform: none;transition: none;background-color: rgb(78, 78, 78);">
+            <% if(blog.blogTag === 'Business Intelligence') {%>
+            <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/email-marketing.jpg?v=1554225457&width=600" alt="">
+            <% } else if(blog.blogTag === 'Brand') {%>
+                    <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/diy-product-photography.jpg?v=1599161908&width=600" alt="">
+            <% } else if(blog.blogTag === 'Guides') {%>
+                    <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/image2_c6dddb8a-d89e-440a-8567-10b26488b732.jpg?v=1620938854&width=600" alt="">
+            <% } else if(blog.blogTag === 'Find An Idea') {%>
+                    <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/subscription-business.jpg?v=1604195360&width=600" alt="">
+            <% } else if(blog.blogTag === 'Backoffice') {%>
+                    <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/how-to-reduce-shipping-costs.jpg?v=1622122576&width=600" alt="">    
+            <% } else if(blog.blogTag === 'Podcasts') {%>
+                    <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/Masters_KateMacleod_03.jpg?v=1623108443&width=600" alt="">
+            <% } else {%>
+            <% } %>
+
+            <p class="mt-1 mb-1"><span style="color:aqua;font-weight: 600;letter-spacing: 1px;"><%= blog.blogTag  %> </span></p>
+            <h5 class="mt-1" style="font-weight: 600;letter-spacing: 1px;"><%= blog.title %></h5>
+            <p style="font-weight: 500;letter-spacing: 1px;"><%= blog.body %></p>
+            <hr>
+            <% if(currentUser &&  blog.user.equals(currentUser._id)) {%> 
+              by - <span style="color:#d17600; font-weight: 600;letter-spacing: 0.5px;"><%= currentUser.username  %></span> <i class="fas fa-circle mb-1" style=" font-size: 4px;"></i>
+            <% } %> 
+             <b style=" font-weight: 600;letter-spacing: 0.5px;"><%= moment(blog.createdAt).fromNow()  %> </b>
+             <% if(currentUser &&  blog.user.equals(currentUser._id)) {%> 
+             <form action="/farms/blogs/<%= blog._id %>?_method=DELETE " method="POST">
+             <button style="background-color:rgb(78, 78, 78) ; float: right;border: none;"><i class="fas fa-trash-alt" style="color:#f50606;"></i></button>
+            </form>
+            <% } %> 
+        </div>
+        <% } %> 
+    </div>
+</div>
+
+    <script>
+        const addBlog = document.querySelector('.add-blog');
+        const saveBlog = document.querySelector('.save-blog');
+        const blogForm = document.querySelector('.blog-form')
+        addBlog.addEventListener('click', function(){
+            blogForm.removeAttribute('hidden');
+        })
+        saveBlog.addEventListener('click', function(){
+            blogForm.setAttribute('hidden','')
+        })
+    </script>
+
+
