@@ -37,6 +37,12 @@ router.post('/blogs', async(req, res) =>{
     res.redirect('/farms/blogs')
 })
 
+router.get('/blogs/:id', async(req, res) =>{
+    const { id } = req.params;
+    const blogs = await Blog.findById({_id:id}).populate('user')
+    res.render('blogShow', { blogs })
+})
+
 router.delete('/blogs/:id', async(req, res) =>{
     const { id } = req.params;
     console.log(id)

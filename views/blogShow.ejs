@@ -1,0 +1,52 @@
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/homes.css">
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1>Shopify Blog </h1><br>
+                <p> We’re here to help. Get free education, tips, and <br> inspiration to help you start and grow a successful business. </p>
+                <% if(!currentUser) {%> 
+                <a class="btn " href="#" style="border-radius: 5px;color: #fff;background-color: rgb(201, 0, 0);">Start Up</a>
+                <% } %> 
+            </div>
+            <div class="col-2">
+                <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/FIRE_Movement_Header.jpg?v=1620161133&width=600" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<% const arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %> 
+
+<hr style="background-color: rgb(80, 80, 80);">
+
+<div class="contianer-fluid">
+    <div class="row mb-5">
+        <div class="col-9">
+            <h2 class="mt-2 mb-2" style="color: #f50;"><%= blogs.title  %></h2>
+            <p><span style="color:rgb(173, 173, 173); letter-spacing: 1px;">by - <%= blogs.user.username  %> <i class="fas fa-circle py-1" style=" font-size: 4px;"></i> <%= blogs.blogTag  %> </span></p>
+            <% const date = new Date(`${(blogs.createdAt)}`) %>
+            <% const currMonth = date.getMonth(); %> 
+            <% const currDate = date.getDate(); %> 
+            <% const currYear = date.getFullYear(); %> 
+            <p><span style="color:rgb(173, 173, 173);"><%= arr[currMonth] %> <%= currDate %>, <%= currYear %>  </span></p>
+            <% if(blogs.blogTag === 'Business Intelligence') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/email-marketing.jpg?v=1554225457&width=600" alt="">
+            <% } else if(blogs.blogTag === 'Brand') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/diy-product-photography.jpg?v=1599161908&width=600" alt="">
+            <% } else if(blogs.blogTag === 'Guides') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/image2_c6dddb8a-d89e-440a-8567-10b26488b732.jpg?v=1620938854&width=600" alt="">
+            <% } else if(blogs.blogTag === 'Find An Idea') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/subscription-business.jpg?v=1604195360&width=600" alt="">
+            <% } else if(blogs.blogTag === 'Backoffice') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/how-to-reduce-shipping-costs.jpg?v=1622122576&width=600" alt="">    
+            <% } else if(blogs.blogTag === 'Podcasts') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/Masters_KateMacleod_03.jpg?v=1623108443&width=600" alt="">
+            <% } else {%>
+            <% } %>
+            <p class="mt-3" style="color:#fff;letter-spacing: 1px;"><span><%= blogs.body  %> </span></p>
+        </div>
+    </div>
+</div>

@@ -106,6 +106,11 @@ app.get('/help', (req, res) =>{
 })
 
 
+app.get('/podcasts',(req, res) =>{
+  res.render('podcasts')
+})
+
+
 app.get('/', (req, res)=>{
   req.flash('success', 'welcome');
   res.render('home');

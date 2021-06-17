@@ -1,0 +1,30 @@
+.col-6 .fas.fa-arrow-right{
+    transition: transform 0.4s;
+}
+
+.col-6 .fas.fa-arrow-right:hover{
+    transform: translateX(10px);
+}
+
+
+.listenpodcasts{
+    margin-left: 140px;
+}
+
+small{
+    margin-left: 45px;
+    font-size: 17px;
+    color: #fff;
+}
+
+@media only screen and (max-width: 720px) {
+    .col-6 .listenpodcasts{
+        margin-left: 0px;
+    }
+    .col-6 .master{
+        margin-left: 0px;
+    }
+    .col-6 main{
+        margin-left: 0px;
+    }
+}
