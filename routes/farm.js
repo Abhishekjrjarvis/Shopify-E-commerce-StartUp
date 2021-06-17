@@ -45,14 +45,17 @@ router.get('/blogs/:id', async(req, res) =>{
 
 router.delete('/blogs/:id', async(req, res) =>{
     const { id } = req.params;
-    console.log(id)
+    // console.log(id)
     const blog = await Blog.findByIdAndDelete({_id:id});
     res.redirect('/farms/blogs')
 })
 
 
 
-
+router.get('/guides', async(req, res) =>{
+    const blogs = await Blog.find()
+    res.render('guides', { blogs })
+})
 
 
 

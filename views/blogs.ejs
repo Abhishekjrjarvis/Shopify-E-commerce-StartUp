@@ -46,7 +46,7 @@
     </div>
     <div class="row">
         <% for(let blog of blogs) {%> 
-        <div class="col-4" style="box-shadow: none;transform: none;transition: none;background-color: rgb(78, 78, 78);">
+        <div class="col-4 ml-1" style="box-shadow: none;transform: none;transition: none;background-color: rgb(78, 78, 78);">
             <% if(blog.blogTag === 'Business Intelligence') {%>
             <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0070/7032/files/email-marketing.jpg?v=1554225457&width=600" alt="">
             <% } else if(blog.blogTag === 'Brand') {%>
@@ -64,7 +64,7 @@
 
             <p class="mt-1 mb-1"><span style="color:aqua;font-weight: 600;letter-spacing: 1px;"><%= blog.blogTag  %> </span></p>
             <h5 class="mt-1" style="font-weight: 600;letter-spacing: 1px;"><a href="/farms/blogs/<%= blog._id  %> " style="text-decoration: none; color: #f50;"> <%= blog.title %></a></h5>
-            <p style="font-weight: 500;letter-spacing: 1px;"><%= blog.body.substring(0,100) %></p>
+            <p style="font-weight: 500;letter-spacing: 1px;"><%= blog.body.substring(0,100) %>....</p>
             <hr>
             <% if(currentUser &&  blog.user.equals(currentUser._id)) {%> 
               by - <span style="color:#d17600; font-weight: 600;letter-spacing: 0.5px;"><%= currentUser.username  %></span> <i class="fas fa-circle mb-1" style=" font-size: 4px;"></i>

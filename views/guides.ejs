@@ -1,0 +1,45 @@
+
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/homes.css">
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h1>Starting up </h1><br>
+                <p> We’re here to help. Get free education, tips, and <br> inspiration to help you start and grow a successful business. </p>
+                <a class="btn " href="#" style="border-radius: 5px;color: #fff;background-color: rgb(201, 0, 0);">Start Up</a>
+            </div>
+            <div class="col-2">
+                <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/product-page-increase-conversion.jpg?v=1619700078&width=600" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% const arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %> 
+
+<hr style="background-color: rgb(80, 80, 80);">
+
+<div class="contianer-fluid">
+    <div class="row mb-5">
+        <% for(let blog of blogs) {%>  
+            <% if(blog.blogTag === 'Find An Idea' || blog.blogTag === 'Guides') {%> 
+        <div class="col-6">
+            <h2 class="mt-2 mb-2" style="color: #f50;"><%= blog.title  %></h2>
+            <p><span style="color: aqua;letter-spacing: 1px;"><%= blog.blogTag  %></span></p>
+            <% if(blog.blogTag === 'Guides') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/image2_c6dddb8a-d89e-440a-8567-10b26488b732.jpg?v=1620938854&width=600" alt="">
+            <% } else if(blog.blogTag === 'Find An Idea') {%>
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0070/7032/files/subscription-business.jpg?v=1604195360&width=600" alt="">
+            <% } else {%>
+            <% } %>
+            <p class="mt-3" style="color:#fff;letter-spacing: 1px;"><span><%= blog.body  %> </span></p>
+        </div>
+            <% } else {%>
+            <% } %>  
+        <% } %> 
+        
+    </div>
+</div>
