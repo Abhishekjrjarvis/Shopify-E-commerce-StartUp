@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row mt-3 mb-5">
         <% for(let p of order.productsItem) {%>
             <div class="col-10 ml-1 mt-3" style="background-color: rgb(85, 85, 85); padding: 18px; border-radius: 3px;">             
             <a href="/products/<%= p._id %>">
@@ -44,7 +44,7 @@
             </p>
             <p><span class="ml-3" style="font-weight: 600;letter-spacing: 1px;">Products qty - <%= p.qty  %>
             <span style="float: right;font-weight: 600;letter-spacing: 1px;color: rgb(141, 0, 0);">
-                <a href="/products/<%= p._id %>" style="text-decoration: none;color: rgb(141, 0, 0);"><i class="fas fa-star"></i> Rate and Review Product
+                <a href="/products/<%= p._id%>/review/write-review" style="text-decoration: none;color: rgb(141, 0, 0);"><i class="fas fa-star"></i> Rate and Review Product
                 </a>    
             </span>
             </span>

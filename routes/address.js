@@ -63,6 +63,20 @@ router.post('/verify/payment-flow/status-order', async(req, res) =>{
     await user.save();
     res.redirect('/user/verify-order/confirmation/true')
   })
+
+  router.post('/verify/payment-flow/status-order/:id', async(req, res) =>{
+    const { id } = req.params;
+    const products = await Product.findById({_id:id});
+    const user = await User.findById({_id: req.user._id})
+    const order = await new Order(req.body);
+    order.user = req.user._id;
+    order.productsItem.push(products);
+    await order.save();
+    user.orders.push(order);
+    user.orderProducts.push(order)
+    await user.save();
+    res.redirect('/user/verify-order/confirmation/true')
+  })
   
   
 

@@ -4,6 +4,12 @@ const Review = require('../models/review')
 const router = express.Router({mergeParams: true});
 
 
+router.get('/write-review', async(req, res) =>{
+    const { id } = req.params;
+    const product = await Product.findById({_id:id}).populate('reviews');
+    res.render('reviews', { product });
+})
+
 
 router.post('/', async(req, res) =>{
     const{ id } = req.params;
@@ -29,6 +35,9 @@ router.post('/', async(req, res) =>{
     res.redirect(`/products/${id}`)
     
 })
+
+
+
 
 router.delete('/:rid',async(req, res) =>{
     const { id, rid } = req.params;

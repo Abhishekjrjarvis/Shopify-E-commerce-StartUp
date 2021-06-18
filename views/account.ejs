@@ -38,7 +38,7 @@
                     <% if(f.author.equals(currentUser._id)) {%> 
                 <div class="form-group mt-0">
                     <label for="storename" style="color: rgb(255, 255, 255); font-weight: 600; letter-spacing: 1px;">Your Store</label>
-                    <input class="form-control" type="text" name="storename" value="<%= f.name  %> " id="storename" style=" width: 40%;height: 50px;  cursor: pointer;background-color: grey; color: #fff;">
+                    <input class="form-control" type="text" readonly="readonly" name="storename" value="<%= f.name  %> " id="storename" style=" width: 40%;height: 50px;  cursor: pointer;background-color: grey; color: #fff;">
                 </div>
                 <% } %>
                 <% } %>  

@@ -18,13 +18,15 @@
                        <% if(user.addresses) {%> 
                         <% if(user.addresses.length >= 1) {%>
                            <i class="fas fa-check ml-2" style="font-size: 11px; color: #f50606;"></i></span></p>   
-                        
                        <span class="ml-4 mt-0" style="font-weight: 600; color: #fff;">
-                        <select name="" id="" style="background-color:rgb(99, 96, 96) ; border-radius: 3px;">
+                        <form action="/user/verify/payment-flow/status-order/<%= products._id %> " method="POST">
+                        <select name="useraddress" id="" value="useraddress" style="background-color:rgb(99, 96, 96) ; border-radius: 3px;">
                             <% for(let u of user.addresses) {%>
-                                <option value=""><%= u.name  %>, <%= u.mobno %>,  <%= u.address %> - <%= u.pincode  %> <span style="padding: 2px; border-radius: 5px; background-color: #3d3535; color: #fff;"><%= u.tag %> </span></option>
+                                <option value="<%= u.name  %>, <%= u.mobno %>,  <%= u.address %> - <%= u.pincode  %> <%= u.tag %>"><%= u.name  %>, <%= u.mobno %>,  <%= u.address %> - <%= u.pincode  %> <span style="padding: 2px; border-radius: 5px; background-color: #3d3535; color: #fff;"><%= u.tag %> </span></option>
                             <% } %>
                         </select>
+                        <button class="btn btn-sm btn-danger" style="border: none;border-radius: 2px;color: #fff;">CONFIRM ORDER</button>
+                        </form>
                     </span>       
                    <% } else {%>
                        <p><span>
