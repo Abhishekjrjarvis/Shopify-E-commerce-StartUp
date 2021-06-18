@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('./product');
 const Address = require('./address');
+const Order = require('./order');
 const passportLocalMongoose = require('passport-local-mongoose');
 
 
@@ -24,6 +25,12 @@ const userSchema = new mongoose.Schema({
             ref: 'Address'
         }
     ],
+    orderProducts: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Order'   
+        }
+    ],
     email: {
         type: String,
         unique: true,
@@ -43,6 +50,17 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product' 
         }
+    ],
+    orders:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
+        },
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Order'   
+        }
+        
     ]
 
 })

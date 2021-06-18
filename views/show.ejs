@@ -143,7 +143,7 @@
                         <button class="mywishlist" style="background-color: transparent;"><i class="fas fa-heart mywishlistheart mt-2 mr-3"></i></button>
                     </form>    
                     <h5><%= p.name  %></h5>
-                    <span style="color: #fff;">$<%= product.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= product.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span>
+                    <span style="color: #fff;">$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffers.toFixed(0) %>% off</span>
                 </div>
                 <% } else{%>
                     <% } %>  

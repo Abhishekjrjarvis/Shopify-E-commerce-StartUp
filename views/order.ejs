@@ -1,0 +1,35 @@
+<% layout('./layouts/boilerplate')%> 
+
+<% const arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %> 
+
+
+<div class="container-fluid">
+    <h4 class="mt-5" style="text-align: center; color: #f50606; font-weight: 600;letter-spacing: 1px;">My Orders List </h4>
+    <div class="row">
+        <% let i = 1 %> 
+        <% for(let p of orders) {%>
+        <div class="col-8 mt-3" style="background-color: rgb(85, 85, 85); padding: 18px; border-radius: 3px; transition: none;transform: none;">            
+                <p><span style="text-align: center; font-size: 13px; color: #fff;font-weight: 600;letter-spacing: 1px;">
+                    <a href="/user/verify-order/confirmation/true/<%= p._id  %> " style="text-decoration: none;color: #fff;">
+                        <i class="fas fa-truck-moving" style="color: rgb(141, 0, 0);"></i> Order <%= i %> 
+                        </a>
+                </span>
+                <span style="float: right;font-weight: 600;letter-spacing: 1px;font-size: 13px;">
+                    <i class="fas fa-circle " style="color: rgb(0, 156, 0); font-size: 10px;"></i> Delievered On 
+                    <% const dated = new Date(`${(p.orderedDate)}`) %>
+                    <% const currmonths = dated.getMonth(); %> 
+                    <% const currdates = dated.getDate(); %> 
+                    <% const curryears = dated.getFullYear(); %>
+                    <%= currdates %> <%= arr[currmonths] %> <%= curryears %>
+                </span> 
+            </p> 
+             
+                
+                
+        </div>
+        <% i = i+ 1 %> 
+        <% } %>
+        
+    </div>
+
+</div>

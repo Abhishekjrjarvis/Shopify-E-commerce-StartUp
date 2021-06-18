@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Farm = require('../models/farm');
+const Address = require('../models/address')
 const Product = require('../models/product');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const async = require('async');
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
+const address = require('../models/address');
 // const multer = require('multer');
 // const { storages } = require('../cloudinary/farmIndex');
 // const uploads = multer({ storages })
@@ -153,9 +155,6 @@ router.get('/verify-acc-cart/checkout',async(req, res)=>{
     }}).populate('addresses');
   res.render('payment', { user })
 })
-
-
-
 
 
 
