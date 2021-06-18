@@ -33,7 +33,7 @@ router.post('/account/profile/overview/m-address', async(req, res) =>{
       }
     })
     const orders = await Order.find(); 
-    // console.log(orders)
+    // console.log(user.orders)
     res.render('order', { user, orders });
   })
 
@@ -44,7 +44,7 @@ router.post('/account/profile/overview/m-address', async(req, res) =>{
     const orders = await Order.find(); 
     const order = await Order.findById({_id:id}).populate({
       path:'productsItem'
-    }); 
+    }).populate('user'); 
     // console.log(order);
     res.render('orders', { user, order , orders });
   })

@@ -2,12 +2,12 @@
 
 <% const arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %> 
 
-
+<% if(user.orderProducts.length >= 1) {%> 
 <div class="container-fluid">
     <h4 class="mt-5" style="text-align: center; color: #f50606; font-weight: 600;letter-spacing: 1px;">My Orders List </h4>
-    <div class="row">
+    <div class="row mb-5">
         <% let i = 1 %> 
-        <% for(let p of orders) {%>
+        <% for(let p of user.orderProducts) {%>
         <div class="col-8 mt-3" style="background-color: rgb(85, 85, 85); padding: 18px; border-radius: 3px; transition: none;transform: none;">            
                 <p><span style="text-align: center; font-size: 13px; color: #fff;font-weight: 600;letter-spacing: 1px;">
                     <a href="/user/verify-order/confirmation/true/<%= p._id  %> " style="text-decoration: none;color: #fff;">
@@ -20,7 +20,7 @@
                     <% const currmonths = dated.getMonth(); %> 
                     <% const currdates = dated.getDate(); %> 
                     <% const curryears = dated.getFullYear(); %>
-                    <%= currdates %> <%= arr[currmonths] %> <%= curryears %>
+                    <%= currdates + 4 %> <%= arr[currmonths] %> <%= curryears %>
                 </span> 
             </p> 
              
@@ -33,3 +33,12 @@
     </div>
 
 </div>
+<% } else{%>
+    <div class="container-fluid">
+        <div class="row mt-5 mb-5">
+            <div class="col-8" style="background-color: rgb(46, 46, 46); padding: 18px; border-radius: 3px; transition: none;transform: none;">
+                <p class="mt-3 text-center"><span style="font-weight: 600;letter-spacing: 1px;color: #fff;"><i class="fas fa-truck-moving" style="color: rgb(141, 0, 0);"></i> No Orders Available</span></p>
+            </div>
+        </div>
+    </div>
+<% } %>  
