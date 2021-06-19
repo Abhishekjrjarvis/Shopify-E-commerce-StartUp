@@ -146,8 +146,8 @@
                    <% let offers = 0 %>
                    <% let calcoffers = 0 %> 
                    <% offers =  p.saleprice - p.price  %> 
-                   <% calcoffers = (offer * 100)/p.saleprice %> 
-                   <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffer.toFixed(0) %>% off</span> </p>
+                   <% calcoffers = (offers * 100)/p.saleprice %> 
+                   <p><span>$<%= p.price %></span> <span style="color: rgb(150, 150, 150); text-decoration: line-through;">$<%= p.saleprice %></span> <span style="color: #d30000;"><%= calcoffers.toFixed(0) %>% off</span> </p>
                </div>
                <% }else{ %>
                <% } %>  
