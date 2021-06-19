@@ -109,8 +109,13 @@
 
 }
 
+.rev-texts{
+    border-bottom: 2px solid #f50606;
+}
+.des-revs{
+    border-bottom: 2px solid #f50606;
 
-
+}
 /* .close-modal{
     color: #fff;
     margin-left: 430px;

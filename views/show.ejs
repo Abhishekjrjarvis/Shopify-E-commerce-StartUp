@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/css/homes.css">
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/star.css">
+<link rel="stylesheet" href="/css/productIndex.css">
 
 <div class="carousel-category detailed-one-product">
     <div class="row">
@@ -151,65 +152,69 @@
     </div>
 </div>
 <hr class="divider">
-<div class="carousel-category">
 
+<div class="container-fluid">
     <% if(currentUser){ %>
-        <h2 class="featured-title">Reviews</h2>
-        <div class=" row product-row mt-0 mb-5" style="float: right;">
-            <div class="col-lg-2">
-                <% if(product.reviews.length >= 1) {%>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filter Reviews
-                        </a>
-                        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                        <a href="/products/<%= product._id %>?reviewCategory=Best" class="dropdown-item Best">
-                            Best
-                         </a> 
-                         <a href="/products/<%= product._id %>?reviewCategory=Good" class="dropdown-item">
-                            Good
-                         </a>
-                         <a href="/products/<%= product._id %>?reviewCategory=Moderate" class="dropdown-item">
-                            Moderate
-                         </a>
-                         <a href="/products/<%= product._id %>?reviewCategory=Poor" class="dropdown-item">
-                            Poor
-                         </a>
-                         <a href="/products/<%= product._id %>?reviewCategory=Bad" class="dropdown-item">
-                            Bad
-                         </a>                        
-                        </div>
-                    </li>
-                <% } %> 
+        <h4 style="font-weight: 600;cursor: pointer;"><span class="des-rev">Description</span> <span class="ml-5 rev-text">Reviews</span></h4>
+        <div class="des-row row mt-5 mb-5" hidden="">         
+            <div class="col-10" style="background-color: rgb(51, 51, 51); border-radius: 5px">
+                <p class="mt-3" style="font-weight: 600;letter-spacing: 1px;color: #fff;padding:5px;">
+                    <span>
+                        <%= product.description  %> 
+                </span></p>
             </div>
         </div>
-            <div class="carousel-category"> 
- 
-                    <div class="row">
-                        <% for(let review of product.reviews) { %>
-                                <div class="card bg-dark mb-3">
-                                    <div class="card-body">
-                                        <img src="https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg" alt=""><small class="ml-2 mt-3 review-star"><b><%=review.rating%><i class="fas fa-star ml-1"></i></b></small><small class="text-muted ml-2 review-date" style="float: right;"><%= moment(review.createdAt).fromNow()%></small>  
-                                        <hr>
-                                        <p class="starability-result review-stars" data-rating="<%=review.rating%>"></p>
-                                        <p class="card-text text-muted"><b><i class="fas fa-quote-left mr-2" style="font-size: 12px; color: rgb(31, 24, 24);"></i><%=review.body %></b><i class="fas fa-quote-right ml-2"style="font-size: 12px; color: rgb(31, 24, 24);"></i></p>
-                                                    
-                                        <% if(currentUser && review.author.equals(currentUser._id)) {%> 
-                                                <form action="/products/<%=product._id %>/review/<%=review._id%>?_method=DELETE" method="POST">
-                                                    <button class="btn btn-outline-danger btn-sm delete">Delete</button>
-                                                </form>
-                                        <% } %> 
-                                                    
+            <div class="rev-row row mt-5 mb-5">
+                <div class="col-10" style="background-color: rgb(51, 51, 51); border-radius: 5px">
+
+                <% for(let review of product.reviews) { %>
+                            <div class="mt-3">
+                                <div class="text-center " style="background-color: rgb(95, 54, 54); float: left; width: 30px; height: 31px; border-radius: 20px; ">
+                                    <h3 class="" style="font-weight: 600; font-size: 26px; padding: 2px;"><%= review.author.username.slice(0,1).toUpperCase() %> </h3>
+                                </div>   
+                            <!-- <img src="https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg" alt="" width="48px" height="50px" style="border-radius: 30px;"> -->
+                            <small class="ml-3 mt-4" style="background-color: rgb(49, 155, 0);color: #fff;font-size: 13px;padding: 6px;border-radius: 6px;">
+                                <b><%=review.rating%><i class="fas fa-star ml-1"></i></b>
+                            </small>
+                            <span class="mt-0" style="margin-left: 100px;">
+                                <li class="nav-item dropdown" style="float: right; ">
+                                    <a class="nav-link " id="dropdown-color" href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000; letter-spacing: 1px;">
+                                      <i class="fas fa-ellipsis-h" style="color: rgb(163, 163, 163)"></i>
+                                    </a>
+                                    <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 14px; letter-spacing: 1px;">
+                                      <% if(currentUser && review.author.equals(currentUser._id)) {%> 
+                                        <form action="/products/<%=product._id %>/review/<%=review._id%>?_method=DELETE" method="POST">
+                                            <button class="dropdown-item">Delete</button>
+                                        </form>
+                                <% } else{%>
+                                    <button class="dropdown-item">Report Abuse</button>
+                                    <% } %> 
                                     </div>
-                                </div>
-                            <% } %>     
-                    </div>
-                </div>
+                                    </li>
+                                </span>
+                        </div>
+                        <p class="card-text text-muted mt-3 mb-3"><b><i class="fas fa-quote-left mr-2" style="font-size: 12px; color: rgb(31, 24, 24);"></i><span style="color: rgb(196, 196, 196);"><%=review.body %></span></b><i class="fas fa-quote-right ml-2"style="font-size: 12px; color: rgb(31, 24, 24);"></i></p>
+                        <p>
+                            <small class="text-muted ml-2 review-date" style="font-weight: 600;letter-spacing: 1px;">
+                               - <%= review.author.username  %> <i class="fas fa-check-circle"></i> cetrified Buyer
+                            </small><i class="fas fa-circle mb-1 ml-1" style=" font-size: 4px;"></i>
+                            <small class="text-muted ml-1 review-date" style="font-weight: 600;letter-spacing: 1px;">
+                            <%= moment(review.createdAt).fromNow()%>
+                        </small>
+                    </p>  
+                                <!-- <p class="starability-result review-stars" data-rating="<%=review.rating%>"></p> -->
+                    <hr style="background-color: rgb(71, 71, 71);">
+                    <% } %>
+                </div>     
+            </div>
+        </div>
+                    
+                
     <% }else {%>
         <h3 class="text-white">Write Your Own Review</h3>
             <p class="text-white mt-5 mb-5" style="border: 0.5px dotted #c1cf00; padding: 3px; letter-spacing: 1px;" ><i class="fas fa-exclamation-triangle ml-1" style="color: #f50606"></i> UnAuthorized Users can't give the reviews to get access <a href="/user/login">Sign in</a> or <a href="/user/register">Create account</a></p> 
         <% } %> 
-</div>
+    </div>
 
 <script>
     const productImg = document.getElementById('product-img');
@@ -236,6 +241,27 @@
     </form>
 <% } %>  
 
+
+<script>
+    const dspan = document.querySelector('.des-rev');
+    const rspan = document.querySelector('.rev-text');
+    const drow = document.querySelector('.des-row');
+    const rrow = document.querySelector('.rev-row');
+    dspan.addEventListener('click', function(){
+        rrow.setAttribute('hidden','');
+        drow.removeAttribute('hidden');
+        dspan.classList.add('des-revs')
+        rspan.classList.remove('rev-texts');
+
+    })
+    rspan.addEventListener('click', function(){
+        drow.setAttribute('hidden','');
+        rrow.removeAttribute('hidden')
+        rspan.classList.add('rev-texts');
+        dspan.classList.remove('des-revs')
+
+    })
+</script>
 
 
 <!-- <p>

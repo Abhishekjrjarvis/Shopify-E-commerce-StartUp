@@ -126,3 +126,34 @@
     
         
     </script>
+
+
+
+    <!-- <div class=" row product-row mt-0 mb-5" style="float: right;">
+            <div class="col-lg-2">
+                <% if(product.reviews.length >= 1) {%>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filter Reviews
+                        </a>
+                        <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+                        <a href="/products/<%= product._id %>?reviewCategory=Best" class="dropdown-item Best">
+                            Best
+                         </a> 
+                         <a href="/products/<%= product._id %>?reviewCategory=Good" class="dropdown-item">
+                            Good
+                         </a>
+                         <a href="/products/<%= product._id %>?reviewCategory=Moderate" class="dropdown-item">
+                            Moderate
+                         </a>
+                         <a href="/products/<%= product._id %>?reviewCategory=Poor" class="dropdown-item">
+                            Poor
+                         </a>
+                         <a href="/products/<%= product._id %>?reviewCategory=Bad" class="dropdown-item">
+                            Bad
+                         </a>                        
+                        </div>
+                    </li>
+                <% } %> 
+            </div>
+        </div> -->
