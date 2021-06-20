@@ -47,7 +47,7 @@ router.get('/login', (req, res)=>{
 })
 
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }) , async(req, res, next) =>{
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/user/login' }) , async(req, res, next) =>{
     req.flash('success', `welcome back! ${req.user.username}`);
     const redirectUrl = req.session.returnTo || '/farms';
     delete req.session.returnTo;

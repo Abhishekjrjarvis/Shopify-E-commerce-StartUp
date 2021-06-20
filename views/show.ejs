@@ -243,6 +243,11 @@
     <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
         <button class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;"><i class="far fa-trash-alt"></i> Delete </button>
     </form>
+    <button class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;">
+        <a href="/products/<%= product._id %>/edit " style="text-decoration: none;color: #fff;">
+        Edit
+    </a>
+    </button>
 <% } %>  
 
 

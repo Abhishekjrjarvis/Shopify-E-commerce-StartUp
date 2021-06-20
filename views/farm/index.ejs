@@ -1,6 +1,5 @@
 <% layout('./layouts/boilerplate') %>
 <link rel="stylesheet" href="/css/homes.css">
-<link rel="stylesheet" href="/css/cssSliders.css">
     <div class="header">
         <div class="container">
             <div class="row">
@@ -17,18 +16,7 @@
         </div>
     </div>
 
-    <!-- <div id="slider" class="slider mt-5">
-		<div class="slider-content">
-			<div class="slider-content-wrapper">
-				<div class="slider-content__item image-1"></div>
-				<div class="slider-content__item image-2">Toys Store</div>
-				<div class="slider-content__item image-3">Grocery Store</div>
-				<div class="slider-content__item image-4">4</div>
-				<div class="slider-content__item image-5">5</div>
-				<div class="slider-content__item image-6">6</div>
-			</div>
-		</div>
-    </div> -->
+
 
 
     <div class="carousel-category">
@@ -51,8 +39,6 @@
                         <img src= "https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
                     <% } else if(farm.category === 'Toys') {%>    
                         <img src= "https://images.unsplash.com/photo-1515281239448-2abe329fe5e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80" alt="">
-                    <% } else if(farm.category === 'Home Furniture') {%> 
-                        <img src="https://images.unsplash.com/photo-1617325710236-4a36d46427c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="image-scale-valid" alt="">
                     <% } %> 
                     </a>
                     <% } else if(currentUser && !(farm.author.equals(currentUser._id))) {%>
@@ -69,9 +55,7 @@
                                 <img src= "https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=777&q=80" alt="">
                             <% } else if(farm.category === 'Toys') {%>    
                                 <img src= "https://images.unsplash.com/photo-1515281239448-2abe329fe5e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=769&q=80" alt="">
-                            <% } else if(farm.category === 'Home Furniture') {%> 
-                                <img src="https://images.unsplash.com/photo-1617325710236-4a36d46427c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="image-scale-valid" alt="">
-                            <% } %> 
+                            <% } %>  
                             </a>
                     <% } %>
 
@@ -100,21 +84,6 @@
       <% } %> 
     </div>
 
- 
-    <script type="text/javascript" src="/js/cssSlider.js"></script>
 
-
-          
-
-
-      
-
-                
-
-                                  
-
-
-        
-<!-- <a href="/farms/new">Add farms</a> -->
 
                 

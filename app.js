@@ -23,10 +23,10 @@ const addressRoutes = require('./routes/address');
 const catchAsync = require('./Utilities/catchAsync');
 const FarmError = require('./Utilities/FarmError');
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = 'mongodb://localhost:27017/productInfofarm';
 
-// process.env.DB_URL;
-// 'mongodb://localhost:27017/productInfofarm';
+process.env.DB_URL;
+'mongodb://localhost:27017/productInfofarm';
 mongoose.connect(dbUrl,
     { 
       useNewUrlParser: true,
