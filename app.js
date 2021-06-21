@@ -101,6 +101,15 @@ app.use('/user', userRoutes);
 app.use('/user', addressRoutes);
 
 
+app.get('/', (req, res)=>{
+  req.flash('success', 'welcome');
+  res.render('home');
+})
+
+app.get('/business-encylopedia', (req, res) =>{
+  res.render('business');
+})
+
 app.get('/help', (req, res) =>{
   res.render('help')
 })
@@ -111,15 +120,13 @@ app.get('/podcasts',(req, res) =>{
 })
 
 
-app.get('/', (req, res)=>{
-  req.flash('success', 'welcome');
-  res.render('home');
-})
+
 
 
 
 
 app.all('*', (req, res, next) =>{
+   res.render('page404');
    return next(new FarmError('Page Not Found', '404'))
 })
 
