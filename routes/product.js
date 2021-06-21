@@ -183,11 +183,7 @@ router.put("/:id", catchAsync(async (req, res) => {
     res.redirect(`/products/${products._id}`);
 }));
   
-router.delete("/:id", catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findByIdAndDelete({ _id: id });
-    res.redirect("/products");
-}));
+
 
 
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('./product');
 const Address = require('./address');
+const Farm = require('./farm');
 const Order = require('./order');
 const passportLocalMongoose = require('passport-local-mongoose');
 
@@ -36,6 +37,12 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: [true,'You must have a valid Email']
     },
+    farms:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+        ref: 'Farm'
+        }
+    ],
     resetPasswordToken: String,
     resetPasswordExpires: Date,
     cart:[

@@ -62,15 +62,18 @@ router.get('/guides', async(req, res) =>{
 
   
 router.get("/new", isLoggedIn,  async(req, res) => {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id).populate('farms');
     const farm = await Farm.find({})
     res.render("farm/new", { farm , user });
 });
   
 router.post("/", isLoggedIn, catchAsync(async (req, res) => {
-    const farm = await new Farm(req.body); 
+    const farm = await new Farm(req.body);
+    const user = await User.findById(req.user._id) 
     farm.author = req.user._id;
+    user.farms.push(farm);
     await farm.save();
+    await user.save();
     res.redirect("/farms");
 }));
   
@@ -82,6 +85,17 @@ router.get("/:id", catchAsync(async (req, res) => {
         }
     }).populate("products").populate('author');
     res.render("farm/show", { farm });
+}));
+
+
+router.delete("/:id", catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(req.user._id)
+    const findFarms = user.farms.indexOf(id);
+    user.farms.splice(findFarms, 1)
+    user.save();
+    const farm = await Farm.findByIdAndDelete({ _id: id });
+    res.redirect("/farms");
 }));
   
 router.get("/:id/products/new", isLoggedIn, catchAsync(async (req, res) => {
@@ -111,12 +125,15 @@ router.get('/:id/products', async(req, res) =>{
 
 })
   
-router.delete("/:id", isLoggedIn, isFarmOwner,  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const farms = await Farm.findByIdAndDelete({_id:id});
-
+router.delete("/:id/products/:pid", isLoggedIn, isFarmOwner,  catchAsync(async (req, res) => {
+    const { id, pid } = req.params;
+    const farms = await Farm.findByIdAndUpdate(id, { $pull: { products: pid } });
+    const product = await Product.findByIdAndDelete(pid);
+    console.log(farms);
     res.redirect("/farms");
 }));
   
+
+
 
 module.exports = router;

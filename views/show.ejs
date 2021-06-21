@@ -240,7 +240,7 @@
 
 
 <% if(currentUser && product.author.equals(currentUser._id)) {%> 
-    <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+    <form action="/farms/<%= product.farm._id %>/products/<%= product._id %>?_method=DELETE" method="POST">
         <button class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;"><i class="far fa-trash-alt"></i> Delete </button>
     </form>
     <button class="btn btn-outline-danger btn-sm" style="background-color: rgb(110, 0, 0); border-radius: 2px; border: none; color: #fff;">
