@@ -28,7 +28,6 @@ router.post('/', async(req, res) =>{
     }else {
         review.reviewCategory = 'Bad'
     }
-
     product.reviews.push(review);
     await review.save()
     await product.save()

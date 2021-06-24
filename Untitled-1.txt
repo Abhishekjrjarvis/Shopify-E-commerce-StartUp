@@ -50,6 +50,17 @@
             </div>
         </div> -->
 
+		    let totalRev = 0;
+    let avgs = 0;
+    if(product.reviews.length >= 1){
+        for(let r of product.reviews) { 
+            totalRev = totalRev + r.rating     
+        } 
+        avgs = parseFloat(totalRev/product.reviews.length)
+        product.rating = avgs.toFixed(0);    
+    }
+    res.send(product)
+
 
 // css slider.css
 

@@ -55,7 +55,7 @@
                 <% for(let r of product.reviews) {%> 
                     <% total = total + r.rating  %>   
                 <% } %>
-                <% avg = parseFloat(total/product.reviews.length) %>
+                <% avg = parseFloat(total/product.reviews.length) %>  
                 <p>
                     <% if(avg >= 0 && avg <= 1) {%> 
                         <span><small class="text-white" style="background-color: #07ce00; border-radius: 5px; padding: 5px; font-size: 15px;"><%= avg.toFixed(1) %><i class="fas fa-star ml-1"></i></small>

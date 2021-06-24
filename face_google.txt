@@ -1,6 +1,15 @@
 // const FacebookStrategy = require('passport-facebook');
 // const GoogleStrategy = require('passport-google-oauth20');
 
+
+
+
+CLIENT_ID_FACEBOOK=804518527150567
+CLIENT_SECRET_FACEBOOK=93d9172c8cf3a211ff1907a790f61162
+
+CLIENT_ID_GOOGLE=869785180685-3ge2og3ft801u4otgrt3hu2hm7esr684.apps.googleusercontent.com
+CLIENT_SECRET_GOOGLE=MsfGPKv0SEDIDLuFsz6RDnvK
+
 // passport.use(new GoogleStrategy({
 //   clientID: process.env.CLIENT_ID_GOOGLE,
 //   clientSecret: process.env.CLIENT_SECRET_GOOGLE,
@@ -114,9 +123,3 @@ router.get("/details", function(req, res){
     }
 });
 
-
-CLIENT_ID_FACEBOOK=804518527150567
-CLIENT_SECRET_FACEBOOK=93d9172c8cf3a211ff1907a790f61162
-
-CLIENT_ID_GOOGLE=869785180685-3ge2og3ft801u4otgrt3hu2hm7esr684.apps.googleusercontent.com
-CLIENT_SECRET_GOOGLE=MsfGPKv0SEDIDLuFsz6RDnvK
