@@ -11,6 +11,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require('cookie-parser');
 const mongoStore = require('connect-mongo');
+const helmet = require('helmet');
 const flash = require("connect-flash");
 const passport = require('passport');
 const localStrategy = require('passport-local');
@@ -99,7 +100,9 @@ app.use('/products', productRoutes);
 app.use('/products/:id/review', reviewRoutes);
 app.use('/user', userRoutes);
 app.use('/user', addressRoutes);
-
+app.use(helmet({
+  contentSecurityPolicy: false
+}));
 
 app.get('/', (req, res)=>{
   req.flash('success', 'welcome');

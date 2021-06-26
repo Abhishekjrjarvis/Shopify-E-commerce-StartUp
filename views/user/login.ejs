@@ -21,7 +21,9 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control bg-dark text-white" type="password" maxlength="10" id="password" name="password" placeholder="password" required>
+                            <input class="form-control bg-dark text-white passValid" type="password" maxlength="10" id="password" name="password" placeholder="password" required>
+                            <i class="fas fa-eye password-hide" style="cursor: pointer;"></i>
+                            <i class="fas fa-eye-slash password-unhide" style="cursor: pointer;"></i>
                             <div class="valid-feedback">
                                 Nice
                             </div> 
@@ -45,23 +47,29 @@
 
 
 
- <!-- Button trigger modal
-<button type="button" id="check-login" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
-    Login
-  </button>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" id="headerModal">
-          <h5 class="modal-title mt-2" id="exampleModalLabel">Login</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span class="close-modal" aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            
-        </div>
+<script>
+  const pHide = document.querySelector('.password-hide');
+  const pUnhide = document.querySelector('.password-unhide');
+  const ipass = document.getElementsByTagName('input')[2];
+  window.addEventListener('load', function(){
+    pHide.style.display = 'none'
 
-      </div>
-    </div>
-  </div> -->
+  })
+  pUnhide.addEventListener('click', function(){
+    ipass.removeAttribute('type','password');
+    ipass.setAttribute('type', 'text')
+    if(ipass.type === 'text'){
+      pHide.style.display = 'block';
+      pUnhide.style.display = 'none'
+    }
+    
+  })
+  pHide.addEventListener('click', function(){
+    ipass.removeAttribute('type', 'text');
+    ipass.setAttribute('type', 'password');
+    if(ipass.type === 'password'){
+      pUnhide.style.display = 'block';
+      pHide.style.display = 'none'
+    }
+  })
+</script>
