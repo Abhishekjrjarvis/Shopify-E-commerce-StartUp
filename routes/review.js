@@ -37,7 +37,6 @@ router.post('/', async(req, res) =>{
 
 
 
-
 router.delete('/:rid',async(req, res) =>{
     const { id, rid } = req.params;
     const product = await Product.findByIdAndUpdate(id, { $pull: { reviews: rid } })

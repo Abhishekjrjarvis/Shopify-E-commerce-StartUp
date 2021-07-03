@@ -187,4 +187,69 @@
 
 
 
+
+    <h2 class="featured-title" style="color: #fff;">Frequently Asked Question</h2>
+    <div class="mb-2 expand " style="width: 800px;height: 70px;background-color: rgb(48, 48, 48);padding: 18px; margin: 0px auto;">
+        <p class="ml-2"><span style="font-size: 25px;color: #fff;font-weight: 600;letter-spacing: 1.5px;">What is Shopify? <span style="float: right;cursor: pointer;"><i class="fas fa-plus explain"></i><i class="fas fa-times close" hidden="" style="color: white;"></i></span></span>
+        </p>
+    </div>
+    <div class="explain-shopify mb-2 " hidden="" style="width: 800px;background-color: rgb(48, 48, 48);padding: 18px; margin: 0px auto;">
+        <p>
+            <span style="font-size: 25px;color: #fff;font-weight: 600;letter-spacing: 1.5px;">
+                Shopify a platform where you build your own store and do business across with the world.
+            </span>
+    </p>
+    </div>
+
+
+
+    <div class="mb-2 expand-cost " style="width: 800px;height: 70px;background-color: rgb(48, 48, 48);padding: 18px; margin: 0px auto;">
+        <p class="ml-2"><span style="font-size: 25px;color: #fff;font-weight: 600;letter-spacing: 1.5px;">How Much Shopify Store Cost? <span style="float: right;cursor: pointer;"><i class="fas fa-plus explain-cost"></i><i class="fas fa-times close-cost" hidden="" style="color: white;"></i></span></span>
+        </p>
+    </div>
+    <div class="explain-shopify-cost mb-2 " hidden="" style="width: 800px;background-color: rgb(48, 48, 48);padding: 18px; margin: 0px auto;">
+        <p>
+            <span style="font-size: 25px;color: #fff;font-weight: 600;letter-spacing: 1.5px;">
+                You Build Or Create One Store For Multiple You Need To Buy MemberShip At Cost Of $100/month  
+            </span>
+    </p>
+    </div>
+
+    <script>
+        const expand = document.querySelector('.expand')
+        const explain = document.querySelector('.explain')
+        const explainShopify = document.querySelector('.explain-shopify')
+        const closes = document.querySelector('.close')
+
+        explain.addEventListener('click', function(){
+            explainShopify.removeAttribute('hidden')
+            explain.style.display = 'none'
+            closes.removeAttribute('hidden')
+        })
+        closes.addEventListener('click', function(){
+            explainShopify.setAttribute('hidden','')
+            explain.style.display = 'block'
+            closes.setAttribute('hidden','')
+        })
+
+        const expandCost = document.querySelector('.expand-cost')
+        const explainCost = document.querySelector('.explain-cost')
+        const explainShopifyCost = document.querySelector('.explain-shopify-cost')
+        const closesCost = document.querySelector('.close-cost')
+
+        explainCost.addEventListener('click', function(){
+            explainShopifyCost.removeAttribute('hidden')
+            explainCost.style.display = 'none'
+            closesCost.removeAttribute('hidden')
+        })
+        closesCost.addEventListener('click', function(){
+            explainShopifyCost.setAttribute('hidden','')
+            explainCost.style.display = 'block'
+            closesCost.setAttribute('hidden','')
+        })
+
+    </script>
+
+
+
     

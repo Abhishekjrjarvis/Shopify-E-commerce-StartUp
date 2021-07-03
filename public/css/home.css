@@ -13,7 +13,7 @@
      no-repeat center;
     z-index: 9999;
     transform: rotate(360deg);
-    animation: 1050ms cartAnimation ease-in-out infinite;;
+    animation: 1050ms cartAnimation ease-in-out infinite;
 }
 
 @keyframes cartAnimation {
