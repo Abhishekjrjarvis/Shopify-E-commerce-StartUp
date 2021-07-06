@@ -49,7 +49,7 @@ router.get('/login', (req, res)=>{
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/user/login' }) , async(req, res, next) =>{
     req.flash('success', `welcome back! ${req.user.username}`);
-    const redirectUrl = req.session.returnTo || '/farms';
+    const redirectUrl = req.session.returnTo || '/';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 })
@@ -58,7 +58,7 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 router.get('/logout', (req, res) =>{
     req.logout();
     req.flash('success', 'successfully logout')
-    res.redirect('/farms');
+    res.redirect('/');
 })
 
 

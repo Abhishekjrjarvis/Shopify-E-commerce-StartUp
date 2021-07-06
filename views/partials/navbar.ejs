@@ -23,9 +23,9 @@
         <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 14px; letter-spacing: 1px;">
           <a class="dropdown-item" href="#">Manage Everything</a>
           <hr class="dropdown-divider ml-2 mr-2" style="width: 150px; color: rgb(105, 105, 105);">
-          <a class="dropdown-item mt-3" href="/farms"><i class="fas fa-store"></i> Store</a>
-            <a class="dropdown-item mt-3" href="/products"><i class="fab fa-product-hunt"></i> Products</a>
-            <a class="dropdown-item mt-3" href="/farms/new"><i class="fas fa-plus-circle"></i> Add Store</a>
+          <a class="dropdown-item mt-3" href="/farms"><i class="fas fa-store" style="color:#f50606;"></i> Store</a>
+            <a class="dropdown-item mt-3" href="/products"><i class="fab fa-product-hunt" style="color:#f50606;"></i> Products</a>
+            <a class="dropdown-item mt-3" href="/farms/new"><i class="fas fa-plus-circle" style="color:#f50606;"></i> Add Store</a>
         </div>
         </li>
         <li class="nav-item dropdown mr-4">
@@ -34,11 +34,11 @@
           </a>
           <div id="dropdown-color" class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 14px; letter-spacing: 1px;">
             
-            <a class="dropdown-item mt-2" href="/help">Help Center</a>
-            <a class="dropdown-item mt-2" href="/farms/guides">Guides</a>
-            <a class="dropdown-item mt-2" href="/farms/blogs">Blog</a>
-            <a class="dropdown-item mt-2" href="/podcasts">Podcast</a>
-            <a class="dropdown-item mt-2" href="/business-encylopedia">Business Encylopedia</a>
+            <a class="dropdown-item mt-2" href="/help"><i class="fas fa-phone-square" style="color: #f50606;"></i> Help Center</a>
+            <a class="dropdown-item mt-2" href="/farms/guides"><i class="fab fa-guilded" style="color:#f50606;"></i> Guides</a>
+            <a class="dropdown-item mt-2" href="/farms/blogs"><i class="fab fa-microblog" style="color:#f50606;"></i> Blog</a>
+            <a class="dropdown-item mt-2" href="/podcasts"><i class="fas fa-podcast" style="color:#f50606;"></i> Podcast</a>
+            <a class="dropdown-item mt-2" href="/business-encylopedia"><i class="fas fa-book" style="color:#f50606;"></i> Business Encylopedia</a>
           </div>
           </li>
       <% if(!currentUser) { %> 
@@ -71,7 +71,16 @@
               </div>
               <a class="dropdown-item mt-3" href="/user/account/profile/overview"><i class="fas fa-user" style="color: #f50606"></i> My Profile</a>
               <a class="dropdown-item mt-3" href="/user/account/profile/overview/m-account"><i class="fas fa-folder-open" style="color: #f50606"></i> Manage Accounts</a>
-              <a class="dropdown-item mt-3" href="/user/account/profile/overview/home_wishlist"><i class="fas fa-heart pr-1" style="color: #f50606;"></i> My Wishlist <span class="px-1" style="float: right; font-size: 12px; color: #fff; background-color: rgb(187, 180, 180); border-radius: 10px;"><%= currentUser.wishlist.length %> </span></a>
+              <a class="dropdown-item mt-3" href="/user/account/profile/overview/home_wishlist"><i class="fas fa-heart pr-1" style="color: #f50606;"></i> My Wishlist 
+                <span class="px-1" style="float: right; font-size: 12px; color: #fff; background-color: rgb(187, 180, 180); border-radius: 10px;">
+                  <%= currentUser.wishlist.length %> 
+                </span>
+              </a>
+              <a class="dropdown-item mt-3" href="/user/verify-order/confirmation/true"><i class="fas fa-truck" style="color: #f50606"></i> My Order 
+                <span class="px-1" style="float: right; font-size: 12px; color: #fff; background-color: rgb(187, 180, 180); border-radius: 10px;">
+                  <%= currentUser.orderProducts.length %> 
+                </span>
+                </a>
               <a class="dropdown-item mt-3 " href="/user/logout"><i class="fas fa-sign-out-alt" style="color: #f50606;"></i> Logout</a>
             </div>
         </li>
