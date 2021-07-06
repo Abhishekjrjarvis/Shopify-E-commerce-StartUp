@@ -1,5 +1,45 @@
 <% layout('./layouts/boilerplate') %> 
 <link rel="stylesheet" href="/css/homes.css">
+<link rel="stylesheet" href="/css/home.css">
+
+<% if(!currentUser) {%> 
+    <div class="setCredentials">
+        <p class="mt-2 ml-4">
+            <span>
+               <i class="fab fa-shopify" style="color:#f50606;"></i> Sign in to Shopify to explore 
+               <span class="mt-2"><i class="fas fa-times endPopUp" style="float: right; font-size: 22px; cursor: pointer;z-index: 1;margin-left: auto;"></i></span>
+
+            </span>
+            <hr style="background-color: #fff;">
+            <span>
+                To create your account. See Shopify's 
+                <a href="#" style="text-decoration: none;color:#f50606;">privacy policy</a>
+                 and 
+                 <a href="#" style="text-decoration: none;color:#f50606;">Terms of Service.</a>
+            </span>
+        </p>
+        <button class="btn btn-danger btn-block" style="border: none;border-radius: 2px;">
+            <a href="/user/login" style="text-decoration: none;color: #fff;">Login
+            </a>
+        </button> 
+    </div>
+  <% } else {%>
+    <div class="setCredentials">
+        <p class="mt-2 ml-4">
+            <span>
+              <i class="fab fa-shopify" style="color:#f50606;"></i> Welcome <%= currentUser.username %> ✋
+              <span class="mt-2"><i class="fas fa-times endPopUp" style="float: right; font-size: 22px; cursor: pointer;z-index: 1;margin-left: auto;"></i></span>
+
+            </span>
+            <hr style="background-color: #fff;">
+            <span>
+                We love giving new visitors to get exicted deal on latest Product.
+                check out once 
+                <button class="btn btn-danger btn-block welcome" style="border-radius: 2px;"><a href="/products" style="text-decoration: none;color: #fff;">Take a Preview</a></button>
+            </span>
+        </p>
+    </div>
+    <% } %>  
 
     <div class="header">
         <div class="container">
@@ -17,6 +57,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <hr class="divider">
 
@@ -215,6 +257,7 @@
     </p>
     </div>
 
+    
     <script>
         const expand = document.querySelector('.expand')
         const explain = document.querySelector('.explain')
@@ -248,6 +291,21 @@
             closesCost.setAttribute('hidden','')
         })
 
+
+        const setCredentials = document.querySelector('.setCredentials')
+        const setClose = document.querySelector('.endPopUp')
+        setCredentials.style.display = 'none'
+        window.addEventListener('load',function(){
+        const timeoutId = setTimeout(() =>{
+            setCredentials.style.display = 'block'
+            setCredentials.classList.add('setPopUp')
+          },10000)
+          console.log(timeoutId)
+      })
+      setClose.addEventListener('click', function(){
+        setCredentials.style.display = 'none'
+      })
+        
     </script>
 
 

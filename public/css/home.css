@@ -81,6 +81,29 @@ body{
 }
          */
 
+.setPopUp{
+    width: 400px;
+    padding: 5px;
+    height: 210px;
+    background: rgb(48, 48, 48);
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+    z-index: 1;
+    border-radius: 5px;
+    position: fixed;
+    margin-left: auto;
+}
+
+.welcome{
+    background:#866118;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+}
+
 #navlinks{
     color: rgb(255, 255, 255);
 }
