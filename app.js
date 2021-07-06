@@ -122,7 +122,9 @@ app.get('/podcasts',(req, res) =>{
   res.render('podcasts')
 })
 
-
+app.get('/privacy', (req, res) =>{
+    res.render('privacy')
+})
 
 
 
