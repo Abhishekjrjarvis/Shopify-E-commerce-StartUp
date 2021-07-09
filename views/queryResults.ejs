@@ -1,21 +1,62 @@
-<!-- < layout('./layouts/boilerplate') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card-query {
 
-<p><span class="text-white">
-    query results 
-    < for(let p of products) {%>
-        <= p.name %>
-    < } %>   
-</span></p>
-<p><span class="text-white">
-    < for(let p of productsTag) {%>
-        <= p.name %> - <= p.price  %> <= p.categories  %> <b><= p.tag  %> </b>  <br>
-    < } %>
-</span></p>    
+    width: 300px;
+    height: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.card-title {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+p, a {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+a {
+    color: #4d4ae8;
+    text-decoration: none;
+}
+.card-query {
+    background: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+.shape {
+    position: absolute;
+    width: 150px;
+    top: .5rem;
+    left: .5rem;
+}
+    </style>
+</head>
+<body style="background: linear-gradient(90deg, #4d243b 0,#214852 58%);">
+    <div class="container-fluid">
+        <img class="shape" src="https://s3.us-east-2.amazonaws.com/ui.glass/shape.svg" alt="">
+
+        <div class="card card-query">
+            <h3 class="card-title">Glassmorphism is awesome</h3>
+            <p>A modern CSS UI library based on the glassmorphism design principles that will help you quickly design and build beautiful websites and applications.</p>
+            <a href="https://ui.glass">Read more</a>
+            <input type="text" style="border: 0;padding: 5px;outline: none;border-radius: 5px;font-weight: 600;letter-spacing: 0.5px;">
+    
+        </div>
+
+    </div>
+</body>
+</html>
 
 
-else if(q){
-    const qw = q.slice(0,1).toUpperCase() + q.slice(1,)
-    const products = await Product.find({categories: qw});
-    const productsTag = await Product.find({tag: qw});
-    res.render('queryResults', { products, productsTag })
-}  -->

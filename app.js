@@ -57,8 +57,8 @@ const sessionConfig = {
     saveUninitialized: false,
     cookie:{
       httpOnly: true,
-      expires: Date.now() + 1000 * 24 * 60 * 60 * 7,
-      maxAge: 1000 + 60 * 60 * 24 * 7
+      expires: new Date(Date.now() + 1000 * 24 * 60 * 60),
+      maxAge:  1000 * 60 * 60  
     }
 }
 
@@ -104,6 +104,9 @@ app.use(helmet({
   contentSecurityPolicy: false
 }));
 
+
+
+
 app.get('/', (req, res)=>{
   req.flash('success', 'welcome');
   res.render('home');
@@ -126,6 +129,10 @@ app.get('/privacy', (req, res) =>{
     res.render('privacy')
 })
 
+
+app.get('/glassmorphism', (req, res) =>{
+  res.render('queryResults');
+})
 
 
 
