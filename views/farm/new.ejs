@@ -4,9 +4,59 @@
 
 
     <% if(user.farms.length === 1) {%>
-        <div class="alert alert-danger" role="alert">
-            You only create one store multiple then buy membership
-    </div> 
+        <div class="container">
+            <h3 class="mt-5" style="text-align: center;color: #fff;">Shopify Pricing</h3>
+            <p class="mb-5"style="text-align: center;color: #fff;">Build world class stores and do business of all types</p>
+            <div class="row">
+                <div class="col-4 price" style="background-color: rgb(77, 65, 1); height: auto;border-radius:3px; box-shadow: 0px 0px 18px 2px rgba(255,255,255,0.15);transition: none;transform: none;">
+                    <i class="fas fa-gem mt-2" style="color: #f50606;float: left;"></i><h3 style="margin-left: 30px;color: #fff;">Shared</h3>
+                    <p><span style="font-size: 18px;border-bottom: 2px solid #0fac01;">from $0/month</span></p>
+                    <% if(!currentUser) {%> 
+                    <button class="btn btn-md btn-outline-primary" style="border-radius: 3px; border: none;background-color: #7e0000;">Sign Up</button>
+                    <% } %> 
+                    <p style="letter-spacing: 1px;">Best for new ecommerce businesses with occasional in-person sales</p>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Online Stores - 1</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Limited Products - 1000</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Store Cloud Storage - 1GB</span><br>
+                    <i class="fas fa-times" style="color: #f50606;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Reports</span><br>
+                    <i class="fas fa-times" style="color: #f50606;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Gift Cards</span>
+
+                </div>
+                <div class="col-4 price" style="background-color: rgb(59, 2, 2); height: auto;border-radius:3px; box-shadow: 0px 0px 18px 2px rgba(255,255,255,0.15);transition: none;transform: none;">
+                    <div class="recommend mb-2" style="background-color: rgb(65, 46, 46); border-radius: 2px;">
+                        <h5 class="ml-3 mb-1" style="color: #f50606; letter-spacing: 1px;">Recommended</h5>
+                    </div>
+                    <i class="fas fa-gem mt-2" style="color: #f50606;float: left;"></i><h3 style="margin-left: 30px;color: #fff;">Dedicated</h3>
+                    <p><span style="font-size: 18px;border-bottom: 2px solid #0fac01;">from $40/month</span></p>
+                    <% if(!currentUser) {%>
+                    <button class="btn btn-md btn-outline-primary" style="border-radius: 3px; border: none; background-color: #7e0000;">Sign Up</button>
+                    <% } %> 
+                    <p style="letter-spacing: 1px;">Best for growing businesses selling online or in-store</p>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Online Stores - 10</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Unlimited Products</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Store Cloud Storage - 50GB</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Standard Reports</span><br>
+                    <i class="fas fa-times" style="color: #f50606;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Gift Cards</span>
+
+                </div>
+                <div class="col-4 price" style="background-color: rgb(2, 72, 75); height: auto;border-radius:3px; box-shadow: 0px 0px 18px 2px rgba(255,255,255,0.15);transition: none;transform: none;">
+                    <i class="fas fa-gem mt-2" style="color: #f50606;float: left;"></i><h3 style="margin-left: 30px;color: #fff;">Premium</h3>
+                    <p><span style="font-size: 18px;border-bottom: 2px solid #0fac01;">from $100/month</span></p>
+                    <% if(!currentUser) {%>
+                    <button class="btn btn-md btn-outline-primary" style="border-radius: 3px; border: none; background-color: #7e0000;">Sign Up</button>
+                    <% } %> 
+                    <p style="letter-spacing: 1px;">Best for scaling businesses that require advanced reporting</p>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Online Stores - 50</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Unlimited Products</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Store Cloud Storage - 90GB</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Advanced Reports</span><br>
+                    <i class="fas fa-check" style="color: #0fac01;"></i><span class="ml-2" style="color:rgb(105, 105, 105); font-weight: 600; letter-spacing: 0.5px;">Gift Cards</span>
+
+
+                </div>
+            </div>
+
+        </div>
     <% } else {%>  
         <div class="carousel-category">
                 <div class="row">
@@ -52,5 +102,7 @@
 
                    
     <% } %>
+
+
 
 <!-- <%= user.farms.length  %>  -->

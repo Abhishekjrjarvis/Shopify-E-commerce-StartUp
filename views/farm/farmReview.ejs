@@ -1,0 +1,61 @@
+<% layout('./layouts/boilerplate')%>
+<link rel="stylesheet" href="/css/star.css">
+
+<div class="container-fluid">
+    <div class="row mt-5 mx-2" style="background-color: rgb(42, 94, 94);border-radius: 5px;padding: 20px;">
+        <h5 class="ml-0 text-left" style="font-weight: 600;letter-spacing: 1px;color: #fff;">Ratings & Reviews</h5>
+        <div class="ml-auto">
+            <span style="margin-left: auto;color: #fff;font-weight: 500;letter-spacing: 0.5px;">
+                <a href="/farms/<%= farm._id  %> "style="text-decoration: none;color: #fff;"><%= farm.name.substring(0,31) %>... 
+                     
+                    <img src="<%= farm.images  %> " alt="" style="width: 50px;height: 60px;border-radius: 5px;">
+                </a>
+            </span>
+        </div>
+                        
+                               
+    </div>
+    <div class="row">
+        <div class="col-4 mt-4" style="background-color: rgb(61, 61, 61);padding: 10px;transition: none;transform: none;box-shadow: none;">
+            <p style="font-size: 17px; font-weight: 600;letter-spacing: 1px;">What makes a good review</p>
+            <hr style="background-color: rgb(145, 145, 145);">
+            <h5>Have you used this product?</h5>
+            <p><span>Your review should be about your experience with the product.</span></p>
+            <hr style="background-color: rgb(145, 145, 145);">
+            <h5>Why review a product?</h5>
+            <p><span>Your valuable feedback will help fellow shoppers decide!</span></p>
+            <hr style="background-color: rgb(145, 145, 145);">
+            <h5>How to review a product?</h5>
+            <p><span>Your review should include facts. An honest opinion is always appreciated. If you have an issue with the product or service please contact us from the 
+               <a href="#" style="text-decoration: none;color: #fff;">help centre.</a></span></p>
+        </div>
+        <div class="col-8" style="background-color: rgb(61, 61, 61);">
+            <h4 class="text-white mb-3 mt-4">Rate this product</h4>
+            <form action="/farms/<%= farm._id%>/products/review " method="POST" class="mb-3 validCredentials-form" novalidate>
+                <fieldset class="starability-basic mb-3">
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
+                         aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                <hr style="background-color: rgb(145, 145, 145);">
+                <div class="mb-3">
+                    <label class="form-label text-white mb-3" for="body" style="font-size: 17px;">Review this product</label>
+                    <textarea class="form-control bg-dark text-white" name="body" id="body" cols="40" rows="4" placeholder="Description" required></textarea>
+                    <div class="valid-feedback">
+                         Nice
+                    </div>
+                </div>
+                <button class="btn btn-success review-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

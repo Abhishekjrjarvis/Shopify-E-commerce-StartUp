@@ -170,6 +170,18 @@
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">CUSTOMER REVIEWS</h2>
 
       <div class="ui stackable three column grid" style="margin: 20px 40px;">
+        <% for(let fr of farm.farmReviews) {%>
+          <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
+            <i class="fas fa-quote-left" style="color: #f50606;"></i>
+              <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;"><%= fr.body  %> </h4>
+              <span style="text-align: right; color: #fff;">- <%= fr.author.username  %> </span>
+            </div> 
+          <% } %>
+        <!-- <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
+          <i class="fas fa-quote-left" style="color: #f50606;"></i>
+            <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
+            <span style="text-align: right; color: #fff;">- User name</span>
+            </div>
         <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
         <i class="fas fa-quote-left" style="color: #f50606;"></i>
           <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
@@ -179,13 +191,9 @@
         <i class="fas fa-quote-left" style="color: #f50606;"></i>
           <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
           <span style="text-align: right; color: #fff;">- User name</span>
-        </div>
-        <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
-        <i class="fas fa-quote-left" style="color: #f50606;"></i>
-          <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
-          <span style="text-align: right; color: #fff;">- User name</span>
-          </div>
+          </div> -->
       </div>
+       
    
 
       <hr style="color: #fff; background-color: #fff; margin: 40px 40px;">
@@ -193,7 +201,7 @@
       <h4 style="color: #fff; margin: 10px 40px;">News Letter</h4>
       <div class="ui action input" style="margin: 10px 40px; color: #fff;">
         
-        <input type="email" id="search" placeholder="Email Address" style="background-color: rgb(117, 115, 115);">
+        <input type="email" id="search" placeholder="Email Address" style="background-color: rgb(117, 115, 115); cursor:pointer;">
         <div class="ui button" data-inverted="" data-tooltip="Enter email for a subscriptions" data-position="top center" style="color: #fff; background-color: #f50606;">
           Subscribe
         </div>

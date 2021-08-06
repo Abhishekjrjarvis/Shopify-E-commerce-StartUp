@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('./product')
+const ReviewFarm = require('./reviews');
 
 const ImageSchema = new mongoose.Schema({
     url: String,
@@ -40,10 +41,12 @@ const farmSchema = new mongoose.Schema({
             ref: 'Product'
         }
     ],
-    reviews: {
+    farmReviews: [
+        {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-    }
+        ref: 'ReviewFarm'
+        }
+    ]
 }, opts);
 
 

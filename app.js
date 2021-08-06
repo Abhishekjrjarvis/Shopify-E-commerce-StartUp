@@ -21,6 +21,7 @@ const productRoutes = require('./routes/product');
 const userRoutes = require('./routes/user');
 const reviewRoutes = require('./routes/review');
 const addressRoutes = require('./routes/address');
+const farmReviewRoutes = require('./routes/farmReviews');
 const catchAsync = require('./Utilities/catchAsync');
 const FarmError = require('./Utilities/FarmError');
 
@@ -98,6 +99,7 @@ app.use(express.json());
 app.use('/farms', farmRoutes);
 app.use('/products', productRoutes);
 app.use('/products/:id/review', reviewRoutes);
+app.use('/farms/:id/products/review',farmReviewRoutes)
 app.use('/user', userRoutes);
 app.use('/user', addressRoutes);
 app.use(helmet({

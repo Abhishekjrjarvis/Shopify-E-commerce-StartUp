@@ -83,7 +83,7 @@ router.get("/:id", catchAsync(async (req, res) => {
         populate:{
             path: 'author'
         }
-    }).populate("products").populate('author');
+    }).populate("products").populate('author').populate('farmReviews');
     res.render("farm/show", { farm });
 }));
 
@@ -119,7 +119,11 @@ router.post("/:id/products", isLoggedIn, upload.array('images'), catchAsync(asyn
 
 router.get('/:id/products', async(req, res) =>{
     const { id } = req.params;
-    const farm = await Farm.findById(req.params.id).populate('products');
+    const farm = await Farm.findById(req.params.id).populate({
+        path:'farmReviews',
+        populate:{
+            path: 'author'
+        }}).populate('products');
     const user = await User.findById({_id: req.user._id});
     res.render('farm/store', { farm, user })
 
