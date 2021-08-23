@@ -49,12 +49,10 @@ const farmSchema = new mongoose.Schema({
     ]
 }, opts);
 
-
 // farmSchema.pre('findOneAndDelete', async function (data) {
 //     console.log('pre middleware .........')
 //     console.log(data)
 // })
-
 
 farmSchema.post('findOneAndDelete', async function (farm) {
     if (farm.products.length) {
@@ -63,10 +61,6 @@ farmSchema.post('findOneAndDelete', async function (farm) {
     }
 })
 
-
-
-
 const Farm = mongoose.model('Farm', farmSchema);
-
 
 module.exports = Farm;

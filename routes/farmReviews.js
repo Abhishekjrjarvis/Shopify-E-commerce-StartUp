@@ -4,13 +4,11 @@ const ReviewFarm = require('../models/reviews')
 const Farm = require('../models/farm');
 const router = express.Router({mergeParams: true});
 
-
 router.get('/farm-review', async(req, res) =>{
     const { id } = req.params;
     const farm = await Farm.findById({_id:id}).populate('reviews');
     res.render('farm/farmReview', { farm });
 })
-
 
 router.post('/', async(req, res) =>{
     const{ id } = req.params;
@@ -37,8 +35,6 @@ router.post('/', async(req, res) =>{
     
 })
 
-
-
 // router.delete('/:rid',async(req, res) =>{
 //     const { id, rid } = req.params;
 //     const product = await Product.findByIdAndUpdate(id, { $pull: { reviews: rid } })
@@ -46,6 +42,5 @@ router.post('/', async(req, res) =>{
 //     req.flash('success', 'Successfully Deleted Review')
 //     res.redirect(`/products/${id}`);
 // })
-
 
 module.exports = router;

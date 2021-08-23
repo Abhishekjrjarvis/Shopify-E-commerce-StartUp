@@ -44,14 +44,12 @@
         <button class="btn btn-outline-success btn-md new-products"><a href="/farms/<%= farm._id %>/products/new "><i class="fas fa-plus-circle"></i> Add Products</a></button>
         <% } %> 
     </div>
-    <!-- <h2 class="featured-title">Latest  Products</h2> -->
 
     <div class="row">
         <% for(let f of farm.products){ %> 
         <div class="col-4">
                 <% if(f.images.length > 1) {%> 
                         <img src= "<%= f.images[1].url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">
-                    <!-- <img src="https://i.stack.imgur.com/y9DpT.jpg" alt="">  -->
                 <% }else{ %> 
                     <% for(let i of f.images)  {%>   
                     <img src= "<%= i.url %> " alt="https://i.stack.imgur.com/y9DpT.jpg">

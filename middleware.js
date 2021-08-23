@@ -12,6 +12,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+
 // module.exports.validateFarm = (req, res, next) => {
 //     const { error } = farmSchema.validate(req.body);
 //     console.log(req.body);

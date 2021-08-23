@@ -62,8 +62,6 @@ const productSchema = new mongoose.Schema({
     ]
 }, opts);
 
-
-
 productSchema.post('findOneAndDelete', async function (product) {
     if (product.reviews.length) {
         const check = await Review.deleteMany({ _id: { $in: product.reviews } })
@@ -72,6 +70,5 @@ productSchema.post('findOneAndDelete', async function (product) {
 })
 
 const Product = mongoose.model('Product', productSchema);
-
 
 module.exports = Product;

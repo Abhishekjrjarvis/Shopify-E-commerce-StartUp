@@ -5,15 +5,11 @@ const Address = require('../models/address');
 const Product = require('../models/product');
 const Order = require('../models/order');
 
-
-
 router.get('/account/profile/overview/m-address', async(req, res) =>{
     const address = await Address.find({});
     res.render('address', {address});
 })
   
-
-
 router.post('/account/profile/overview/m-address', async(req, res) =>{
     const user = await User.findById({_id: req.user._id});
     const address = await new Address(req.body);
@@ -24,9 +20,8 @@ router.post('/account/profile/overview/m-address', async(req, res) =>{
     res.redirect('/user/account/profile/overview/address')
 })
 
-
-  router.get('/verify-order/confirmation/true', async(req, res) =>{
-    const user = await User.findById({_id: req.user._id}).populate({
+router.get('/verify-order/confirmation/true', async(req, res) =>{
+  const user = await User.findById({_id: req.user._id}).populate({
       path:'orderProducts',
       populate:{
         path:'productsItem'
@@ -38,7 +33,7 @@ router.post('/account/profile/overview/m-address', async(req, res) =>{
   })
 
 
-  router.get('/verify-order/confirmation/true/:id', async(req, res) =>{
+router.get('/verify-order/confirmation/true/:id', async(req, res) =>{
     const { id } = req.params;
     const user = await User.findById({_id: req.user._id})
     const orders = await Order.find(); 
@@ -49,7 +44,7 @@ router.post('/account/profile/overview/m-address', async(req, res) =>{
     res.render('orders', { user, order , orders });
   })
 
-router.post('/verify/payment-flow/status-order', async(req, res) =>{
+  router.post('/verify/payment-flow/status-order', async(req, res) =>{
     const user = await User.findById({_id: req.user._id}).populate('cart')
     const order = await new Order(req.body);
     order.user = req.user._id;
@@ -64,7 +59,7 @@ router.post('/verify/payment-flow/status-order', async(req, res) =>{
     res.redirect('/user/verify-order/confirmation/true')
   })
 
-  router.post('/verify/payment-flow/status-order/:id', async(req, res) =>{
+router.post('/verify/payment-flow/status-order/:id', async(req, res) =>{
     const { id } = req.params;
     const products = await Product.findById({_id:id});
     const user = await User.findById({_id: req.user._id})
@@ -78,11 +73,4 @@ router.post('/verify/payment-flow/status-order', async(req, res) =>{
     res.redirect('/user/verify-order/confirmation/true')
   })
   
-  
-
-  
-
-
-
-
 module.exports = router;

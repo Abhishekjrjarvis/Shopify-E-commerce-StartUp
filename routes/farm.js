@@ -12,18 +12,10 @@ const { storage } = require('../cloudinary/index');
 const upload = multer({ storage })
 const { cloudinary } = require('../cloudinary');
 
-
-
 router.get("/", catchAsync(async (req, res) => {
     const farms = await Farm.find({});
     res.render("farm/index", { farms });
 }));
-
-
-
-
-
-
 
 router.get('/blogs', async(req, res)=>{
     const blogs = await Blog.find()
@@ -50,16 +42,10 @@ router.delete('/blogs/:id', async(req, res) =>{
     res.redirect('/farms/blogs')
 })
 
-
-
 router.get('/guides', async(req, res) =>{
     const blogs = await Blog.find()
     res.render('guides', { blogs })
 })
-
-
-
-
   
 router.get("/new", isLoggedIn,  async(req, res) => {
     const user = await User.findById(req.user._id).populate('farms');
@@ -86,7 +72,6 @@ router.get("/:id", catchAsync(async (req, res) => {
     }).populate("products").populate('author').populate('farmReviews');
     res.render("farm/show", { farm });
 }));
-
 
 router.delete("/:id", catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -116,7 +101,6 @@ router.post("/:id/products", isLoggedIn, upload.array('images'), catchAsync(asyn
     res.redirect("/farms");
 }));
 
-
 router.get('/:id/products', async(req, res) =>{
     const { id } = req.params;
     const farm = await Farm.findById(req.params.id).populate({
@@ -137,7 +121,4 @@ router.delete("/:id/products/:pid", isLoggedIn, isFarmOwner,  catchAsync(async (
     res.redirect("/farms");
 }));
   
-
-
-
 module.exports = router;

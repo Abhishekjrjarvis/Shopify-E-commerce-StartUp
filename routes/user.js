@@ -15,13 +15,9 @@ const address = require('../models/address');
 // const uploads = multer({ storages })
 // const { cloudinary } = require('../cloudinary');
 
-
-
-
 router.get('/register', (req, res) =>{
     res.render('user/register')
 })
-
 
 router.post('/register', async(req, res, next) =>{
         try {
@@ -41,11 +37,9 @@ router.post('/register', async(req, res, next) =>{
         }
 })
 
-
 router.get('/login', (req, res)=>{
     res.render('user/login');
 })
-
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/user/login' }) , async(req, res, next) =>{
     req.flash('success', `welcome back! ${req.user.username}`);
@@ -54,13 +48,11 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
     res.redirect(redirectUrl);
 })
 
-
 router.get('/logout', (req, res) =>{
     req.logout();
     req.flash('success', 'successfully logout')
     res.redirect('/');
 })
-
 
 router.get('/account/profile/overview', async(req, res) =>{
   const user = await User.find({});
@@ -72,8 +64,6 @@ router.get('/account/profile/overview/m-account', async(req, res) =>{
   const farm = await Farm.find({});
   res.render('account', {user, farm });
 })
-
-
 
 router.get('/account/profile/overview/address', async(req, res) =>{
   const user = await User.findById({_id: req.user._id}).populate('addresses');
@@ -88,8 +78,6 @@ router.delete('/account/profile/overview/address/:id', async(req, res) =>{
   await user.save();
   res.redirect('/user/account/profile/overview/address')
 })
-
-
 
 router.get('/cart', async(req,res) =>{
   const user = await User.findById({_id: req.user._id}).populate({
@@ -108,7 +96,6 @@ router.get('/account/profile/overview/home_wishlist', async(req, res) =>{
     }}).populate('addresses');
   res.render('wishlist', { user });
 })
-
 
 router.post('/account/:id/p-qty', async(req, res) =>{
   const { id } = req.params;
@@ -137,14 +124,12 @@ router.delete('/account/:id/p-qty', async(req, res) =>{
   res.redirect('/user/cart')
 })
 
-
 router.get('/verify-acc-cart/:id/checkout',async(req, res)=>{
   const { id }  = req.params;
   const products = await Product.findById({ _id: id }).populate('reviews');
   const user = await User.findById({_id: req.user._id}).populate('cart').populate('addresses');
   res.render('payments', { user, products })
 })
-
 
 router.get('/verify-acc-cart/checkout',async(req, res)=>{
   const { id }  = req.params;
@@ -155,8 +140,6 @@ router.get('/verify-acc-cart/checkout',async(req, res)=>{
     }}).populate('addresses');
   res.render('payment', { user })
 })
-
-
 
 router.get('/forgot', function(req, res) {
     res.render('forgot');
@@ -284,7 +267,4 @@ router.post('/reset/:token', function(req, res) {
     });
   });
   
-
-
-
 module.exports = router;

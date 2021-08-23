@@ -25,9 +25,6 @@
                <h3>Add Products</h3>
               </a>
               <% } %> 
-              <!-- <a class="item">
-               <h3> Learn</h3>
-              </a> -->
               <div class="ui inverted secondary pointing menu" style="margin-left: auto;">
                 <% if(currentUser && farm.author.equals(currentUser._id)){%>
                 <a class="item" href="/user/account/profile/overview">
@@ -42,11 +39,8 @@
               </div>
               
             </div>
-          </div>
-        
-        
+          </div>  
     </div>
-
       <div class="ui stackable two column grid" style="margin: 40px 40px;">
         <div class="column">
           <% if(farm.category === 'Electronics') {%> 
@@ -64,7 +58,6 @@
         <% } else if(farm.category === 'Home Furniture') {%> 
             <img class="ui image"  src="https://images.unsplash.com/photo-1617325710236-4a36d46427c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="image-scale-valid" alt="">
         <% } %>
-<!-- <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80"> -->
 
         </div>
         <div class="column" style="margin: 50px auto ; color: #fff;">
@@ -133,40 +126,12 @@
                         <button class="ui right attached ui yellow button" style="margin-top: 15px; letter-spacing: 1px;"><i class="fas fa-cart-plus"></i> Add To Cart</button>
                       </form> 
                   <% } %> 
-                    
-                    
-                  
-                  
                 </div>
               </div>
             </div> 
           </a> 
           <% } %> 
       </div>
-      <!-- <div class="ui stackable four column grid" style="margin: 50px 40px;">
-        <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-           <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-          </div> 
-         <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-          <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-        </div>
-         <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-          <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-        </div>
-        <div class="column">
-          <img class="ui image" src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80">
-          <h3 style="margin: 10px auto ; color: #fff;">Your product's name</h3>
-           <p style="margin: 10px auto ; color: #fff;">$ 99.99</p>
-          </div> 
-      </div> -->
-
-      
       <h2 class="" style="color: #f50606; margin: 30px 40px; text-align: center; letter-spacing: 1px; ">CUSTOMER REVIEWS</h2>
 
       <div class="ui stackable three column grid" style="margin: 20px 40px;">
@@ -177,25 +142,7 @@
               <span style="text-align: right; color: #fff;">- <%= fr.author.username  %> </span>
             </div> 
           <% } %>
-        <!-- <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
-          <i class="fas fa-quote-left" style="color: #f50606;"></i>
-            <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
-            <span style="text-align: right; color: #fff;">- User name</span>
-            </div>
-        <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
-        <i class="fas fa-quote-left" style="color: #f50606;"></i>
-          <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
-          <span style="text-align: right; color: #fff;">- User name</span>
-        </div>
-        <div class="column" style="margin: 10px auto ; color: #fff; text-align: center;">
-        <i class="fas fa-quote-left" style="color: #f50606;"></i>
-          <h4 style="color: #fff; text-align: center; font-weight: 600; letter-spacing: 1px;">Add customer reviews and testimonials <br> to showcase your store’s</h4>
-          <span style="text-align: right; color: #fff;">- User name</span>
-          </div> -->
       </div>
-       
-   
-
       <hr style="color: #fff; background-color: #fff; margin: 40px 40px;">
 
       <h4 style="color: #fff; margin: 10px 40px;">News Letter</h4>
@@ -209,9 +156,6 @@
       <div style="color: #fff; margin: 5px 40px; text-align: right;">
         <i class="fas fa-copyright" style="color: #fff"></i><a href="#" style="color: #ffffff;"> <%= farm.name %> </a> Powered by <a href="/" style="color: #f50606;"> Shopify</a>
       </div>
-      <hr style="color: #fff; background-color: rgb(156, 151, 151); margin: 40px 40px;">
-
-      
-              
+      <hr style="color: #fff; background-color: rgb(156, 151, 151); margin: 40px 40px;">         
 </body>
 </html>

@@ -5,8 +5,6 @@ const Farm = require('./farm');
 const Order = require('./order');
 const passportLocalMongoose = require('passport-local-mongoose');
 
-
-
 const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -71,7 +69,6 @@ const userSchema = new mongoose.Schema({
     ]
 
 })
-
 
 userSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('User', userSchema)

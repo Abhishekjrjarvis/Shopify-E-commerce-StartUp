@@ -7,8 +7,6 @@ const FarmError = require('../Utilities/FarmError');
 const Review = require('../models/review');
 const { isLoggedIn } = require('../middleware');
 
-
-// const categories = ["fruit", "electronics", "fashion"];
 router.get("/", catchAsync(async(req, res) => {
     const { categories, productReviewRatings, productPriceFilter, productTag } = req.query;
     if (categories) {
@@ -86,11 +84,6 @@ router.get("/", catchAsync(async(req, res) => {
     }
 }));
 
-
-
-
-  
-  
 router.get("/new", (req, res) => {
     res.render("new", { categories });
 });
@@ -103,7 +96,6 @@ router.post("/", catchAsync(async (req, res) => {
     res.redirect("/products");
 }));
 
-  
 router.get("/:id", catchAsync(async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById({ _id: id }).populate({
@@ -124,9 +116,6 @@ router.get("/:id", catchAsync(async (req, res) => {
 
 }));
 
-
-
-
 router.post('/:id/cart', isLoggedIn, async(req, res)=>{
     const { id } = req.params;
     const products = await Product.findById({ _id: id });
@@ -139,7 +128,6 @@ router.post('/:id/cart', isLoggedIn, async(req, res)=>{
     res.redirect('/user/cart');
 })
 
-
 router.delete('/:id/cart', async(req, res) =>{
     const { id }  = req.params;
     const user = await User.findById({_id: req.user._id});
@@ -149,7 +137,6 @@ router.delete('/:id/cart', async(req, res) =>{
     res.redirect('/user/cart')
 })
 
-
 router.post('/:id/wishlist', isLoggedIn, async(req, res)=>{
     const { id } = req.params;
     const products = await Product.findById({ _id: id });
@@ -158,7 +145,6 @@ router.post('/:id/wishlist', isLoggedIn, async(req, res)=>{
     await user.save();
     res.redirect('/user/account/profile/overview/home_wishlist');
 })
-
 
 router.delete('/:id/wishlist', async(req, res) =>{
     const { id }  = req.params;
